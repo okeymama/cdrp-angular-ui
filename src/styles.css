@@ -1,0 +1,52 @@
+/* You can add global styles to this file, and also import other style files */
+@import '@angular/material/prebuilt-themes/deeppurple-amber.css';
+
+body { 
+    font-family: Roboto, Arial, sans-serif;
+    margin: 0;
+  }
+  
+  .basic-container {
+    padding: 30px;
+  }
+  
+  .version-info {
+    font-size: 8pt;
+    float: right;
+  }
+  
+
+  .mat-tab-header
+  {
+      width:510px !important;
+      
+  }
+
+  .mat-tab-body-wrapper
+  {
+    width:1150px !important;
+  }
+  
+  .mat-tab-label
+  {
+      padding:10px !important;
+      min-width:80px !important;
+      color:grey;
+      font-size:12px;
+      font-weight: bold;
+  }
+
+  .mat-ink-bar:hover {
+    color: rgb(17, 90, 226) !important;
+  }
+  
+  .mat-tab-label:hover
+  {
+    color: rgb(17, 90, 226);
+  }
+
+  .mat-tab-label:active
+  {
+    font-weight: bold;
+    color: rgb(17, 90, 226);
+  }

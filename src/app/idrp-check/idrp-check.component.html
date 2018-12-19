@@ -1,0 +1,63 @@
+<br><br>
+<div class="filter-icon-div"><span class="filter-class">Filters</span><mat-icon>filter_list</mat-icon></div>
+<div class="header"> <mat-icon class="icon">keyboard_arrow_right</mat-icon>&nbsp;&nbsp;<span class="header-text">Study </span></div><br>
+
+<div class="header"> <mat-icon class="icon">keyboard_arrow_down</mat-icon>&nbsp;&nbsp;<span class="header-text">Expected Data </span></div>
+
+
+<table id="mainTable">
+    <tbody class="mainDiv" *ngFor="let d of ed; let i = index">
+    <tr class="table-header-color" *ngIf='!i'>
+      <th>EXPECTED DATA CATEGORY</th>
+      <th>APPLIED DATA TRAJECTORY</th> 
+      <th>APPLIED VISIT</th>
+      <th>SOURCE</th>
+      <th>DATA TRANSFER FREQUENCY</th>
+      <th>CRITICAL DATA</th>
+    </tr>
+
+    <tr >
+        
+        <td (click)="togglePanel(i)"> <mat-icon class="icon-1">{{arrow[i]}}</mat-icon><span class="text-align">{{ed[i].expectedDataCategory}}</span></td>
+        <td>{{ed[i].appliedDataTrajectory}}</td>
+        <td>{{ed[i].appliedVisit}}</td>
+        <td>{{ed[i].source}}</td>
+        <td>{{ed[i].dataTransferFrequency}}</td>
+        <td>{{ed[i].criticalData}}</td>
+    </tr> 
+   <!-- <tr id="hide-div"><td colspan="6"><div>This is the div</div></td></tr>-->
+   <ng-container *ngIf="panelState[i]">
+    <tr><td class="check-table" colspan="6">
+     <table class="table2">
+       <tr><th id="header-row"colspan="11">{{idrpCheck[0].category}} IDRP Checks</th></tr>
+        <tr id="second-row">
+          <th>Purpose</th>
+          <th>Description</th> 
+          <th>Visit</th>
+          <th>Role</th>
+          <th>Method</th> 
+          <th>Frequency</th>
+          <th>Owner</th>
+          <th>Check Name</th> 
+          <th>Query Text</th>
+          <th>Source</th>
+          <th>Actions</th>
+        </tr>
+        <tr *ngFor="let d of idrpCheck; let i = index">
+          <td>{{idrpCheck[i].purpose}}</td>
+          <td id="description">{{idrpCheck[i].description}}</td> 
+          <td>{{idrpCheck[i].visit}}</td>
+          <td>{{idrpCheck[i].role}}</td>
+          <td>{{idrpCheck[i].method}}</td> 
+          <td>{{idrpCheck[i].frequency}}</td>
+          <td>{{idrpCheck[i].owner}}</td>
+          <td>{{idrpCheck[i].checkName}}</td> 
+          <td>{{idrpCheck[i].queryText}}</td>
+          <td>{{idrpCheck[i].source}}</td>
+          <td><mat-icon class="action-icon">delete</mat-icon><mat-icon class="action-icon">edit</mat-icon></td>
+        </tr>
+      </table>
+    </td></tr></ng-container>
+  </tbody>
+</table>
+

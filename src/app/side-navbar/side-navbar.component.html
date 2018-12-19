@@ -1,0 +1,55 @@
+<mat-sidenav-container class="example-container">
+    <mat-sidenav #sidenav class="example-nav" id='minidraw' mode="side" opened='true'>
+       <mat-nav-list>
+          <mat-list-item class='white-icon' role="listitem">
+            <mat-icon (click)="changeIcon()" >{{arrow}}</mat-icon>
+            <mat-icon class="close-arrow" *ngIf='!isExpanded' (click)="changeIcon1()">{{arrowClose}}</mat-icon>
+          </mat-list-item>
+          <mat-list-item class='white-icon' role="listitem" (click)="changeBackgorund1()" routerLink='study'>
+            <mat-icon >opacity</mat-icon>
+            <span class="space" *ngIf='!isExpanded'>STUDY INFO</span>
+          </mat-list-item>
+          <mat-list-item class='white-icon' role="listitem" (click)="changeBackgorund()" routerLink='next'>
+            <mat-icon>subject</mat-icon>
+            <span class="space" *ngIf='!isExpanded'>EXPECTED DATA</span>
+          </mat-list-item>
+          <mat-list-item class='white-icon' role="listitem" routerLink=''>
+            <mat-icon >flag</mat-icon>
+            <span class="space" *ngIf='!isExpanded'>MILESTONE</span>
+          </mat-list-item>
+          <mat-list-item class='white-icon' role="listitem" routerLink='next'>
+            <mat-icon >touch_app</mat-icon>
+            <span class="space" *ngIf='!isExpanded'>IDRP IN ACTION</span>
+          </mat-list-item>
+          <mat-list-item class='white-icon' role="listitem" routerLink='next'>
+            <mat-icon >insert_invitation</mat-icon>
+            <span class="space" *ngIf='!isExpanded'>TASKS</span>
+          </mat-list-item>
+          <mat-list-item class='white-icon' role="listitem" routerLink='next'>
+            <mat-icon >contact_support</mat-icon>
+            <span class="space" *ngIf='!isExpanded'>QUERY</span>
+          </mat-list-item>
+          <mat-list-item class='white-icon' role="listitem" routerLink='next'>
+            <mat-icon >receipt</mat-icon>
+            <span class="space" *ngIf='!isExpanded'>OBSERVATIONS</span>
+          </mat-list-item>
+          <mat-list-item class='white-icon' role="listitem" routerLink='next'>
+              <mat-icon >access_time</mat-icon>
+              <span class="space" *ngIf='!isExpanded'>PENDING CLOSURES</span>
+            </mat-list-item>
+          <mat-list-item class='white-icon' role="listitem" routerLink='next'>
+            <mat-icon >favorite_border</mat-icon>
+            <span class="space" *ngIf='!isExpanded'>HOS</span>
+          </mat-list-item>
+          <mat-list-item class='white-icon' role="listitem" routerLink='next'>
+              <mat-icon >wb_cloudy</mat-icon>
+              <span class="space" *ngIf='!isExpanded'>MISSING DATA</span>
+          </mat-list-item>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class='example-sidecontent' id='side-content'>
+      <router-outlet></router-outlet>
+      <br><br><br><br><br><br><br><br><br><br><br><br>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+ 

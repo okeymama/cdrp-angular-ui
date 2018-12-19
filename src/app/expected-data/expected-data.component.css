@@ -1,0 +1,77 @@
+.icon-main
+ {
+     color:rgb(51, 83, 145);
+     margin-right:18px;
+     height:20px;
+
+ }
+
+.header{
+    font-size:26px;
+    font-weight: 200;
+    width:500px;
+  }
+
+.text-align
+{
+    vertical-align:6px; 
+}
+.side-link
+{
+    display:flex;
+}
+
+.side-div
+{
+    margin-left:240px;
+    width:400px;
+    display:flex;
+}
+
+.links
+{
+    color:rgb(7, 73, 214);
+    font-weight: bold;
+    font-size:12px;
+}
+
+a{
+text-decoration:none;
+}
+
+.side-button
+{
+    text-align: center;
+    width:350px;
+    height:40px;
+    position: relative;
+    float: right;
+}
+
+.side-button-1
+{
+  background-color: rgb(37, 10, 134);
+  border: none;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  font-size: 14px;
+  padding-bottom: 0px;
+  cursor: pointer;
+  height:30px;
+  border-radius: 4px;
+  bottom:3px;
+}
+
+.side-button-1:hover
+{
+    background-color:rgb(81, 158, 230);
+}
+
+.icon-plus
+{
+    margin-top:2px;
+}
+
+
+

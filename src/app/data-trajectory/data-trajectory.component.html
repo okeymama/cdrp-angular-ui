@@ -1,0 +1,65 @@
+<br><br>
+<div class="filter-icon-div"><span class="filter-class">Filters</span><mat-icon>filter_list</mat-icon></div>
+<div class="header"> <mat-icon class="icon">keyboard_arrow_right</mat-icon>&nbsp;&nbsp;<span class="header-text">Study </span></div><br>
+
+<ng-container *ngFor="let t of trajectory; let j = index">
+  <div class="header"> <mat-icon class="icon">keyboard_arrow_down</mat-icon>&nbsp;&nbsp;<span class="header-text">Data Trajectory {{j+1}}</span></div>
+
+
+
+<table id="mainTable">
+    <tbody class="mainDiv" *ngFor="let d of dt; let i = index">
+    <tr class="table-header-color" *ngIf='!i'>
+      <th >EXPECTED DATA CATEGORY</th>
+      <th>APPLIED VISIT</th> 
+      <th>SOURCE</th>
+      <th>DATA TRANSFER FREQUENCY</th>
+      <th>CRITICAL DATA</th>
+      <th>ACTIONS</th>
+    </tr>
+
+    <tr >
+        
+        <td (click)="togglePanel(i,j)"> <mat-icon class="icon-1">{{arrowState[j][i]}}</mat-icon><span class="text-align">{{trajectory[j].content1[i].expectedData}}</span></td>
+        <td>{{trajectory[j].content1[i].appliedVisit}}</td>
+        <td>{{trajectory[j].content1[i].source}}</td>
+        <td>{{trajectory[j].content1[i].dataTransfer}}</td>
+        <td>{{trajectory[j].content1[i].criticalData}}</td>
+        <td id="act"><mat-icon class="action-icon">edit</mat-icon><mat-icon class="action-icon">settings</mat-icon>
+        <mat-icon class="action-icon">delete</mat-icon><mat-icon class="action-icon">insert_comment</mat-icon></td>
+    </tr> 
+   <!-- <tr id="hide-div"><td colspan="6"><div>This is the div</div></td></tr>-->
+   <ng-container *ngIf="panelState[j][i]">
+    <tr><td class="check-table" colspan="6">
+     <table class="idrp-check-table">
+       <tr><th id="header-row"colspan="10">{{trajectory[j].content2[0].category}} IDRP Checks</th></tr>
+        <tr id="second-row">
+          <th>Purpose</th>
+          <th>Description</th> 
+          <th>Visit</th>
+          <th>Role</th>
+          <th>Method</th> 
+          <th>Frequency</th>
+          <th>Owner</th>
+          <th>Check Name</th> 
+          <th>Query Text</th>
+          <th>Source</th>
+        </tr>
+        <tr *ngFor="let d of idrpCheck; let i = index">
+          <td>{{trajectory[j].content2[i].purpose}}</td>
+          <td id="description">{{trajectory[j].content2[i].description}}</td> 
+          <td>{{trajectory[j].content2[i].visit}}</td>
+          <td>{{trajectory[j].content2[i].role}}</td>
+          <td>{{trajectory[j].content2[i].method}}</td> 
+          <td>{{trajectory[j].content2[i].frequency}}</td>
+          <td>{{trajectory[j].content2[i].owner}}</td>
+          <td>{{trajectory[j].content2[i].checkName}}</td> 
+          <td>{{trajectory[j].content2[i].queryText}}</td>
+          <td>{{trajectory[j].content2[i].source}}</td>
+
+        </tr>
+      </table>
+    </td></tr></ng-container>
+  </tbody>
+</table><br><br>
+</ng-container>

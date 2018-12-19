@@ -1,0 +1,156 @@
+<div>Study: {{data?.studyId}} <mat-icon class="icon-main">arrow_drop_down_circle</mat-icon></div><br>
+      <span class="header">Study Info</span><br>
+      <mat-divider></mat-divider><br>
+      <div class="sub-header">
+        <mat-icon class="icon-color">arrow_drop_down_circle</mat-icon>
+        <h4>REFERENCE</h4><br><br>
+      </div>
+      <div class="vertical">
+        <br>
+      <mat-card class="sub-content">
+      <mat-card-content>
+        <div class="align">
+        <div>
+          <div class="align1"> 
+              <div class="div1" >
+                  <p><span style="font-weight: bold">Therapeutic Area</span> <br>
+                    {{data?.reference.theraputicArea}}</p>
+              </div>
+              <div class="div2" >
+                  <p><span style="font-weight: bold">Compound</span> <br>
+                    {{data?.reference.compound}}</p>
+              </div>
+              <div class="div3" >
+                  <p><span style="font-weight: bold">Indication</span> <br>
+                    {{data?.reference.indication}}</p>
+              </div>  
+            </div>
+            <div class="align1"> 
+                  <div class="div5">
+                      <p><span style="font-weight: bold" >Study Status</span> <br>
+                        {{data?.reference.studyStatus}}</p>
+                  </div>
+                  <div class="div6">
+                      <p><span style="font-weight: bold">Study Phase</span> <br>
+                        {{data?.reference.studyPhase}}</p>
+                  </div>
+                  <div class="div7">
+                      <p><span style="font-weight: bold">Study Type</span> <br>
+                        {{data?.reference.studyType}}</p>
+                  </div>
+               </div> 
+               
+              </div>
+              <div class="div4">
+                  <p><span style="font-weight: bold">Full Protocal Title</span> <br><br>
+
+                    {{data?.reference.fullProtocaltitle}}
+                   </p>
+              </div> 
+            </div>
+        </mat-card-content>
+      </mat-card>
+    </div>
+    <div class="sub-header">
+        <mat-icon class="icon-color">arrow_drop_down_circle</mat-icon>
+      <h4>KEY EVENTS</h4><br><br>
+    </div>
+    <div class="vertical2">
+        <br>
+      <mat-card class="sub-content">
+          <table>
+              <tr>
+                <th>EVENT</th>
+                <th>PLANNED DATE</th> 
+                <th>ACTUAL DATE</th>
+              </tr>
+
+              <tr *ngFor="let d of data?.key; let i = index">
+                  <td>{{data?.key[i].event}}</td>
+                  <td>{{data?.key[i].planned}}</td>
+                  <td>{{data?.key[i].actual}}</td>
+                </tr>
+            </table>
+      </mat-card>
+    </div>
+    <div class="sub-header">
+        <mat-icon class="icon-color">arrow_drop_down_circle</mat-icon>
+      <h4>PERSONAL ASSIGNMENTS</h4>
+    </div>
+      <div class="vertical3">
+          <br>
+      <mat-card class="sub-content">
+          <div class="align3"> 
+              <div class="div8" >
+                  <p><span style="font-weight: bold">Clinical Data Reviewer</span> <br>
+                    {{data?.personalAssign.clinicalDataReviewer}}</p>
+              </div>
+              <div class="div8" >
+                  <p><span style="font-weight: bold">Clinical Safety Analyst</span> <br>
+                    {{data?.personalAssign.clinicalSafetyAnalyst}}</p>
+              </div>
+              <div class="div8" >
+                  <p><span style="font-weight: bold">Remote Monitor</span> <br>
+                    {{data?.personalAssign.remoteMonitor}}</p>
+              </div>  
+              <div class="div8" >
+                  <p><span style="font-weight: bold">Stats</span> <br>
+                    {{data?.personalAssign.stats}}</p>
+              </div> 
+            </div>
+          <div class="align3"> 
+              <div class="div8" >
+                  <p><span style="font-weight: bold">Study Project Manager</span> <br>
+                    {{data?.personalAssign.studyProjectManager}}&nbsp; <span class="circle">R</span> </p>
+              </div>
+              <div class="div8" >
+                  <p><span style="font-weight: bold">Study Manager Associate</span> <br>
+                    {{data?.personalAssign.studyManagerAssociate}} &nbsp; <span class="blue-circle">A</span> </p>
+              </div>
+                <div class="div8" >
+                  <p><span style="font-weight: bold">TA MD</span> <br>
+                    {{data?.personalAssign.taMd}}</p>
+              </div>  
+              <div class="div8" >
+                  <p><span style="font-weight: bold">Data Sciences Project Lead</span> <br>
+                    {{data?.personalAssign.dataSciencesProjectLead}}</p>
+              </div> 
+            </div> 
+      </mat-card>
+      </div>
+      <div class="sub-header">
+          <mat-icon class="icon-color">arrow_drop_down_circle</mat-icon>
+      <h4>INTEGRATED DATA REVIEW PLAN (IDRP) DETAILS</h4>
+      </div>
+      <div class="vertical4">
+          <br>
+      <mat-card class="sub-content">
+          <div class="align4"> 
+              <div class="div8" >
+                  <p><span style="font-weight: bold">Plan Owner</span> <br>
+                    {{data?.idrp.planOwner}}</p>
+              </div>
+              <div class="div8" >
+                  <p><span style="font-weight: bold">Plan Version</span> <br>
+                    {{data?.idrp.planVersion}} <mat-icon>restore</mat-icon></p>
+                    
+              </div>
+              <div class="div8" >
+                  <p><span style="font-weight: bold">Created Date</span> <br>
+                    {{data?.idrp.createdDate}}</p>
+              </div>  
+            </div>
+          <div class="align4"> 
+              <div class="div8" >
+                  <p><span style="font-weight: bold">Last Modified By</span> <br>
+                    {{data?.idrp.lastModified}}</p>
+              </div>
+              <div class="div8" >
+              </div>
+              <div class="div8" >
+                  <p><span style="font-weight: bold">Approval Date</span> <br>
+                    {{data?.idrp.approvalDate}}</p>
+              </div>  
+            </div>
+      </mat-card>
+      </div>

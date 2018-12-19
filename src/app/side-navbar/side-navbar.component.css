@@ -1,0 +1,37 @@
+.example-nav {
+  background-image:linear-gradient(to top, rgb(90,173,241),rgb(42,63,148) );  
+}
+
+.example-container{
+    background-color: rgb(230,230,250);
+}
+
+.close-arrow
+{
+  margin-left:100px;
+}
+
+.white-icon{
+  color:white;
+}
+.example-sidecontent{
+  padding:30px;
+  background-color: rgb(242,242,242);
+}
+
+.vertical-divider {
+  border-top-width: 0;
+  border-right-width: 1px;
+  border-right-style: solid;
+  height: 100%;
+}
+
+span{
+  font-size:12px;
+  font-weight: 100;
+}
+
+.space
+{
+  margin-left:10px;
+}

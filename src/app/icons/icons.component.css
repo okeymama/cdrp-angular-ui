@@ -1,0 +1,44 @@
+p
+{
+
+padding-top: 20px;
+padding-right: 10px;
+padding-bottom: 20px;
+padding-left: 400px;
+color: white;
+
+
+}
+
+.white-icon {
+    color: white;
+}
+div{
+    background-color: rgb(42, 63, 148);
+     /* For browsers that do not support gradients */
+    background-image: linear-gradient(to right, rgb(42, 63, 148 ), rgb(90, 173, 241));
+    display: flex;
+    width: 100%;
+    opacity: 01.0;
+}
+.aligned-with-icon{
+    position: absolute;
+    height: 200%;
+
+} 
+   .aligned-with-icons{
+      padding-left: 500px;
+        
+
+     
+     
+    /* optional */
+}
+
+.logo {
+    height: 50px;
+    width: auto;
+    padding-top: 25px;
+    padding-left: 10px;
+    display: block;
+}
