@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { runInThisContext } from 'vm';
+import { CdrpService } from '../cdrp.service';
 
 @Component({
   selector: 'app-expected-data',
@@ -7,10 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ExpectedDataComponent implements OnInit {
 
-  constructor() { }
+  studyID: string;
+  constructor(private cdrpService: CdrpService) { }
 
   ngOnInit() {
-    
+   this.studyID = this.cdrpService.id;
+  
   }
+
+
 
 }
