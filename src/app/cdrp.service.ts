@@ -17,9 +17,9 @@ export class CdrpService {
 
   constructor(private http:Http,private router: Router, private  httpClient:  HttpClient){}
 
-  private categoryUrl = 'http://localhost:8080/data';
-  private categoryUrl1 = 'http://localhost:8080/getstudy';
-  private categoryUrl2 = 'http://localhost:8080/getdetails';
+  private categoryUrl = 'https://cdrp-service.herokuapp.com/data';
+  private categoryUrl1 = 'https://cdrp-service.herokuapp.com/getstudy';
+  private categoryUrl2 = 'https://cdrp-service.herokuapp.com/getdetails';
 
   getProducts1(){
  
@@ -42,7 +42,7 @@ export class CdrpService {
   }
   getProducts(){
  
-    return this.http.request('http://localhost:8080/getdata?id='+this.id);
+    return this.http.request('https://cdrp-service.herokuapp.com/getdata?id='+this.id);
    
   }
 
