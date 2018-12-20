@@ -1,6 +1,6 @@
 <div class="one" >
     <br>
-     <div class="heading">CDRP LANDING Changed</div>
+     <div class="heading">CDRP LANDING</div>
      
     <hr>
     <div class="abc" >
@@ -80,10 +80,10 @@
                 </div>
                 </div> 
                 <div class="barchart">
-                    <canvas
+                    <canvas *ngIf="ba[i].chartData"
                     baseChart
                     [chartType]="'bar'"
-                    [datasets]="chartData"
+                    [datasets]="ba[i].chartData"
                     [labels]="labels"
                     [options]="chartOptions"
                     [legend]="true"

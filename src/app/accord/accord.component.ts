@@ -5,7 +5,8 @@ import { Http , Response } from '@angular/http';
 import { CdrpService } from '../cdrp.service';
 import { Details } from '../Details';
 import '../../../node_modules/chartjs-plugin-doughnutlabel'; 
-
+import { Bardata } from '../Bardata';
+import { Bar } from '../Bar';
 @Component({
   selector: 'app-accord',
   templateUrl: './accord.component.html',
@@ -21,6 +22,10 @@ export class AccordComponent implements OnInit {
  tdata: Study[];
  ddata: Details[];
   index:number=0;
+  d: Bardata[];
+  da: Bardata[];
+  b: Bar[];
+  ba=[];
   public barChartOptions={
     scalShowVerticalLines:false,
     responsive:true,
@@ -90,11 +95,11 @@ beginAtZero:true
 }
 
 labels = ['OverDue', 'Due in 7 Days']; //legends for chart
-chartData = [ // STATIC DATA FOR THE CHART IN JSON FORMAT.
+/*chartData = [ // STATIC DATA FOR THE CHART IN JSON FORMAT.
 {
 data: [2,7] ,
 }
-];
+];*/
 
 colors = [ // CHART COLOR.
 { 
@@ -125,6 +130,11 @@ backgroundColor: [ 'red',
         this.barChartData[c]=[this.ddata[c].noncritical,this.ddata[c].critical];
         console.log(this.barChartData[c]);
       } 
+      for(var c=0; c < this.count;c++){
+        this.da=[{data:[this.ddata[c].due,this.ddata[c].overdue]}]
+        console.log(this.da);
+        this.ba[c]={chartData:this.da};
+        } 
        console.log(this.ddata);
     })
   }
