@@ -21,7 +21,7 @@ export class SideNavbarComponent implements OnInit {
   changeIcon(){
     this.isExpanded = !this.isExpanded;
     console.log(document.getElementById('side-content').style.marginLeft);
-    document.getElementById('side-content').style.marginLeft = this.isExpanded?'80px':'200px';
+    document.getElementById('side-content').style.marginLeft = '190px';
     console.log(document.getElementById('side-content').style.width);
     if(this.arrow == 'arrow_forward_ios')
     {
@@ -37,7 +37,7 @@ export class SideNavbarComponent implements OnInit {
   changeIcon1(){
     this.isExpanded = !this.isExpanded;
     console.log(document.getElementById('side-content').style.marginLeft);
-    document.getElementById('side-content').style.marginLeft = this.isExpanded?'65px':'200px';
+    document.getElementById('side-content').style.marginLeft = '57px';
     console.log(document.getElementById('side-content').style.width);
     
     if(this.arrow == 'arrow_forward_ios')

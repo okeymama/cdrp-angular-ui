@@ -1,7 +1,7 @@
 <mat-sidenav-container class="example-container">
     <mat-sidenav #sidenav class="example-nav" id='minidraw' mode="side" opened='true'>
        <mat-nav-list>
-          <mat-list-item class='white-icon' role="listitem">
+          <mat-list-item class='white-icon' id="arrow-tab" role="listitem">
             <mat-icon (click)="changeIcon()" >{{arrow}}</mat-icon>
             <mat-icon class="close-arrow" *ngIf='!isExpanded' (click)="changeIcon1()">{{arrowClose}}</mat-icon>
           </mat-list-item>

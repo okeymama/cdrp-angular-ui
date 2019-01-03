@@ -1,4 +1,4 @@
-<div>Study: {{studyID}} <mat-icon class="icon-main">arrow_drop_down_circle</mat-icon></div><br>
+<div><span class="study-info-color">Study: {{studyID}} </span><mat-icon class="icon-main">arrow_drop_down_circle</mat-icon></div><br>
       <div class="side-link">   
         <div class="header"><span >Expected Data & IDRP Checks</span></div>
         <div class="side-div">
@@ -16,7 +16,7 @@
 
       <mat-tab-group [selectedIndex]="1" animationDuration="0ms">
           
-          <mat-tab  id='a' label="IDRP CHECK"><app-idrp-check></app-idrp-check></mat-tab>
+          <mat-tab label="IDRP CHECK"><app-idrp-check></app-idrp-check></mat-tab>
           <mat-tab label="DATA TRAJECTORY"><app-data-trajectory></app-data-trajectory></mat-tab>
           <mat-tab label="APPLIED VISITS"><app-applied-visits></app-applied-visits></mat-tab>
           <mat-tab label="CRITICAL DATA"><app-critical-data></app-critical-data></mat-tab>

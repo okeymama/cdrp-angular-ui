@@ -4,7 +4,7 @@
     height:25px;
     text-decoration: none;
     display: flex;
-    width:1150px;
+    width:1140px;
 }
 
 .filter-icon-div
@@ -46,6 +46,7 @@
 .check-table
 {
     padding: 20px;
+    background-color: rgb(244, 247, 247); 
 }
 
 .icon-1
@@ -80,7 +81,7 @@ table {
     width:100%;
   }
   table, th, td {
-    border: 1px solid rgb(177, 207, 243);
+    border: 1px solid lightgray;
     border-collapse: collapse;
   }
   th, td {
@@ -98,6 +99,7 @@ table {
   {
     background-color:rgb(239, 243, 243);  
     font-size: 12px;
+    color:grey;
   }
 
  .table2
@@ -105,14 +107,21 @@ table {
      margin:4px;
      padding-bottom: 5px;
  }
-#header-row
-{
-    background-color: rgb(233, 229, 229);
-}
+ #header-row
+ {
+     background-color: rgb(243, 241, 241);
+ }
+ 
+ .second-row
+ {
+     background-color: rgb(244, 247, 247); 
+     color:black;
+     
+ }
 
-#second-row
+ .second-table
 {
-    background-color: rgb(233, 229, 229);
+    background-color: white;
 }
 
 td#description
