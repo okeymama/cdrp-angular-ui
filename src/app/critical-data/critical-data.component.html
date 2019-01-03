@@ -30,7 +30,7 @@
     <tr><td class="check-table" colspan="6">
      <table class="table2">
        <tr><th id="header-row"colspan="11">{{idrpCheck[0].category}} IDRP Checks</th></tr>
-        <tr id="second-row">
+        <tr class="second-row">
           <th>Purpose</th>
           <th>Description</th> 
           <th>Visit</th>
@@ -43,7 +43,7 @@
           <th>Source</th>
           <th>Actions</th>
         </tr>
-        <tr *ngFor="let d of idrpCheck; let i = index">
+        <tr class="second-table" *ngFor="let d of idrpCheck; let i = index">
           <td>{{idrpCheck[i].purpose}}</td>
           <td id="description">{{idrpCheck[i].description}}</td> 
           <td>{{idrpCheck[i].visit}}</td>

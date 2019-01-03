@@ -24,25 +24,25 @@ body {
 
   .mat-tab-body-wrapper
   {
-    width:1150px !important;
+    width:1140px !important;
   }
   
   .mat-tab-label
   {
       padding:10px !important;
       min-width:80px !important;
-      color:grey;
+      color:rgb(39, 38, 38);
       font-size:12px;
-      font-weight: bold;
+    
   }
 
-  .mat-ink-bar:hover {
-    color: rgb(17, 90, 226) !important;
+  .mat-ink-bar{
+    background-color: rgb(17, 123, 209) !important;
   }
   
   .mat-tab-label:hover
   {
-    color: rgb(17, 90, 226);
+    color: rgb(17, 123, 209);
   }
 
   .mat-tab-label:active

@@ -19,12 +19,17 @@ h4
 
 .icon-main
  {
-     color:rgb(51, 83, 145);
+     color:rgb(17, 123, 209);
      margin-right:18px;
      height:20px;
 
  
  }
+
+ .study-info-color
+{
+    color:rgb(37, 10, 134);
+}
 
 .sub-header
  {

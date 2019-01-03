@@ -33,7 +33,7 @@
     <tr><td class="check-table" colspan="6">
      <table class="idrp-check-table">
        <tr><th id="header-row"colspan="10">{{trajectory[j].content2[0].category}} IDRP Checks</th></tr>
-        <tr id="second-row">
+        <tr class="second-row">
           <th>Purpose</th>
           <th>Description</th> 
           <th>Visit</th>
@@ -45,7 +45,7 @@
           <th>Query Text</th>
           <th>Source</th>
         </tr>
-        <tr *ngFor="let d of idrpCheck; let i = index">
+        <tr class="second-table" *ngFor="let d of idrpCheck; let i = index">
           <td>{{trajectory[j].content2[i].purpose}}</td>
           <td id="description">{{trajectory[j].content2[i].description}}</td> 
           <td>{{trajectory[j].content2[i].visit}}</td>
