@@ -9,3 +9,14 @@ export class Study{
     public idrp: String,
     ){}
 }
+
+
+export interface FormData {
+    expectedDataForm:string;
+    expectedDataCategory:string[];
+  }
+
+export interface AddData {
+    armName:string;
+    description:string[];
+  }

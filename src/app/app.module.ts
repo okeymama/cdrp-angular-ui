@@ -27,6 +27,11 @@ import { DataTrajectoryComponent } from './data-trajectory/data-trajectory.compo
 import { AppliedVisitsComponent } from './applied-visits/applied-visits.component';
 import { CriticalDataComponent } from './critical-data/critical-data.component';
 import { ChartsModule } from 'ng2-charts'; 
+import {MatDialogModule, MAT_DIALOG_DATA} from '@angular/material';
+import {MatFormFieldModule,MatInputModule,MatButtonModule} from '@angular/material';
+import { AddExpectedDataComponent } from './add-expected-data/add-expected-data.component';
+import { MapExpectedDataFormsComponent } from './map-expected-data-forms/map-expected-data-forms.component';
+
 
 
 const appRoutes:Routes = [
@@ -101,7 +106,9 @@ const appRoutes:Routes = [
     IdrpCheckComponent,
     DataTrajectoryComponent,
     AppliedVisitsComponent,
-    CriticalDataComponent
+    CriticalDataComponent,
+    AddExpectedDataComponent,
+    MapExpectedDataFormsComponent
    
   ],
   imports: [
@@ -119,11 +126,16 @@ const appRoutes:Routes = [
     MatGridListModule,
     MatExpansionModule,
     MatTabsModule,
+    MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
     BrowserAnimationsModule,
     ChartsModule,
     HttpModule,
     HttpClientModule
   ],
+  entryComponents:[AddExpectedDataComponent,MapExpectedDataFormsComponent],
   providers: [CdrpService],
   bootstrap: [AppComponent]
 })
