@@ -1,0 +1,29 @@
+<div id='header'><p mat-dialog-title class="title">
+  Add Expected Data
+  <button class="close-button" (click)="onNoClick()"><mat-icon>close</mat-icon></button>
+</div>
+<hr><br>
+<table id="mainTable" >
+   <tr class="table-header-color">
+     <th>Arm Name</th>
+     <th>Description</th> 
+     <th>Actions</th> 
+   </tr>
+   <tr *ngFor="let t of data; let i = index">
+    <td id="col-1">{{data[i].armName}}</td>
+    <td id="col-2">{{data[i].description}}</td>
+    <td>&nbsp;&nbsp;<mat-icon class="action-icon">edit</mat-icon>&nbsp;<mat-icon class="action-icon">file_copy</mat-icon>
+      &nbsp;<mat-icon class="action-icon">delete</mat-icon></td>
+
+  </tr>
+ </table>
+<br>
+<div class="side-button">
+  <button  class="button-1"><span class="text-align">Create New Data Trajectory&nbsp;</span><mat-icon>add</mat-icon></button>
+  <button  class="button-2"><span class="text-align">Add Forms to all Data Trajectory&nbsp;</span><mat-icon>add</mat-icon></button>
+</div>
+<br><hr><br>
+<div class="side-button">
+<button  class="button-3"><span class="text-align">Modify Expected Data Mapping&nbsp;</span><mat-icon>reply</mat-icon></button>
+<button  mat-dialog-close cdkFocusInitial class="button-4">Close</button>
+</div>
