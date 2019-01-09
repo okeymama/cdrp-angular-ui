@@ -14,6 +14,11 @@
     padding: 0px;
 }
 
+.close-button:hover
+{
+    cursor: pointer;
+}
+
 #header
 {
     display:flex;

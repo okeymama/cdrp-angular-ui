@@ -13,6 +13,7 @@ export class CdrpService {
 
   //id:string="MZ-123076";
   id:string;
+  TrajectoryName:string;
   private headers = new Headers({'Content-Type':'application/json'});
 
   constructor(private http:Http,private router: Router, private  httpClient:  HttpClient){}
@@ -29,6 +30,10 @@ export class CdrpService {
 
   setid(id){
     this.id=id;
+  }
+
+  setTrajectoryName(name){
+    this.TrajectoryName=name;
   }
 
   getstudy(){

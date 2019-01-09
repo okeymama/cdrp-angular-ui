@@ -1,0 +1,27 @@
+<div id='header'><p mat-dialog-title class="title">
+  Add Expected Data
+  <button class="close-button" (click)="onClose()"><mat-icon>close</mat-icon></button>
+</div>
+<hr>
+<p class="title-2"> Create New Data Trajectory</p>
+<form #frm="ngForm" (ngSubmit)="createDataTrajectory(frm)">
+<div class="div-align">
+<label class="labels">Data Trajectory Name </label>&nbsp;&nbsp;<span class="star-color">*</span>
+<textarea class="form-control" name="trajectoryName" id="name" ngModel #trajectoryName="ngModel" placeholder=" Enter New Data Trajectory Name" required></textarea>
+</div>
+<br><br>
+<div class="div-align">
+<label class="labels">Description</label><span class="star-color-1">*</span>
+<textarea class="form-control" name="description" id="description" ngModel #trajectoryDescription="ngModel" placeholder=" Enter New Data Trajectory Description" required></textarea>
+</div>
+
+<br><br><hr><br>
+
+<div class="div-align">
+<div class="div-align-1" (click)="previousDialog()"><mat-icon class="back-icon">arrow_back_ios</mat-icon>&nbsp;<span class="back-button" (click)="onNoClick()">GO BACK</span></div>
+<div class="div-align-2">
+  <input type="submit" mat-button value="Create" class="button-1">
+  <button mat-button mat-stroked-button (click)="onClose()" cdkFocusInitial class="button-2">Cancel</button>
+</div>
+</div>
+</form>

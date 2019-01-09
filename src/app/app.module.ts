@@ -31,6 +31,10 @@ import {MatDialogModule, MAT_DIALOG_DATA} from '@angular/material';
 import {MatFormFieldModule,MatInputModule,MatButtonModule} from '@angular/material';
 import { AddExpectedDataComponent } from './add-expected-data/add-expected-data.component';
 import { MapExpectedDataFormsComponent } from './map-expected-data-forms/map-expected-data-forms.component';
+import { CreateDataTrajectoryComponent } from './create-data-trajectory/create-data-trajectory.component'
+import { AddDataTrajectoryComponent } from './add-data-trajectory/add-data-trajectory.component';
+import { CommentComponent } from './comment/comment.component';
+import { DeletetrajectoryComponent } from './deletetrajectory/deletetrajectory.component'; 
 
 
 
@@ -52,6 +56,10 @@ const appRoutes:Routes = [
       {
         path:'next',
         component: ExpectedDataComponent
+      },
+      {
+        path:'trajectory',
+        component:AddDataTrajectoryComponent
       }
 
     ]
@@ -74,25 +82,7 @@ const appRoutes:Routes = [
     path:'study',
     component:StudyInfoComponent
   }
- /* {
-    path:'home',
-    component:AccordComponent,
-    children:[
-      {
-        path:'',
-        component:StudyInfoComponent
-      },
-      {
-        path:'nav',
-        component:SideNavbarComponent
-      },
-      {
-        path:'next',
-        component: ExpectedDataComponent
-       }
-    ] 
-   
-  }*/
+
 ]
 
 @NgModule({
@@ -108,7 +98,11 @@ const appRoutes:Routes = [
     AppliedVisitsComponent,
     CriticalDataComponent,
     AddExpectedDataComponent,
-    MapExpectedDataFormsComponent
+    MapExpectedDataFormsComponent,
+    CreateDataTrajectoryComponent,
+    AddDataTrajectoryComponent,
+    CommentComponent,
+    DeletetrajectoryComponent
    
   ],
   imports: [
@@ -135,7 +129,7 @@ const appRoutes:Routes = [
     HttpModule,
     HttpClientModule
   ],
-  entryComponents:[AddExpectedDataComponent,MapExpectedDataFormsComponent],
+  entryComponents:[AddExpectedDataComponent,MapExpectedDataFormsComponent,CreateDataTrajectoryComponent,CommentComponent,DeletetrajectoryComponent],
   providers: [CdrpService],
   bootstrap: [AppComponent]
 })
