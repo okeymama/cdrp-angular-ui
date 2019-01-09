@@ -1,14 +1,14 @@
 export class Details{
     constructor(
-    public todo: String ,
-	public follow: String,
-	public abswered: String,
-	public open1: String,
-    public open2: String,
-    public action: String,
-    public critical: String,
-    public noncritical: String,
-    public due: String,
-    public overdue: String, 
+    public todo: string ,
+	public follow: string,
+	public abswered: string,
+	public open1: string,
+    public open2: string,
+    public action: string,
+    public critical: string,
+    public noncritical: string,
+    public due: string,
+    public overdue: string, 
     ){}
 }

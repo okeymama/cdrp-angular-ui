@@ -19,6 +19,7 @@ export class AccordComponent implements OnInit {
   toggle(expanded,i) {
     this.expand[i] = !expanded;
   }
+  md:number;
  tdata: Study[];
  ddata: Details[];
   index:number=0;
@@ -42,34 +43,8 @@ export class AccordComponent implements OnInit {
     ]
     }
     ]
-    public options:any= {
-    title:{
-    display: true,
-    text: 'MISSING DATA',
-    position: 'top',
-    font: {
-    size: '20'
-    }
-    },
-    legend: {
-    display: true,
-    position: 'bottom',
-    },
-    plugins: {
-    doughnutlabel: {
-    labels: [
-    {
-    text: 'Missing Data',
-    font: {
-    size: '50'
-    }
-    }]
-    }
-    }
-    
-    } 
+    public options1=[];
 
-  
 chartOptions = {
 responsive: true,
 legend:{
@@ -128,8 +103,43 @@ backgroundColor: [ 'red',
        this.count=this.ddata.length;
       for(var c=0; c < this.count;c++){
         this.barChartData[c]=[this.ddata[c].noncritical,this.ddata[c].critical];
-        console.log(this.barChartData[c]);
-      } 
+        this.md=parseInt(this.ddata[c].noncritical)+parseInt(this.ddata[c].critical);
+console.log(this.barChartData[c]);
+this.options1[c]={
+title:{
+display: true,
+text: 'MISSING DATA',
+position: 'top',
+font: {
+size: '20'
+}
+},
+legend: {
+display: true,
+position: 'bottom',
+},
+plugins: {
+doughnutlabel: {
+labels: [
+{
+text: 'Missing Data',
+font: {
+size: '50'
+}
+},
+{
+text: this.md,
+font: {
+size: '80'
+},
+color: 'grey'
+},]
+}
+}
+}
+} 
+
+     
       for(var c=0; c < this.count;c++){
         this.da=[{data:[this.ddata[c].due,this.ddata[c].overdue]}]
         console.log(this.da);

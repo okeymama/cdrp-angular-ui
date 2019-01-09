@@ -1,6 +1,6 @@
 <div id='header'><p mat-dialog-title class="title">
   Add Expected Data
-  <button class="close-button" (click)="onNoClick()"><mat-icon>close</mat-icon></button>
+  <button class="close-button" (click)="onClose()"><mat-icon>close</mat-icon></button>
 </div>
 <hr><br>
 <table id="mainTable" >
@@ -19,11 +19,11 @@
  </table>
 <br>
 <div class="side-button">
-  <button  class="button-1"><span class="text-align">Create New Data Trajectory&nbsp;</span><mat-icon>add</mat-icon></button>
+  <button  class="button-1"><span class="text-align" (click)='createDataTrajectoryDialog()'>Create New Data Trajectory&nbsp;</span><mat-icon>add</mat-icon></button>
   <button  class="button-2"><span class="text-align">Add Forms to all Data Trajectory&nbsp;</span><mat-icon>add</mat-icon></button>
 </div>
 <br><hr><br>
 <div class="side-button">
-<button  class="button-3"><span class="text-align">Modify Expected Data Mapping&nbsp;</span><mat-icon>reply</mat-icon></button>
-<button  mat-dialog-close cdkFocusInitial class="button-4">Close</button>
+<button  mat-dialog-close (click)="previousDialog()" class="button-3"><span class="text-align">Modify Expected Data Mapping&nbsp;</span><mat-icon>reply</mat-icon></button>
+<button  mat-button (click)="onClose()" cdkFocusInitial class="button-4">Close</button>
 </div>

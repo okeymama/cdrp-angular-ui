@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Tdata, dataTrajectory ,checks,expectedData,Trajectory} from '../tableData';
+import { CommentComponent } from '../comment/comment.component';
+import { MatDialogConfig, MatDialog } from '@angular/material';
+import { DeletetrajectoryComponent } from '../deletetrajectory/deletetrajectory.component';
 
 @Component({
   selector: 'app-data-trajectory',
@@ -104,9 +107,30 @@ idrpCheck:checks[]=[
   arrowState=[];
   panelState=[];
   
-  constructor() {
+  constructor(public dialog: MatDialog,public dialog1: MatDialog) {
     
-   }
+  }
+comment(expectdata): void {
+ console.log(expectdata);
+ const dialogConfig = new MatDialogConfig();
+ dialogConfig.position = {
+   'right': '30px',
+ };
+ dialogConfig.width='350px';
+ dialogConfig.height='280px';
+ dialogConfig.data=expectdata;
+ const dialogRef = this.dialog.open(CommentComponent,dialogConfig);
+
+}
+delete(expectdata1): void {
+ console.log(expectdata1);
+ const dialogConfig1 = new MatDialogConfig();
+ dialogConfig1.width='350px';
+ dialogConfig1.height='145px';
+ dialogConfig1.data=expectdata1;
+ const dialogRef1 = this.dialog1.open(DeletetrajectoryComponent,dialogConfig1);
+
+}
 
   ngOnInit() {
     for(var c=0;c<this.trajectory.length;c++)

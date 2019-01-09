@@ -1,0 +1,20 @@
+<div id='header'><p mat-dialog-title class="title">
+    Add a Comment </p> 
+  <mat-icon  class="close-button" (click)="onNoClick()">close </mat-icon>
+  </div>
+ 
+  <form #frm="ngForm" (ngSubmit)="addcomment(frm)">
+      <div > 
+        <textarea name="name" ngModel  required class="textarea"></textarea>
+        </div> <br>
+      <hr>  
+      
+      <div class="actionitems">
+     <input type="submit"  value="Submit" [disabled]="frm.invalid" class="button-1" >&nbsp;
+      <button  mat-dialog-close class="button-2">Cancel</button>
+    </div> 
+    </form>
+
+      
+
+    

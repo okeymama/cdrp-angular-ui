@@ -1,0 +1,85 @@
+
+.title
+{
+    font-size: 14px;
+    margin: 0px;
+}
+.close-button
+{
+    width:25px;
+    height:25px;
+    border:none;
+    margin-left: 70px;
+    background-color: transparent;
+    padding: 0px;
+    color: gray;
+}
+.close-button:hover{
+    cursor: pointer;
+}
+#header
+{
+    display:flex;
+}
+
+.textarea{
+   width: 300px;
+   height: 100px;
+    background-color: rgba(255,255,255,1);
+   
+}
+.button-1
+{
+    background-color:  rgba(194, 57, 52,1);
+    color:white;
+    font-size: 12px;
+    font-weight: 700;
+    position: absolute;
+    width: 53px;
+    height: 32px;
+    border:none;
+    font-style: normal;
+    font-family: "Arial Bold","Arial";
+    border-radius:4px;
+    margin-left: 180px;
+    
+}
+
+.button-2
+{
+   
+    background-color:  rgba(255, 255, 255,1);
+    color:#525252;
+    font-size: 12px;
+    font-weight: 400;
+    margin-left: 30px;
+    position: absolute;
+    width: 49px;
+    height: 32px;
+    border-style: solid;
+    border-width: 1px;
+    border-color: rgba(221,219,218,1);
+    font-style: normal;
+    border-radius:4px;
+    margin-left: 250px;
+    color:rgba(0,95,178,1);
+}
+
+.button-1:hover
+{
+    background-color:rgba(166, 26, 20,1);
+}
+
+.button-2:hover
+{
+    background-color:rgba(244, 246, 249,1);
+}
+
+ select
+ {
+     width:150px;
+ }
+ .actionitems{
+     width: 300px;
+     height: 32px;
+ }

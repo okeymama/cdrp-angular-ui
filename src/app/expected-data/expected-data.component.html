@@ -9,13 +9,12 @@
       </div>
       <mat-divider></mat-divider><br>
       
-       <div class="side-button">
+      <div class="side-button">
           <button class="side-button-1" (click)="openMapExpectedDataDialog()"><span class="text-align">Add Expected Data&nbsp;</span><mat-icon>add</mat-icon></button>
           <button class="side-button-1" style="margin-left:15px;"><span class="text-align">Add IDRP Checks&nbsp;</span><mat-icon>add</mat-icon></button>
        </div>
 
       <mat-tab-group [selectedIndex]="1" animationDuration="0ms">
-          
           <mat-tab label="IDRP CHECK"><app-idrp-check></app-idrp-check></mat-tab>
           <mat-tab label="DATA TRAJECTORY"><app-data-trajectory></app-data-trajectory></mat-tab>
           <mat-tab label="APPLIED VISITS"><app-applied-visits></app-applied-visits></mat-tab>

@@ -64,9 +64,9 @@ export class ExpectedDataComponent implements OnInit, OnDestroy {
       data: this.formData
     });
 
-    dialogRef.afterClosed().subscribe(result => {
+    dialogRef.beforeClosed().subscribe(result => {
       console.log('The dialog was closed');
-      var a = result;
+      console.log(result);
     });
   }
 

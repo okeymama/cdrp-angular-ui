@@ -57,7 +57,18 @@ export class MapExpectedDataFormsComponent implements OnInit,OnDestroy {
       height:'420px',
       data: this.addData
     });
+
+    dialogRef1.beforeClosed().subscribe(result=>{
+      console.log("in parent"+result);
+      if(result === 'closeAll')
+      {
+        this.dialogRef.close('closeAll');
+      }
+   })
 }
+
+
+
 
   onSelect(selectedValue:any, ind1)
   {

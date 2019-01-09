@@ -26,8 +26,9 @@
         <td>{{trajectory[j].content1[i].dataTransfer}}</td>
         <td>{{trajectory[j].content1[i].criticalData}}</td>
         <td id="act"><mat-icon class="action-icon">edit</mat-icon><mat-icon class="action-icon">settings</mat-icon>
-        <mat-icon class="action-icon">delete</mat-icon><mat-icon class="action-icon">insert_comment</mat-icon></td>
-    </tr> 
+        <mat-icon (click)="delete(trajectory[j].content1[i].expectedData)" class="action-icon">delete</mat-icon><mat-icon (click)="comment(trajectory[j].content1[i].expectedData)" class="action-icon">insert_comment</mat-icon></td>
+ 
+        </tr> 
    <!-- <tr id="hide-div"><td colspan="6"><div>This is the div</div></td></tr>-->
    <ng-container *ngIf="panelState[j][i]">
     <tr><td class="check-table" colspan="6">
