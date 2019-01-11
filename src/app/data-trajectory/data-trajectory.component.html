@@ -18,15 +18,15 @@
       <th>ACTIONS</th>
     </tr>
 
-    <tr >
+    <tr *ngIf="rowstate[j][i]" >
         
         <td (click)="togglePanel(i,j)"> <mat-icon class="icon-1">{{arrowState[j][i]}}</mat-icon><span class="text-align">{{trajectory[j].content1[i].expectedData}}</span></td>
         <td>{{trajectory[j].content1[i].appliedVisit}}</td>
         <td>{{trajectory[j].content1[i].source}}</td>
         <td>{{trajectory[j].content1[i].dataTransfer}}</td>
         <td>{{trajectory[j].content1[i].criticalData}}</td>
-        <td id="act"><mat-icon class="action-icon">edit</mat-icon><mat-icon class="action-icon">settings</mat-icon>
-        <mat-icon (click)="delete(trajectory[j].content1[i].expectedData)" class="action-icon">delete</mat-icon><mat-icon (click)="comment(trajectory[j].content1[i].expectedData)" class="action-icon">insert_comment</mat-icon></td>
+        <td id="act"><mat-icon (click)="edit(j,i)" class="action-icon">edit</mat-icon><mat-icon class="action-icon">settings</mat-icon>
+        <mat-icon (click)="delete(j,i)" class="action-icon">delete</mat-icon><mat-icon (click)="comment(trajectory[j].content1[i].expectedData)" class="action-icon">insert_comment</mat-icon></td>
  
         </tr> 
    <!-- <tr id="hide-div"><td colspan="6"><div>This is the div</div></td></tr>-->

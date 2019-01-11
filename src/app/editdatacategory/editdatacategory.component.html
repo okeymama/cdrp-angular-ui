@@ -1,0 +1,27 @@
+
+  <table>
+      <tr class="table-header-color">
+          <th >EXPECTED DATA CATEGORY</th>
+          <th>APPLIED VISIT</th> 
+          <th>SOURCE</th>
+          <th>DATA TRANSFER FREQUENCY</th>
+          <th>CRITICAL DATA</th>
+      </tr>
+      <tr>
+          <td contenteditable="true" (keyup)="changeValue('expectedData', $event)" (blur)="updateList('expectedData', $event)">{{ updateddt.expectedData}}</td>
+          <td contenteditable="true" (keyup)="changeValue('appliedVisit', $event)" (blur)="updateList('appliedVisit', $event)">{{ updateddt.appliedVisit}}</td>
+          <td contenteditable="true" (keyup)="changeValue('source', $event)" (blur)="updateList('source', $event)">{{updateddt.source}}</td>
+          <td contenteditable="true" (keyup)="changeValue('dataTransfer', $event)" (blur)="updateList('dataTransfer', $event)">{{ updateddt.dataTransfer}}</td>
+          <td contenteditable="true" (keyup)="changeValue('criticalData', $event)" (blur)="updateList('criticalData', $event)">{{ updateddt.criticalData}}</td>
+          </tr> 
+  </table><br>
+<div class="actionitems">
+     
+     <button mat-button (click)="save()" class="button-1">Save</button>
+     <button  mat-dialog-close class="button-2">Cancel</button>
+    </div> 
+  
+
+    
+
+  

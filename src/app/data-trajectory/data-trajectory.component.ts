@@ -3,6 +3,7 @@ import { Tdata, dataTrajectory ,checks,expectedData,Trajectory} from '../tableDa
 import { CommentComponent } from '../comment/comment.component';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { DeletetrajectoryComponent } from '../deletetrajectory/deletetrajectory.component';
+import { EditdatacategoryComponent } from '../editdatacategory/editdatacategory.component';
 
 @Component({
   selector: 'app-data-trajectory',
@@ -99,6 +100,8 @@ idrpCheck:checks[]=[
   //state:boolean[][];
   x:number;
   y:number;
+  
+datacategory:dataTrajectory;
   //panelState:boolean[][]=[[false,false,false,false],[false,false,false,false],[false,false,false,false]];
  /* arrowState:string[][]=[['keyboard_arrow_right','keyboard_arrow_right','keyboard_arrow_right','keyboard_arrow_right'],
   ['keyboard_arrow_right','keyboard_arrow_right','keyboard_arrow_right','keyboard_arrow_right'],
@@ -106,8 +109,8 @@ idrpCheck:checks[]=[
   ]*/
   arrowState=[];
   panelState=[];
-  
-  constructor(public dialog: MatDialog,public dialog1: MatDialog) {
+  rowstate=[];
+  constructor(public dialog: MatDialog,public dialog1: MatDialog,public dialog2: MatDialog) {
     
   }
 comment(expectdata): void {
@@ -122,14 +125,33 @@ comment(expectdata): void {
  const dialogRef = this.dialog.open(CommentComponent,dialogConfig);
 
 }
-delete(expectdata1): void {
+edit(val1,val2): void {
+ 
+  const dialogConfig2 = new MatDialogConfig();
+  dialogConfig2.width='1000px';
+  dialogConfig2.height='150px';
+  this.datacategory=this.trajectory[val1].content1[val2];
+  console.log(this.datacategory);
+  dialogConfig2.data=this.datacategory;
+  const dialogRef2 = this.dialog2.open(EditdatacategoryComponent,dialogConfig2);
+ 
+ }
+delete(expectdata1,expectdata2): void {
  console.log(expectdata1);
  const dialogConfig1 = new MatDialogConfig();
  dialogConfig1.width='350px';
  dialogConfig1.height='145px';
  dialogConfig1.data=expectdata1;
  const dialogRef1 = this.dialog1.open(DeletetrajectoryComponent,dialogConfig1);
-
+ dialogRef1.beforeClosed().subscribe(result=>{
+  console.log("in parent"+result);
+  if(result === 'deleted')
+  {
+  this.rowstate[expectdata1][expectdata2] = !this.rowstate[expectdata1][expectdata2];
+  //console.log(this.trajectory[expectdata1].content1[expectdata2]);
+  //this.trajectory[expectdata1].content1.splice(expectdata2,1);
+  }
+  }) 
 }
 
   ngOnInit() {
@@ -137,13 +159,16 @@ delete(expectdata1): void {
     {
       var arr1 = []
       var arr2 =[]
+      var arr3=[]
       for(var d=0;d<this.dt.length;d++)
       {
         arr1[d] = "keyboard_arrow_right";
         arr2[d] = false;
+        arr3[d]=true;
       }
       this.arrowState[c] = arr1;
       this.panelState[c] = arr2;
+      this.rowstate[c]=arr3;
     }
     console.log(this.arrowState);
     console.log(this.panelState);

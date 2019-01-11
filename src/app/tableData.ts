@@ -50,6 +50,15 @@ export interface dataTrajectory
       criticalData:string;
 }
 
+export interface dataTrajectoryForms
+{
+      expectedDataCategory:string;
+      appliedVisit:String;
+      dataSource:string[];
+      dataTransferFrequency:string[];
+      criticalData:string[];
+}
+
 export interface expectedData
 {
       expectedDataCategory:string;

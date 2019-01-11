@@ -24,6 +24,7 @@
       vertical-align:3px;
       margin-top:15px;
       padding-top:5px;
+      width:220px;
   }
 
 .links:hover{
@@ -33,6 +34,8 @@
 .header-1
 {
     font-size:16px;
+    width:600px;
+    
 }
 
 .align
@@ -43,4 +46,139 @@
 .name
 {
     font-weight: bold;
+}
+
+.filter-icon-div
+{
+    position: relative;
+    float:right;
+    margin-left:50px;
+    margin-top:10px;
+
+}
+
+.filter-icon
+{
+    color:rgb(90, 90, 247);
+}
+
+.filter-class
+{
+    font-size:12px;
+    font-weight: bold;
+    color:rgb(90, 90, 247);
+    vertical-align: 6px;
+    margin-right: 5px;
+}
+
+.text-align
+{
+    vertical-align:6px; 
+    font-weight: bold;
+}
+
+.side-button-1
+{
+  background-color: white;
+  border: 1px rgb(17, 123, 209) solid;
+  color: rgb(17, 123, 209);
+  text-align: center;
+  display: inline-block;
+  font-size: 12px;
+  padding-bottom: 0px;
+  cursor: pointer;
+  height:30px;
+  border-radius: 4px;
+  bottom:3px;
+}
+
+.box 
+{
+    width:15px;
+    height:15px;
+    border:1px black solid;
+}
+
+.col-3
+{
+    color:rgb(17, 123, 209);
+}
+
+.icon-color
+{
+    color:rgb(17, 123, 209);
+    font-size:18px;
+}
+
+.button-1
+{
+  background-color: rgb(37, 10, 134);
+  border: none;
+  color: white;
+  text-align: center;
+  display: inline-block;
+  font-size: 12px;
+  font-weight:bold;
+  padding-bottom: 0px;
+  cursor: pointer;
+  height:30px;
+  border-radius: 4px;
+  bottom:3px;
+  margin-left:350px;
+}
+
+.button-1:hover
+{
+    background-color:rgb(81, 158, 230);
+}
+
+table {
+    width:100%;
+  }
+  table, th, td {
+    border: 1px solid lightgray;
+    border-collapse: collapse;
+  }
+ td {
+    text-align: left;
+    font-size: 12px;
+  }
+
+ th{
+     text-align: left;
+     font-size: 12px;
+     color:black;
+     font-weight:bold;
+     background-color:#CAD8F7;
+     text-align: center;
+  }
+
+select{
+    width:90%;
+}
+
+.mat-header-row
+  {
+    height:30px !important;
+  }
+
+.mat-header-cell
+  {
+    padding-left:10px !important;
+  }
+
+.mat-row
+{
+    height:40px !important;
+}
+
+.mat-cell
+{
+    padding-left:10px !important;
+
+}
+
+.mat-cell.mat-column-appliedVisit
+{
+    color:rgb(17, 123, 209);
 }
