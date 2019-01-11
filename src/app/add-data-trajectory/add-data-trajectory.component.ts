@@ -7,6 +7,78 @@ import {SelectionModel} from '@angular/cdk/collections';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { AddFormsComponent } from '../add-forms/add-forms.component';
 
+const dtForms:dataTrajectoryForms[]=[
+  {
+    "expectedDataCategory":"Vital Sign",
+    "appliedVisit":"45 visits",
+    "dataSource":["EDC,Covance,Other","IRT", "ePro","Covance","Central Lab","Parexel"],
+    "dataTransferFrequency":["Monthly","Weekly","Daily","Hourly"],
+    "criticalData":["No","Yes - Primary End Point","Yes - Second End Point","Yes - Efficacy","Yes - Safety"]
+  },
+  {
+    "expectedDataCategory":"Informed Consent",
+    "appliedVisit":"25 visits",
+    "dataSource":["EDC,Covance,Other","IRT", "ePro","Covance","Central Lab","Parexel"],
+    "dataTransferFrequency":["Monthly","Weekly","Daily","Hourly"],
+    "criticalData":["No","Yes - Primary End Point","Yes - Second End Point","Yes - Efficacy","Yes - Safety"]
+  },
+  {
+    "expectedDataCategory":"Physical Exam",
+    "appliedVisit":"18 visits",
+    "dataSource":["EDC,Covance,Other","IRT", "ePro","Covance","Central Lab","Parexel"],
+    "dataTransferFrequency":["Monthly","Weekly","Daily","Hourly"],
+    "criticalData":["No","Yes - Primary End Point","Yes - Second End Point","Yes - Efficacy","Yes - Safety"]
+  },
+  {
+    "expectedDataCategory":"Dosing Related to Pharmacokin",
+    "appliedVisit":"16 visits",
+    "dataSource":["EDC,Covance,Other","IRT", "ePro","Covance","Central Lab","Parexel"],
+    "dataTransferFrequency":["Monthly","Weekly","Daily","Hourly"],
+    "criticalData":["No","Yes - Primary End Point","Yes - Second End Point","Yes - Efficacy","Yes - Safety"]
+  },
+  {
+    "expectedDataCategory":"Imaging",
+    "appliedVisit":"14 visits",
+    "dataSource":["EDC,Covance,Other","IRT", "ePro","Covance","Central Lab","Parexel"],
+    "dataTransferFrequency":["Monthly","Weekly","Daily","Hourly"],
+    "criticalData":["No","Yes - Primary End Point","Yes - Second End Point","Yes - Efficacy","Yes - Safety"]
+  },
+  {
+    "expectedDataCategory":"Blood Sugar",
+    "appliedVisit":"11 visits",
+    "dataSource":["EDC,Covance,Other","IRT", "ePro","Covance","Central Lab","Parexel"],
+    "dataTransferFrequency":["Monthly","Weekly","Daily","Hourly"],
+    "criticalData":["No","Yes - Primary End Point","Yes - Second End Point","Yes - Efficacy","Yes - Safety"]
+  },
+  {
+    "expectedDataCategory":"Viral Levels",
+    "appliedVisit":"  19  visits",
+    "dataSource":["EDC,Covance,Other","IRT", "ePro","Covance","Central Lab","Parexel"],
+    "dataTransferFrequency":["Monthly","Weekly","Daily","Hourly"],
+    "criticalData":["No","Yes - Primary End Point","Yes - Second End Point","Yes - Efficacy","Yes - Safety"]
+  },
+  {
+    "expectedDataCategory":"System testing",
+    "appliedVisit":" 28  visits",
+    "dataSource":["EDC,Covance,Other","IRT", "ePro","Covance","Central Lab","Parexel"],
+    "dataTransferFrequency":["Monthly","Weekly","Daily","Hourly"],
+    "criticalData":["No","Yes - Primary End Point","Yes - Second End Point","Yes - Efficacy","Yes - Safety"]
+  },
+  {
+    "expectedDataCategory":"Immunity testing",
+    "appliedVisit":" 13  visits",
+    "dataSource":["EDC,Covance,Other","IRT", "ePro","Covance","Central Lab","Parexel"],
+    "dataTransferFrequency":["Monthly","Weekly","Daily","Hourly"],
+    "criticalData":["No","Yes - Primary End Point","Yes - Second End Point","Yes - Efficacy","Yes - Safety"]
+  },
+  {
+    "expectedDataCategory":"Physical Examination",
+    "appliedVisit":" 22  visits",
+    "dataSource":["EDC,Covance,Other","IRT", "ePro","Covance","Central Lab","Parexel"],
+    "dataTransferFrequency":["Monthly","Weekly","Daily","Hourly"],
+    "criticalData":["No","Yes - Primary End Point","Yes - Second End Point","Yes - Efficacy","Yes - Safety"]
+  }
+]
 
 @Component({
   selector: 'app-add-data-trajectory',
@@ -21,87 +93,14 @@ export class AddDataTrajectoryComponent implements OnInit {
   sourceVariable:string[]=[];
   frequencyVariable:string[]=[];
   criticalVariable:string[]=[];
-  dtForms:dataTrajectoryForms[]=[
-    {
-      "expectedDataCategory":"Vital Sign",
-      "appliedVisit":"45 visits",
-      "dataSource":["EDC,Covance,Other","IRT", "ePro","Covance","Central Lab","Parexel"],
-      "dataTransferFrequency":["Monthly","Weekly","Daily","Hourly"],
-      "criticalData":["No","Yes - Primary End Point","Yes - Second End Point","Yes - Efficacy","Yes - Safety"]
-    },
-    {
-      "expectedDataCategory":"Informed Consent",
-      "appliedVisit":"25 visits",
-      "dataSource":["EDC,Covance,Other","IRT", "ePro","Covance","Central Lab","Parexel"],
-      "dataTransferFrequency":["Monthly","Weekly","Daily","Hourly"],
-      "criticalData":["No","Yes - Primary End Point","Yes - Second End Point","Yes - Efficacy","Yes - Safety"]
-    },
-    {
-      "expectedDataCategory":"Physical Exam",
-      "appliedVisit":"18 visits",
-      "dataSource":["EDC,Covance,Other","IRT", "ePro","Covance","Central Lab","Parexel"],
-      "dataTransferFrequency":["Monthly","Weekly","Daily","Hourly"],
-      "criticalData":["No","Yes - Primary End Point","Yes - Second End Point","Yes - Efficacy","Yes - Safety"]
-    },
-    {
-      "expectedDataCategory":"Dosing Related to Pharmacokin",
-      "appliedVisit":"16 visits",
-      "dataSource":["EDC,Covance,Other","IRT", "ePro","Covance","Central Lab","Parexel"],
-      "dataTransferFrequency":["Monthly","Weekly","Daily","Hourly"],
-      "criticalData":["No","Yes - Primary End Point","Yes - Second End Point","Yes - Efficacy","Yes - Safety"]
-    },
-    {
-      "expectedDataCategory":"Imaging",
-      "appliedVisit":"14 visits",
-      "dataSource":["EDC,Covance,Other","IRT", "ePro","Covance","Central Lab","Parexel"],
-      "dataTransferFrequency":["Monthly","Weekly","Daily","Hourly"],
-      "criticalData":["No","Yes - Primary End Point","Yes - Second End Point","Yes - Efficacy","Yes - Safety"]
-    },
-    {
-      "expectedDataCategory":"Blood Sugar",
-      "appliedVisit":"11 visits",
-      "dataSource":["EDC,Covance,Other","IRT", "ePro","Covance","Central Lab","Parexel"],
-      "dataTransferFrequency":["Monthly","Weekly","Daily","Hourly"],
-      "criticalData":["No","Yes - Primary End Point","Yes - Second End Point","Yes - Efficacy","Yes - Safety"]
-    },
-    {
-      "expectedDataCategory":"Viral Levels",
-      "appliedVisit":"  9  visits",
-      "dataSource":["EDC,Covance,Other","IRT", "ePro","Covance","Central Lab","Parexel"],
-      "dataTransferFrequency":["Monthly","Weekly","Daily","Hourly"],
-      "criticalData":["No","Yes - Primary End Point","Yes - Second End Point","Yes - Efficacy","Yes - Safety"]
-    },
-    {
-      "expectedDataCategory":"System testing",
-      "appliedVisit":" 8  visits",
-      "dataSource":["EDC,Covance,Other","IRT", "ePro","Covance","Central Lab","Parexel"],
-      "dataTransferFrequency":["Monthly","Weekly","Daily","Hourly"],
-      "criticalData":["No","Yes - Primary End Point","Yes - Second End Point","Yes - Efficacy","Yes - Safety"]
-    },
-    {
-      "expectedDataCategory":"Immunity testing",
-      "appliedVisit":" 3  visits",
-      "dataSource":["EDC,Covance,Other","IRT", "ePro","Covance","Central Lab","Parexel"],
-      "dataTransferFrequency":["Monthly","Weekly","Daily","Hourly"],
-      "criticalData":["No","Yes - Primary End Point","Yes - Second End Point","Yes - Efficacy","Yes - Safety"]
-    },
-    {
-      "expectedDataCategory":"Physical Examination",
-      "appliedVisit":" 2  visits",
-      "dataSource":["EDC,Covance,Other","IRT", "ePro","Covance","Central Lab","Parexel"],
-      "dataTransferFrequency":["Monthly","Weekly","Daily","Hourly"],
-      "criticalData":["No","Yes - Primary End Point","Yes - Second End Point","Yes - Efficacy","Yes - Safety"]
-    }
-  ]
-
-
+  
   displayedColumns: string[] = ['select','expectedDataCategory','dataSource','appliedVisit','dataTransferFrequency','criticalData'];
   selection = new SelectionModel<dataTrajectoryForms>(true, []);
-  dataSource = new MatTableDataSource<dataTrajectoryForms>(this.dtForms);
+  dataSource = new MatTableDataSource<dataTrajectoryForms>(dtForms);
   @ViewChild(MatSort) sort: MatSort;
   
   constructor(private cdrpService: CdrpService,private activateRouter:ActivatedRoute,public dialog: MatDialog) { 
-    for(var c=0;c< this.dtForms.length;c++)
+    for(var c=0;c< dtForms.length;c++)
       {
         this.sourceVariable[c] = "--select--";
         this.frequencyVariable[c] = "--select--";

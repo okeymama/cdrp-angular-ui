@@ -15,7 +15,7 @@
     </div>
   </div><br>
 
-  <table mat-table [dataSource]="dtForms" matSort class="mat-elevation-z8">
+  <table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
       <ng-container matColumnDef="select">
           <th mat-header-cell *matHeaderCellDef mat-sort-header>
             <mat-checkbox color="primary"
@@ -48,7 +48,7 @@
 
       <ng-container matColumnDef="appliedVisit">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> APPLICABLE VISIT </th>
-          <td mat-cell *matCellDef="let dtForms"> {{dtForms.appliedVisit}} &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          <td mat-cell *matCellDef="let dtForms">{{dtForms.appliedVisit}} &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               <mat-icon class="icon-color">edit</mat-icon>&nbsp; &nbsp;&nbsp;
               <mat-icon class="icon-color">file_copy</mat-icon>
           </td>
