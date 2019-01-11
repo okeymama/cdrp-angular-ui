@@ -1,0 +1,28 @@
+<div id='header'><p mat-dialog-title class="title">
+  Add Data Categories
+  <button class="close-button" (click)="onNoClick()"><mat-icon>close </mat-icon></button>
+</div><hr>
+
+
+<form #frm="ngForm" id="search">
+  <div class="div-align">
+  <input #search type="search" placeholder="Search"> 
+  <div class="search-icon"><mat-icon class="icon">search</mat-icon></div>
+  </div>
+</form>
+<br><br>
+
+<mat-checkbox color="primary">Add All</mat-checkbox><br>
+<mat-checkbox color="primary">Vital Sign 1</mat-checkbox><br>
+<mat-checkbox color="primary">Vital Sign 2</mat-checkbox><br>
+<mat-checkbox color="primary">Informed Consent</mat-checkbox><br>
+<mat-checkbox color="primary">Physical Examination</mat-checkbox><br>
+<mat-checkbox color="primary">Dosing Related to Pharmacokin</mat-checkbox><br>
+<mat-checkbox color="primary">Dosing Related to Pharmacokin</mat-checkbox><br>
+<mat-checkbox color="primary">Imaging</mat-checkbox><br>
+<br>
+
+<div class="button-div">
+    <button class="button-1" cdkFocusInitial >Add Forms</button>
+    <button  mat-dialog-close mat-stroked-button style="margin-left:15px;" mat-dialog-close class="button-2">Cancel</button>
+</div>

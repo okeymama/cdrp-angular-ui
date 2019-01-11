@@ -15,7 +15,7 @@ export class DeletetrajectoryComponent implements OnInit {
   delete(){
     console.log(this.data);
     console.log("deleted");
-    this.dialogRef.close();
+    this.dialogRef.close("deleted");
   }
   ngOnInit() {
   }

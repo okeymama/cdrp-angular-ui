@@ -2,7 +2,85 @@
   <div class="header"><span >Expected Data & IDRP Checks</span></div>
   <mat-divider></mat-divider><br>
   <div class="align">
-  <p class="links">Select another Data Trajectory</p>&nbsp; &nbsp;&nbsp; &nbsp;&nbsp; &nbsp;
-  <p class="header-1">Select Expected Data for <span class="name">DATA TRAJECTORY {{trajName}}</span> </p>
-  </div>
+    <div class="align">
+      <p class="links">Select another Data Trajectory</p>
+      <p class="header-1">Select Expected Data for <span class="name">DATA TRAJECTORY {{trajName}}</span> </p>
+    </div>
+    <div class="filter-icon-div">
+      <button class="side-button-1">
+        <span class="text-align" (click)="addFormsDialog()">Add Data Categories&nbsp;</span><mat-icon>add</mat-icon>
+      </button>
+      &nbsp; &nbsp;&nbsp;  
+      <span class="filter-class">Filters</span><mat-icon class="filter-icon">filter_list</mat-icon>
+    </div>
+  </div><br>
+
+  <table mat-table [dataSource]="dtForms" matSort class="mat-elevation-z8">
+      <ng-container matColumnDef="select">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header>
+            <mat-checkbox color="primary"
+                          (change)="$event ? masterToggle() : null"
+                          [checked]="selection.hasValue() && isAllSelected()"
+                          [indeterminate]="selection.hasValue() && !isAllSelected()">
+            </mat-checkbox>
+          </th>
+          <td mat-cell *matCellDef="let row">
+            <mat-checkbox color="primary"
+                          (click)="$event.stopPropagation()"
+                          (change)="$event ? selection.toggle(row) : null"
+                          [checked]="selection.isSelected(row)">
+            </mat-checkbox>
+          </td>
+      </ng-container>
+      <ng-container matColumnDef="expectedDataCategory">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> EXPECTED DATA CATEGORY </th>
+          <td mat-cell *matCellDef="let dtForms"> {{dtForms.expectedDataCategory}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dataSource">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> DATA SOURCE </th>
+          <td mat-cell *matCellDef="let dtForms; let i = index;"> 
+            <select [(ngModel)]="dtForms.dataSource[j]" (change)="onSelect($event.target.value, i , 'sourceVariable')" id="sourceVariable">
+              <option *ngFor="let item of dtForms.dataSource; let j = index" [value]="dtForms.dataSource[j]">{{dtForms.dataSource[j]}}</option>
+            </select>
+          </td>
+      </ng-container>
+
+      <ng-container matColumnDef="appliedVisit">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> APPLICABLE VISIT </th>
+          <td mat-cell *matCellDef="let dtForms"> {{dtForms.appliedVisit}} &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <mat-icon class="icon-color">edit</mat-icon>&nbsp; &nbsp;&nbsp;
+              <mat-icon class="icon-color">file_copy</mat-icon>
+          </td>
+      </ng-container>
+
+      <ng-container matColumnDef="dataTransferFrequency">
+          <th class="col-4" mat-header-cell *matHeaderCellDef mat-sort-header>  DATA TRANSFER FREQUENCY </th>
+          <td mat-cell *matCellDef="let dtForms; let i = index;"> 
+            <select [(ngModel)]="dtForms.dataTransferFrequency[j]" (change)="onSelect($event.target.value, i , 'frequencyVariable')" id="frequencyVariable">
+              <option *ngFor="let item of dtForms.dataTransferFrequency; let j = index" [value]="dtForms.dataTransferFrequency[j]">{{dtForms.dataTransferFrequency[j]}}</option>
+            </select>
+          </td>
+      </ng-container>
+
+      <ng-container matColumnDef="criticalData">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header> CRITICAL DATA </th>
+          <td mat-cell *matCellDef="let dtForms; let i = index;"> 
+            <select [(ngModel)]="dtForms.criticalData[j]" (change)="onSelect($event.target.value, i , 'criticalVariable')" id="criticalVariable">
+              <option *ngFor="let item of dtForms.criticalData; let j = index" [value]="dtForms.criticalData[j]">{{dtForms.criticalData[j]}}</option>
+            </select>
+          </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let myRowData; columns: displayedColumns"></tr>
+  </table>
+  <br><br>
+
+  <div class="button-div">
+      <button class="button-1" >Save and Add Another Data Trajectory</button>
+      <button class="button-1" style="margin-left:15px;">&nbsp;&nbsp;Save&nbsp;&nbsp;</button>
+      <button mat-stroked-button style="margin-left:15px;" mat-dialog-close class="button-2">Cancel</button>
+    </div>
+ 
   <br><br><br><br><br><br><br>  <br><br><br><br><br><br><br>

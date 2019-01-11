@@ -34,7 +34,11 @@ import { MapExpectedDataFormsComponent } from './map-expected-data-forms/map-exp
 import { CreateDataTrajectoryComponent } from './create-data-trajectory/create-data-trajectory.component'
 import { AddDataTrajectoryComponent } from './add-data-trajectory/add-data-trajectory.component';
 import { CommentComponent } from './comment/comment.component';
-import { DeletetrajectoryComponent } from './deletetrajectory/deletetrajectory.component'; 
+import { DeletetrajectoryComponent } from './deletetrajectory/deletetrajectory.component';
+import { AddFormsComponent } from './add-forms/add-forms.component'; 
+import {MatTableModule} from '@angular/material/table';
+import {MatSortModule} from '@angular/material/sort';
+import { EditdatacategoryComponent } from './editdatacategory/editdatacategory.component'; 
 
 
 
@@ -102,7 +106,9 @@ const appRoutes:Routes = [
     CreateDataTrajectoryComponent,
     AddDataTrajectoryComponent,
     CommentComponent,
-    DeletetrajectoryComponent
+    DeletetrajectoryComponent,
+    AddFormsComponent,
+    EditdatacategoryComponent
    
   ],
   imports: [
@@ -120,16 +126,18 @@ const appRoutes:Routes = [
     MatGridListModule,
     MatExpansionModule,
     MatTabsModule,
+    MatTableModule,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatSortModule,
     BrowserAnimationsModule,
     ChartsModule,
     HttpModule,
     HttpClientModule
   ],
-  entryComponents:[AddExpectedDataComponent,MapExpectedDataFormsComponent,CreateDataTrajectoryComponent,CommentComponent,DeletetrajectoryComponent],
+  entryComponents:[AddExpectedDataComponent,MapExpectedDataFormsComponent,EditdatacategoryComponent,CreateDataTrajectoryComponent,CommentComponent,DeletetrajectoryComponent,AddFormsComponent],
   providers: [CdrpService],
   bootstrap: [AppComponent]
 })
