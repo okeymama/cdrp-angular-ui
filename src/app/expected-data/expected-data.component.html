@@ -2,7 +2,7 @@
       <div class="side-link">   
         <div class="header"><span >Expected Data & IDRP Checks</span></div>
         <div class="side-div">
-        <a class="links" href="#assign">Assign Subjects</a> &nbsp; &nbsp;
+          <a class="links" (click)="assign()">Assign Subjects</a> &nbsp; &nbsp;
         <a class="links" href="#submitReview">Submit for Review</a> &nbsp; &nbsp;
         <a class="links" href="#submitApproval">Submit for Approval</a>
       </div>
@@ -11,7 +11,7 @@
       
       <div class="side-button">
           <button class="side-button-1" (click)="openMapExpectedDataDialog()"><span class="text-align">Add Expected Data&nbsp;</span><mat-icon>add</mat-icon></button>
-          <button class="side-button-1" style="margin-left:15px;"><span class="text-align">Add IDRP Checks&nbsp;</span><mat-icon>add</mat-icon></button>
+          <button class="side-button-1" (click)="openAddIdrpChecksDialog()" style="margin-left:15px;"><span class="text-align">Add IDRP Checks&nbsp;</span><mat-icon>add</mat-icon></button>
        </div>
 
       <mat-tab-group [selectedIndex]="1" animationDuration="0ms">

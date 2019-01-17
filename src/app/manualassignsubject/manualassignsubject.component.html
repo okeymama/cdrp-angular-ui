@@ -1,0 +1,49 @@
+<div id='header'><p mat-dialog-title class="title">
+  Assign Subjects? </p> 
+<mat-icon  class="close-button" (click)="onNoClick()">close </mat-icon>
+</div>
+<hr>
+<div>
+
+    <div class="linehead"> 
+      Description of Associated Subjects
+      </div>  <br>
+      <textarea name="name" ngModel  required class="textarea"></textarea>
+       <br>
+    <hr>  
+    <div class="div1">
+      <div >
+          <input type="text" ng-model="search"><br>
+        <select id="sbOne" multiple="multiple"class="list" (change)="onSelect($event.target.value)" >
+            <option class="highlight" *ngFor="let subject of subjects " [value]="subject"  >{{subject}}</option>
+        </select>
+    </div>
+      <div class="action">    
+        <br><br><br> <br> <br> 
+        
+       <!-- <mat-icon class="icons" (click)="move()">arrow_forward</mat-icon><br>
+      <mat-icon class="icons"(click)="back()">arrow_back</mat-icon>-->
+      <mat-icon class="icons" >arrow_forward</mat-icon><br>
+      <mat-icon class="icons" >arrow_back</mat-icon>
+    </div>
+<div>
+  Assigned Subjects<br>
+  <select id="sbOne" multiple="multiple"class="list" (change)="onDeSelect($event.target.value,j)" >
+      <option class="highlight" *ngFor="let assignedsubject of assignedsubjects; let j = index" [value]="assignedsubjects[j]">{{assignedsubjects[j]}}</option>
+  </select>
+    </div>
+
+    </div>
+    <br>
+    <hr>
+    <button class="button-1" (click)="previousDialog()">Go Back</button> 
+    <button class="button-2" (click)="onNoClick()">Cancel</button>
+ 
+ 
+</div>
+ 
+  
+
+    
+
+  

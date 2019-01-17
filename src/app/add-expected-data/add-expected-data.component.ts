@@ -2,6 +2,7 @@ import { Component, OnInit,Inject , OnDestroy, EventEmitter, Output} from '@angu
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { FormData,AddData} from '../Study';
 import { CreateDataTrajectoryComponent } from '../create-data-trajectory/create-data-trajectory.component';
+import { CreateDuplicateTrajectoryComponent } from '../create-duplicate-trajectory/create-duplicate-trajectory.component';
 //import { EventEmitter } from 'events';
 
 @Component({
@@ -11,7 +12,7 @@ import { CreateDataTrajectoryComponent } from '../create-data-trajectory/create-
 })
 export class AddExpectedDataComponent implements OnInit, OnDestroy {
 
-  constructor(public dialog2: MatDialog,
+  constructor(public dialog2: MatDialog,public dialog3: MatDialog,
     public dialogRef1: MatDialogRef<AddExpectedDataComponent>,
     @Inject(MAT_DIALOG_DATA) public data:AddData) {
     }
@@ -51,6 +52,23 @@ export class AddExpectedDataComponent implements OnInit, OnDestroy {
       }
    })
 
+  }
+
+  duplicateTrajectoryDialog(trajectoryName)
+  {
+    const dialogRef3 = this.dialog3.open(CreateDuplicateTrajectoryComponent, {
+      width: '800px',
+      height:'370px',
+      data: trajectoryName
+    });
+
+    dialogRef3.beforeClosed().subscribe(result=>{
+      console.log("in parent"+result);
+      if(result === 'closeAll')
+      {
+        this.dialogRef1.close('closeAll');
+      }
+   })
   }
 
 }

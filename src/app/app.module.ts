@@ -37,8 +37,13 @@ import { CommentComponent } from './comment/comment.component';
 import { DeletetrajectoryComponent } from './deletetrajectory/deletetrajectory.component';
 import { AddFormsComponent } from './add-forms/add-forms.component'; 
 import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material';
 import {MatSortModule} from '@angular/material/sort';
-import { EditdatacategoryComponent } from './editdatacategory/editdatacategory.component'; 
+import { EditdatacategoryComponent } from './editdatacategory/editdatacategory.component';
+import { AddIdrpChecksComponent } from './add-idrp-checks/add-idrp-checks.component';
+import { CreateDuplicateTrajectoryComponent } from './create-duplicate-trajectory/create-duplicate-trajectory.component'; 
+import { AssignSubjectComponent } from './assign-subject/assign-subject.component';
+import { ManualassignsubjectComponent } from './manualassignsubject/manualassignsubject.component'; 
 
 
 
@@ -108,7 +113,11 @@ const appRoutes:Routes = [
     CommentComponent,
     DeletetrajectoryComponent,
     AddFormsComponent,
-    EditdatacategoryComponent
+    EditdatacategoryComponent,
+    CreateDuplicateTrajectoryComponent,
+    AssignSubjectComponent,
+    ManualassignsubjectComponent,
+    AddIdrpChecksComponent 
    
   ],
   imports: [
@@ -127,6 +136,7 @@ const appRoutes:Routes = [
     MatExpansionModule,
     MatTabsModule,
     MatTableModule,
+    MatPaginatorModule,
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
@@ -137,7 +147,20 @@ const appRoutes:Routes = [
     HttpModule,
     HttpClientModule
   ],
-  entryComponents:[AddExpectedDataComponent,MapExpectedDataFormsComponent,EditdatacategoryComponent,CreateDataTrajectoryComponent,CommentComponent,DeletetrajectoryComponent,AddFormsComponent],
+  entryComponents:[
+    AddExpectedDataComponent,
+    MapExpectedDataFormsComponent,
+    EditdatacategoryComponent,
+    CreateDataTrajectoryComponent,
+    CommentComponent,
+    DeletetrajectoryComponent,
+    AddFormsComponent,
+    CreateDuplicateTrajectoryComponent,
+    AssignSubjectComponent,
+    ManualassignsubjectComponent,
+    AddIdrpChecksComponent
+    
+  ],
   providers: [CdrpService],
   bootstrap: [AppComponent]
 })

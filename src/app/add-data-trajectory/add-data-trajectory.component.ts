@@ -2,7 +2,7 @@ import { Component, OnInit,ViewChild ,ContentChild,Input, OnChanges,AfterViewIni
 import { CdrpService } from '../cdrp.service';
 import {ActivatedRoute } from '../../../node_modules/@angular/router';
 import { dataTrajectoryForms} from '../tableData';
-import { MatSort,MatTableDataSource,MatSortable} from '@angular/material';
+import { MatSort,MatTableDataSource,MatSortable,MatPaginator} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { AddFormsComponent } from '../add-forms/add-forms.component';
@@ -16,11 +16,6 @@ import { AddFormsComponent } from '../add-forms/add-forms.component';
 
 export class AddDataTrajectoryComponent implements OnInit {
 
-  trajName;string;
-  studyID: string;
-  sourceVariable:string[]=[];
-  frequencyVariable:string[]=[];
-  criticalVariable:string[]=[];
   dtForms:dataTrajectoryForms[]=[
     {
       "expectedDataCategory":"Vital Sign",
@@ -66,39 +61,46 @@ export class AddDataTrajectoryComponent implements OnInit {
     },
     {
       "expectedDataCategory":"Viral Levels",
-      "appliedVisit":"  9  visits",
+      "appliedVisit":"  19  visits",
       "dataSource":["EDC,Covance,Other","IRT", "ePro","Covance","Central Lab","Parexel"],
       "dataTransferFrequency":["Monthly","Weekly","Daily","Hourly"],
       "criticalData":["No","Yes - Primary End Point","Yes - Second End Point","Yes - Efficacy","Yes - Safety"]
     },
     {
       "expectedDataCategory":"System testing",
-      "appliedVisit":" 8  visits",
+      "appliedVisit":" 28  visits",
       "dataSource":["EDC,Covance,Other","IRT", "ePro","Covance","Central Lab","Parexel"],
       "dataTransferFrequency":["Monthly","Weekly","Daily","Hourly"],
       "criticalData":["No","Yes - Primary End Point","Yes - Second End Point","Yes - Efficacy","Yes - Safety"]
     },
     {
       "expectedDataCategory":"Immunity testing",
-      "appliedVisit":" 3  visits",
+      "appliedVisit":" 13  visits",
       "dataSource":["EDC,Covance,Other","IRT", "ePro","Covance","Central Lab","Parexel"],
       "dataTransferFrequency":["Monthly","Weekly","Daily","Hourly"],
       "criticalData":["No","Yes - Primary End Point","Yes - Second End Point","Yes - Efficacy","Yes - Safety"]
     },
     {
       "expectedDataCategory":"Physical Examination",
-      "appliedVisit":" 2  visits",
+      "appliedVisit":" 22  visits",
       "dataSource":["EDC,Covance,Other","IRT", "ePro","Covance","Central Lab","Parexel"],
       "dataTransferFrequency":["Monthly","Weekly","Daily","Hourly"],
       "criticalData":["No","Yes - Primary End Point","Yes - Second End Point","Yes - Efficacy","Yes - Safety"]
     }
   ]
 
-
+  trajName;string;
+  studyID: string;
+  sourceVariable:string[]=[];
+  frequencyVariable:string[]=[];
+  criticalVariable:string[]=[];
+  
+  /*material sort and display of tables*/
   displayedColumns: string[] = ['select','expectedDataCategory','dataSource','appliedVisit','dataTransferFrequency','criticalData'];
   selection = new SelectionModel<dataTrajectoryForms>(true, []);
   dataSource = new MatTableDataSource<dataTrajectoryForms>(this.dtForms);
   @ViewChild(MatSort) sort: MatSort;
+  @ViewChild(MatPaginator) paginator: MatPaginator;
   
   constructor(private cdrpService: CdrpService,private activateRouter:ActivatedRoute,public dialog: MatDialog) { 
     for(var c=0;c< this.dtForms.length;c++)
@@ -113,8 +115,10 @@ export class AddDataTrajectoryComponent implements OnInit {
   ngOnInit() {
     this.dataSource.sort = this.sort;
     this.studyID = this.cdrpService.id; 
-    this.trajName = this.cdrpService.TrajectoryName;   
+    this.trajName = this.cdrpService.TrajectoryName;  
+    this.dataSource.paginator = this.paginator; 
   }
+
 
   checkBox()
   {
@@ -157,5 +161,6 @@ export class AddDataTrajectoryComponent implements OnInit {
     this.isAllSelected() ?
         this.selection.clear() :
         this.dataSource.data.forEach(row => this.selection.select(row));
+
   }
 }

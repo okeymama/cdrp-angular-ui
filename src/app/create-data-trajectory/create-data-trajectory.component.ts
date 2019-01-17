@@ -16,10 +16,6 @@ export class CreateDataTrajectoryComponent implements OnInit {
   constructor(private router: Router,private cdrpService: CdrpService,public dialogRef2: MatDialogRef<CreateDataTrajectoryComponent>,
     @Inject(MAT_DIALOG_DATA) public data) { }
 
-  onNoClick(): void {
-    this.dialogRef2.close();
-  }
-
   previousDialog(): void {
     this.dialogRef2.close();
   }

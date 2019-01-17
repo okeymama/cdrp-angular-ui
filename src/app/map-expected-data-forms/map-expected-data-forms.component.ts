@@ -15,15 +15,15 @@ export class MapExpectedDataFormsComponent implements OnInit,OnDestroy {
  // dialogId=0;
   addData:AddData[]=[
   {
-    "armName":"Data Trajectory Name 001",
+    "dataTrajectoryName":"Data Trajectory Name 001",
     "description":["Lorem ipsum dolor sit amet", "consectetur", "Lorem ipsum dolor sit amet"]
   },
   {
-    "armName":"Data Trajectory Name 002",
+    "dataTrajectoryName":"Data Trajectory Name 002",
     "description":["Lorem ipsum dolor sit amet", "consectetur", "Lorem ipsum dolor sit amet"]
   },
   {
-    "armName":"Data Trajectory Name 003",
+    "dataTrajectoryName":"Data Trajectory Name 003",
     "description":["Lorem ipsum dolor sit amet", "consectetur", "Lorem ipsum dolor sit amet"]
   }
   ]
@@ -32,7 +32,7 @@ export class MapExpectedDataFormsComponent implements OnInit,OnDestroy {
     @Inject(MAT_DIALOG_DATA) public data: FormData[]) {
       for(var c=0;c<data.length;c++)
       {
-        this.category[c] = "--select--";
+        this.category[c] = "";
       } 
     }
 
@@ -73,6 +73,7 @@ export class MapExpectedDataFormsComponent implements OnInit,OnDestroy {
   onSelect(selectedValue:any, ind1)
   {
     this.category[ind1] = selectedValue;
+    console.log(this.category);
   }
 
 }

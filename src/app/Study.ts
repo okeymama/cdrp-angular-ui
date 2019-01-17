@@ -17,6 +17,6 @@ export interface FormData {
   }
 
 export interface AddData {
-    armName:string;
+    dataTrajectoryName:string;
     description:string[];
   }

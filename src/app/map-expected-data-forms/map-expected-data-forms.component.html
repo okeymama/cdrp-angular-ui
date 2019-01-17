@@ -12,8 +12,8 @@
    <tr *ngFor="let t of data; let i = index">
       <td id="col-1">{{data[i].expectedDataForm}}</td>
       <td id="col-2">
-        <select [(ngModel)]="category[i]" (change)="onSelect($event.target.value, i)" id="category">
-        <!--<option value="" disabled selected>select a category</option>-->
+        <select (change)="onSelect($event.target.value, i)" id="category" placeholder="Select a category">
+        <option value="0" disabled selected hidden>Select a category</option>
         <option *ngFor="let item of data[i].expectedDataCategory; let j = index" [value]="data[i].expectedDataCategory[j]">{{data[i].expectedDataCategory[j]}}</option>
         </select>
       </td>
