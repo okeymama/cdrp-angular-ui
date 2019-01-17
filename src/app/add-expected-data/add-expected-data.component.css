@@ -27,6 +27,11 @@
     color:  rgb(4, 126, 167);
 }
 
+.action-icon:hover
+{
+    cursor: pointer;
+}
+
 #header
 {
     display:flex;

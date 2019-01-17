@@ -1,0 +1,138 @@
+
+.title
+{
+    font-size: 14px;
+    margin: 0px;
+}
+.close-button
+{
+    width:25px;
+    height:25px;
+    border:none;
+    margin-left: 200px;
+    background-color: transparent;
+    padding: 0px;
+    color: #333333;
+}
+.close-button:hover{
+    cursor: pointer;
+    opacity: 0.75;
+}
+#header
+{
+    display:flex;
+}
+
+.textarea{
+   width: 350px;
+   height: 50px;
+    background-color: rgba(255,255,255,1);
+   
+}
+.div1{
+display: flex;
+}
+.dropdown{
+    width: 250px;
+    height: 30px;
+    border-radius: 4px;
+}
+.linehead{
+    font-size: 12px;
+}
+.labels{
+    font-size: 12px;
+    align-self:flex-start;
+    width: 100px
+}
+.button-1
+{
+    background-color:  rgba(36, 52, 125,1);
+    color:white;
+    font-size: 12px;
+    font-weight: 700;
+    position: absolute;
+    width: 53px;
+    height: 32px;
+    border:none;
+    font-style: normal;
+    font-family: "Arial Bold","Arial";
+    border-radius:4px;
+    margin-left: 120px;
+    
+}
+
+.button-2
+{
+   
+    background-color:  rgba(238, 238, 238,1);
+    color:#525252;
+    font-size: 12px;
+    font-weight: 400;
+    margin-left: 30px;
+    position: absolute;
+    width: 49px;
+    height: 32px;
+    border:none;
+    font-style: normal;
+    border-radius:4px;
+    margin-left: 190px;
+
+}
+
+ .button-1:hover
+    {
+        background-color:rgba(33, 123, 192,1);
+    }
+
+
+    .button-2:hover
+    {
+        background-color:rgba(201, 201, 201,1);
+    }
+
+ select
+ {
+     width:150px;
+ }
+ .actionitems{
+     width: 300px;
+     height: 32px;
+     background-color: red;
+ }
+
+
+ table {
+    width:100%;
+  }
+  table, th, td {
+    border: 1px solid grey;
+    border-collapse: collapse;
+  }
+  th, td {
+    padding: 6px;
+    text-align: left;
+    font-size: 12px;
+    text-align:center
+  }
+
+.table-header-color
+ {
+    background-color:#CAD8F7;  
+    font-size: 12px;
+    color:black;
+   
+ }
+ .lastcolumn{
+    color: blue;
+    
+ }
+ .lastcolumn:hover{
+    cursor: pointer;
+    
+ }
+ .selection{
+    width: 120px;
+    height: 20px;
+    border-radius: 4px;
+}

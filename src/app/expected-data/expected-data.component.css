@@ -39,6 +39,9 @@
     font-weight: bold;
     font-size:12px;
 }
+.links:hover{
+    cursor: pointer;
+}
 
 a{
 text-decoration:none;

@@ -139,12 +139,12 @@ table {
     border: 1px solid lightgray;
     border-collapse: collapse;
   }
- td {
+td {
     text-align: left;
     font-size: 12px;
   }
 
- th{
+th{
      text-align: left;
      font-size: 12px;
      color:black;
@@ -181,4 +181,9 @@ select{
 .mat-cell.mat-column-appliedVisit
 {
     color:rgb(17, 123, 209);
+}
+
+.mat-elevation-z8
+{
+    box-shadow: none;
 }

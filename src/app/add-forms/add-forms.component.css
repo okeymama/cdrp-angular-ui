@@ -44,7 +44,7 @@ input
 
 .button-div
 {
-    align-self: center;
+    margin-left:100px;
 }
 
 .button-1
@@ -66,4 +66,40 @@ input
 .button-1:hover
 {
     background-color:rgb(81, 158, 230);
+}
+
+
+.mat-header-row
+  {
+    height:30px !important;
+  }
+
+.mat-header-cell
+  {
+    padding-left:10px !important;
+  }
+
+.mat-row
+{
+    height:30px !important;
+}
+
+.mat-cell.cdk-column-select
+{
+    padding-left:10px !important;
+    height:30px !important;
+    padding-right: 24px !important;
+}
+
+td{
+    border:none;
+}
+
+th{
+    border:none;
+}
+
+.mat-elevation-z8
+{
+    box-shadow: none;
 }

@@ -74,13 +74,15 @@
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let myRowData; columns: displayedColumns"></tr>
+      
   </table>
+  <mat-paginator [pageSizeOptions]="[10, 15, 20]" showFirstLastButtons></mat-paginator>
   <br><br>
 
   <div class="button-div">
       <button class="button-1" >Save and Add Another Data Trajectory</button>
       <button class="button-1" style="margin-left:15px;">&nbsp;&nbsp;Save&nbsp;&nbsp;</button>
       <button mat-stroked-button style="margin-left:15px;" mat-dialog-close class="button-2">Cancel</button>
-    </div>
+  </div>
  
   <br><br><br><br><br><br><br>  <br><br><br><br><br><br><br>

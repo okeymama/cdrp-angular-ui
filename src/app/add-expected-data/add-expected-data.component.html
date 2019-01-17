@@ -10,9 +10,10 @@
      <th>Actions</th> 
    </tr>
    <tr *ngFor="let t of data; let i = index">
-    <td id="col-1">{{data[i].armName}}</td>
+    <td id="col-1">{{data[i].dataTrajectoryName}}</td>
     <td id="col-2">{{data[i].description}}</td>
-    <td>&nbsp;&nbsp;<mat-icon class="action-icon">edit</mat-icon>&nbsp;<mat-icon class="action-icon">file_copy</mat-icon>
+    <td>&nbsp;&nbsp;<mat-icon class="action-icon">edit</mat-icon>&nbsp;
+      <mat-icon class="action-icon" (click)="duplicateTrajectoryDialog(data[i].dataTrajectoryName)">file_copy</mat-icon>
       &nbsp;<mat-icon class="action-icon">delete</mat-icon></td>
 
   </tr>
