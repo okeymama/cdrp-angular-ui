@@ -110,6 +110,11 @@
     font-size:18px;
 }
 
+.icon-color:hover
+{
+    cursor: pointer;
+}
+
 .button-1
 {
   background-color: rgb(37, 10, 134);

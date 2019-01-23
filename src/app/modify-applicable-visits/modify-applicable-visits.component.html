@@ -1,0 +1,98 @@
+<div id='header'>
+  <p mat-dialog-title class="title">Visits <br></p> 
+  <button class="close-button" (click)="onNoClick()"><mat-icon>close </mat-icon></button>
+</div>
+<hr>
+<div class="align">
+<div class="align"> 
+  <div clas="div1">
+      
+    <ng-container *ngFor="let d of arr1;let i = index;">
+        <span *ngIf="i==0"><span class="select">Rave EDC</span><br><br></span>
+        <mat-checkbox color="primary" *ngIf="i==0"
+                      (click)="EdrSelectAll()"
+                      (change)="$event ? masterToggle() : null"
+                      [checked]="selection.hasValue() && isAllSelected()"
+                      [indeterminate]="selection.hasValue() && !isAllSelected()">
+                      &nbsp;<span class="select">Select All</span>
+        </mat-checkbox><br *ngIf="i==0">
+      <section>
+        <mat-checkbox color="primary"
+                      (click)="$event.stopPropagation();EdrSelect(d)"
+                      (change)="$event ? selection.toggle(d) : null"
+                      [checked]="selection.isSelected(d)">{{d}}
+        </mat-checkbox>
+      </section>
+
+    </ng-container>
+  </div>
+  <div class="div2">
+    <ng-container *ngFor="let d of arr2;let i = index;">
+      <br *ngIf="i==0">
+      <section>
+        <mat-checkbox color="primary"
+                      (click)="$event.stopPropagation();EdrSelect(d)"
+                      (change)="$event ? selection.toggle(d) : null"
+                      [checked]="selection.isSelected(d)">{{d}}<br>
+        </mat-checkbox>
+      </section>
+    </ng-container>
+  </div>
+  <div class="div3">
+    <ng-container *ngFor="let d of arr3;let i = index;">
+      <br *ngIf="i==0">
+      <section>
+        <mat-checkbox color="primary"
+                      (click)="$event.stopPropagation();EdrSelect(d)"
+                      (change)="$event ? selection.toggle(d) : null"
+                      [checked]="selection.isSelected(d)">{{d}}<br>
+        </mat-checkbox>
+      </section>
+    </ng-container>
+  </div>
+  
+</div> 
+<mat-divider class="divider" [vertical]=true></mat-divider> 
+<div clas="div4">
+    <ng-container *ngFor="let d of data.listOfVisits.mdr;let i = index;">
+        <span *ngIf="i==0"><span class="select">MDR</span><br><br></span>
+        <mat-checkbox color="primary" *ngIf="i==0"
+                      (click)="MdrSelectAll()"
+                      (change)="$event ? masterToggle1() : null"
+                      [checked]="selection1.hasValue() && isAllSelected1()"
+                      [indeterminate]="selection1.hasValue() && !isAllSelected1()">
+                      &nbsp;<span class="select">Select All</span>
+        </mat-checkbox><br *ngIf="i==0">
+      <section>
+        <mat-checkbox color="primary"
+                      (click)="$event.stopPropagation();MdrSelect(d)"
+                      (change)="$event ? selection1.toggle(d) : null"
+                      [checked]="selection1.isSelected(d)">{{d}}
+        </mat-checkbox>
+      </section>
+
+    </ng-container>
+  </div>
+</div>
+
+<br>
+<hr>
+
+<!--<form #frm="ngForm" id="addVisit">
+    <input type="radio" ng-model='selectSource'  ng-value='"edc"' name="rdoResult" (click)="sourceSelected('edc')"><span class="text-align"> Rave EDC</span>
+    <input type="radio" ng-model='selecteSource'  ng-value='"mdr"' name="rdoResult"  (click)="sourceSelected('mdr')"><span class="text-align"> MDR<br></span>-->
+    <div class="align">
+    <span class="text-align">Add New Visit &nbsp;&nbsp;</span>
+    <!--<input #addVisit type="text" name="addVisit">--> &nbsp;&nbsp;
+    <div class="add-icon" (click)="addVisits()"><mat-icon class="icon">add_box</mat-icon></div>
+    </div>
+<!--</form>-->
+<br>
+<hr>
+<br>
+  
+<div class="button-div">
+    <button class="button-1" cdkFocusInitial (click)="onSave()"> &nbsp;&nbsp;Save &nbsp;&nbsp; </button>
+    <button  mat-stroked-button cdstyle="margin-left:15px;" (click)="onNoClick()" class="button-2">Cancel</button>
+</div>
+  

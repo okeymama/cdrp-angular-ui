@@ -1,0 +1,135 @@
+<div class="div1">
+  <div class="div2">
+<p>Description of Associated Subjects</p>
+<textarea name="name" ngModel  required class="textarea" (blur)="capture($event)"></textarea>
+     </div><mat-divider [vertical]="true"></mat-divider>
+     <div class="div3">
+        <p>IF:</p>
+        <div style="display: flex;">
+            <p class="labels">Visit/Frequency:</p>&nbsp;
+              <select  id="category" class="dropdown" [(ngModel)]="selectedVisit"  (change)="onSelectVisit($event.target.value)">
+                <option value="0" disabled selected hidden>Select an option</option>
+                <option *ngFor="let item of visits; let i = index" [value]="visits[i].visitname">{{visits[i].visitname}}</option>       
+              </select>
+          </div>
+          <div style="display: flex;">
+              <p class="labels">DataCategory:</p>&nbsp;
+                <select  id="category" class="dropdown" [(ngModel)]="selectedDataCategory" [disabled]="dataenable" (change)="onSelectDataCategory($event.target.value)">
+                  <option value="0" disabled selected hidden>Select an option</option>
+                  <option *ngFor="let item of datacategories; let i = index" [value]="datacategories[i].formname">{{datacategories[i].formname}}</option>       
+                </select>
+            </div>
+            <div style="display: flex;">
+                <p class="labels">Field:</p>&nbsp;
+                  <select  id="category" class="dropdown" [(ngModel)]="selectedField" [disabled]="fieldenable" (change)="onSelectField($event.target.value)">
+                    <option value="0" disabled selected hidden>Select an option</option>
+                    <option *ngFor="let item of fields; let i = index" [value]="fields[i].fieldname">{{fields[i].fieldname}}</option>       
+                  </select>
+              </div>
+              <div style="display: flex;">
+                  <p class="labels">Value:</p>&nbsp;
+                    <select  id="category" class="dropdown" [(ngModel)]="selectedValue" [disabled]="valueenable" (change)="onSelectValue($event.target.value)">
+                      <option value="0" disabled selected hidden>Select an option</option>
+                      <option *ngFor="let item of values; let i = index" [value]="values[i]">{{values[i]}}</option>       
+                    </select>
+                </div><br>
+               <div style="display:flex;">
+        <button  (click)="toggleAnd()" class="button-1"><span class="text-align">AND&nbsp;</span><mat-icon>add</mat-icon></button>&nbsp;&nbsp;
+        <button class="button-2" (click)="toggleOr()"><span class="text-align">OR&nbsp;</span><mat-icon>add</mat-icon></button> 
+      </div>
+      </div>         
+</div>
+<mat-divider></mat-divider>
+<div class="div1">
+    <div class="div4" *ngIf="andvisible">
+        <p>AND:</p>
+        <div style="display: flex;">
+            <p class="labels">Visit/Frequency:</p>&nbsp;
+              <select  id="category" class="dropdown" (change)="onSelectVisit($event.target.value)">
+                <option value="0" disabled selected hidden>Select an option</option>
+                <option *ngFor="let item of visits; let i = index" [value]="visits[i]">{{visits[i]}}</option>       
+              </select>
+          </div>
+          <div style="display: flex;">
+              <p class="labels">DataCategory:</p>&nbsp;
+                <select  id="category" class="dropdown" (change)="onSelectVisit($event.target.value)">
+                  <option value="0" disabled selected hidden>Select an option</option>
+                  <option *ngFor="let item of visits; let i = index" [value]="visits[i]">{{visits[i]}}</option>       
+                </select>
+            </div>
+            <div style="display: flex;">
+                <p class="labels">Field:</p>&nbsp;
+                  <select  id="category" class="dropdown" (change)="onSelectVisit($event.target.value)">
+                    <option value="0" disabled selected hidden>Select an option</option>
+                    <option *ngFor="let item of visits; let i = index" [value]="visits[i]">{{visits[i]}}</option>       
+                  </select>
+              </div>
+              <div style="display: flex;">
+                  <p class="labels">Value:</p>&nbsp;
+                    <select  id="category" class="dropdown" (change)="onSelectVisit($event.target.value)">
+                      <option value="0" disabled selected hidden>Select an option</option>
+                      <option *ngFor="let item of visits; let i = index" [value]="visits[i]">{{visits[i]}}</option>       
+                    </select>
+                </div>
+    </div><mat-divider [vertical]="true"></mat-divider>
+       <div class="div5" *ngIf="orvisible">
+         
+          <p>OR:</p>
+          <div style="display: flex;">
+              <p class="labels">Visit/Frequency:</p>&nbsp;
+                <select  id="category" class="dropdown" (change)="onSelectVisit($event.target.value)">
+                  <option value="0" disabled selected hidden>Select an option</option>
+                  <option *ngFor="let item of visits; let i = index" [value]="visits[i]">{{visits[i]}}</option>       
+                </select>
+            </div>
+            <div style="display: flex;">
+                <p class="labels">DataCategory:</p>&nbsp;
+                  <select  id="category" class="dropdown" (change)="onSelectVisit($event.target.value)">
+                    <option value="0" disabled selected hidden>Select an option</option>
+                    <option *ngFor="let item of visits; let i = index" [value]="visits[i]">{{visits[i]}}</option>       
+                  </select>
+              </div>
+              <div style="display: flex;">
+                  <p class="labels">Field:</p>&nbsp;
+                    <select  id="category" class="dropdown" (change)="onSelectVisit($event.target.value)">
+                      <option value="0" disabled selected hidden>Select an option</option>
+                      <option *ngFor="let item of visits; let i = index" [value]="visits[i]">{{visits[i]}}</option>       
+                    </select>
+                </div>
+                <div style="display: flex;">
+                    <p class="labels">Value:</p>&nbsp;
+                      <select  id="category" class="dropdown" (change)="onSelectVisit($event.target.value)">
+                        <option value="0" disabled selected hidden>Select an option</option>
+                        <option *ngFor="let item of visits; let i = index" [value]="visits[i]">{{visits[i]}}</option>       
+                      </select>
+                  </div>
+      </div>         
+  </div>
+  <mat-divider></mat-divider>
+  <form #frm="ngForm" (ngSubmit)="login(frm)">
+  <div >
+          <p>THEN:</p><br>
+      <div style="display:flex;">
+          <p class="labels">FORM:</p>&nbsp;
+            <select  id="category" class="dropdown" name="selectform" ngModel (change)="onSelectForm($event.target.value)">
+              <option value="" disabled selected hidden>Select an option</option>
+              <option *ngFor="let item of forms; let i = index" [value]="forms[i]">{{forms[i]}}</option>       
+            </select>
+        </div>
+        <div style="display:flex;">
+            <p class="labels">EXPECTED/NOT EXPECTED:</p>&nbsp;
+            <p class="radio"><input type="radio" name="expectation" ngModel value='Expect'>Expect&nbsp;<input type="radio" name="expectation" ngModel value='Not Expect'>Not Expect</p>
+          </div>
+          <div style="display:flex;">
+              <p class="labels">FREQUENCY:</p>&nbsp;
+                <select  id="category" class="dropdown" name="selectfrequency" ngMode (change)="onSelectFrequency($event.target.value)">
+                  <option value="" disabled selected hidden>Select an option</option>
+                  <option *ngFor="let item of frequencies; let i = index" [value]="frequencies[i]">{{frequencies[i]}}</option>       
+                </select>
+              </div> 
+    <br>
+    <mat-divider></mat-divider> <br>
+    <input type="submit"  value="SAVE"  class="button-3" >
+    <button  mat-dialog-close class="button-4">Cancel</button>
+  </div>
+</form>

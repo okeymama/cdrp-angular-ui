@@ -60,4 +60,21 @@ body {
   .mat-checkbox-label
   {
     font-size:12px;
+  }  
+ 
+  .multiselect-dropdown{
+    width: 170px !important;
+    
   }
+  
+  .multiselect-dropdown .dropdown-btn{
+    width: 170px !important;
+    padding: 0px 0px !important;
+    padding-left: 4px !important;
+  }
+  .multiselect-dropdown .dropdown-list{
+    width: 170px !important;
+  }
+  
+     
+    

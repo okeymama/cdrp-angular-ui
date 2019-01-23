@@ -14,23 +14,23 @@
     <div class="linehead" style="margin-left: 70px">Subjects will be assigned to ARM IF:</div><br>
     <div class="div1">
       <p class="labels">Visit/Frequency:</p>&nbsp;
-        <select  id="category" class="dropdown" (change)="onSelectVisit($event.target.value)">
-          <option value="" disabled selected hidden>Select an option</option>
-          <option *ngFor="let item of visits; let i = index" [value]="visits[i]">{{visits[i]}}</option>       
+        <select  id="category" class="dropdown" [(ngModel)]="selectedVisit" (change)="onSelectVisit($event.target.value)">
+          <option value="0" disabled selected hidden>Select an option</option>
+          <option *ngFor="let item of visits; let i = index" [value]="visits[i].visitname">{{visits[i].visitname}}</option>       
         </select>
     </div>
     <div class="div1">
         <p class="labels">Form:</p>&nbsp;
-          <select  id="category" class="dropdown" (change)="onSelectForm($event.target.value)">
-            <option value="" disabled selected hidden>Select an option</option>
-            <option *ngFor="let item of forms; let i = index" [value]="forms[i]">{{forms[i]}}</option>       
+          <select  id="category" class="dropdown"  [(ngModel)]="selectedForm" [disabled]="formenable" (change)="onSelectForm($event.target.value)">
+            <option value="0" disabled selected hidden>Select an option</option>
+            <option *ngFor="let item of forms; let i = index" [value]="forms[i].formname">{{forms[i].formname}}</option>       
           </select>
     </div>
     <div class="div1">
         <p class="labels">Field:</p>&nbsp;
-          <select  id="category" class="dropdown" (change)="onSelectField($event.target.value)">
-            <option value="" disabled selected hidden>Select an option</option>
-            <option *ngFor="let item of fields; let i = index" [value]="fields[i]">{{fields[i]}}</option>       
+          <select  id="category" class="dropdown" [(ngModel)]="selectedField" [disabled]="fieldenable" (change)="onSelectField($event.target.value)" >
+            <option value="0" disabled selected hidden>Select an option</option>
+            <option *ngFor="let item of fields; let i = index" [value]="fields[i].fieldname">{{fields[i].fieldname}}</option>       
           </select>
     </div>
     <br>
@@ -43,8 +43,8 @@
       <tr *ngFor="let t of datatrajectory ; let i = index">
        <td id="col-1">{{datatrajectory[i]}}</td>
        <td id="col-1">
-        <select  id="category" class="selection" (change)="onSelectValue($event.target.value,datatrajectory[i],i)">
-          <option value="" disabled selected hidden>Select an option</option>
+        <select  id="category" class="selection" [(ngModel)]="selectedValue" [disabled]="valueenable" (change)="onSelectValue($event.target.value,datatrajectory[i],i)">
+          <option value="0" disabled selected hidden>Select an option</option>
           <option *ngFor="let item of values; let i = index" [value]="values[i]">{{values[i]}}</option>       
         </select>
        </td>

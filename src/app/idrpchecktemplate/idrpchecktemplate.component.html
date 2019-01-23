@@ -1,0 +1,80 @@
+<div>
+  <br>
+Choose Template
+<br>
+<div class="selection">
+    <ng-multiselect-dropdown class="multi"
+    [placeholder]="'Select TA'"
+    [data]="Ta"
+    [(ngModel)]="selectedTa"
+    [settings]="dropdownSettings"
+    (onSelect)="onTaSelect($event)"
+    (onSelectAll)="onTaSelectAll($event)"
+    (onDeSelectAll)="onTaDeSelectAll($event)"
+    (onDeSelect)="onTaDeSelect($event)"
+  >
+  </ng-multiselect-dropdown> &nbsp;&nbsp;
+  <ng-multiselect-dropdown class="multi"
+  [placeholder]="'Select Compound'"
+  [data]="Compound"
+  [(ngModel)]="selectedComp"
+  [settings]="dropdownSettings"
+  (onSelect)="onCompoundSelect($event)"
+  (onSelectAll)="onCompoundSelectAll($event)"
+  (onDeSelectAll)="onCompoundDeSelectAll($event)"
+  (onDeSelect)="onCompoundDeSelect($event)"
+>
+</ng-multiselect-dropdown> &nbsp;&nbsp;
+<ng-multiselect-dropdown class="multi"
+[placeholder]="'Select Indication'"
+[data]="Indication"
+[(ngModel)]="selectedIndi"
+[settings]="dropdownSettings"
+(onSelect)="onIndicationSelect($event)"
+(onSelectAll)="onIndicationSelectAll($event)"
+(onDeSelectAll)="onIndicationDeSelectAll($event)"
+(onDeSelect)="onIndicationDeSelect($event)"
+>
+</ng-multiselect-dropdown>
+          <div class="search">
+              <form #frm="ngForm" (ngSubmit)="search(frm)">
+          <input type="text" class="textbox" ngModel name="tempname" placeholder="Search Template"> &nbsp;&nbsp;
+          <input type="submit" value="SEARCH"  class="button-3" >
+        </form>
+        </div>
+</div><br>
+<div>
+  <span class="text-align">Active Filters:&nbsp;&nbsp;Clear All&nbsp;</span><mat-icon (click)="removefilters()" class="close">close</mat-icon>
+  <div class="selection"> 
+      <span class="text-align">TA:&nbsp;&nbsp;</span>
+    <ul >
+        <li class="filter" *ngFor="let ta of selectedTa; let i=index">
+            <span class="text-align">{{selectedTa[i].item_text}}&nbsp;</span><mat-icon (click)="removefilters()" class="close">close</mat-icon>
+        </li>
+       
+      </ul>
+  </div>
+  
+</div>
+<br>
+<div>
+
+    <table id="mainTable" >
+        <tr class="table-header-color" >
+          <th >Template Name</th>
+          <th class="desc">Description</th> 
+          <th>TA</th> 
+          <th>Compound</th> 
+          <th>Indication</th> 
+        </tr>
+        <tr *ngFor="let t of template ; let i = index">
+         <td class="title" id="col-1" (click)="showtemplate(template[i].templatename)">{{template[i].templatename}}</td>
+         <td class="desc" id="col-1">{{template[i].description}}</td>
+         <td id="col-1">{{template[i].TA}}</td>
+         <td id="col-1">{{template[i].Compound}}</td>
+         <td id="col-1">{{template[i].Indication}}</td>
+          </tr>
+      </table>
+</div>
+
+</div>

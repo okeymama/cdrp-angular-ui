@@ -1,19 +1,15 @@
-<div id='header'><p mat-dialog-title class="title">
-  Assign Subjects? </p> 
-<mat-icon  class="close-button" (click)="onNoClick()">close </mat-icon>
-</div>
-<hr>
-<div>
+<div class="content">
 
     <div class="linehead"> 
+      <br>
       Description of Associated Subjects
       </div>  <br>
-      <textarea name="name" ngModel  required class="textarea"></textarea>
+      <textarea name="name" ngModel  required class="textarea" (blur)="capture($event)"></textarea>
        <br>
     <hr>  
     <div class="div1">
       <div >
-          <input type="text" [(ngModel)]="searchText" placeholder="search subject" class="searchbox"><br><br>
+          <input type="text" [(ngModel)]="searchText" placeholder=" Search Subject" class="searchbox"><br><br>
         <select id="sbOne" multiple="multiple"class="list" (change)="onSelect($event.target.value)" >
             <option class="highlight" *ngFor="let subject of subjects | filter : searchText" [value]="subject"  >{{subject}}</option>
         </select>
@@ -33,15 +29,11 @@
   </select>
 </div>
     </div>
+    <br>
     <hr>
-    <button class="button-1" (click)="previousDialog()">Go Back</button> 
-    <button class="button-2" (click)="onNoClick()">Cancel</button>
- 
+    <button class="button-1" (click)="save()">Save</button> 
+    <button  mat-dialog-close class="button-2">Cancel</button>
+
  
 </div>
  
-  
-
-    
-
-  

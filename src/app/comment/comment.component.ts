@@ -13,9 +13,9 @@ export class CommentComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
-  addcomment(form){
-    this.id=this.data;
-    this.comment=form.value.name;
+  addcomment(form) {
+    this.id = this.data;
+    this.comment = form.value.name;
     console.log(this.comment);
     console.log(this.id);
     this.dialogRef.close();

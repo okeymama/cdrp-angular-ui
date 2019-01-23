@@ -48,9 +48,9 @@
 
       <ng-container matColumnDef="appliedVisit">
           <th mat-header-cell *matHeaderCellDef mat-sort-header> APPLICABLE VISIT </th>
-          <td mat-cell *matCellDef="let dtForms">{{dtForms.appliedVisit}} &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-              <mat-icon class="icon-color">edit</mat-icon>&nbsp; &nbsp;&nbsp;
-              <mat-icon class="icon-color">file_copy</mat-icon>
+          <td mat-cell *matCellDef="let dtForms;let j;let i = index; let k = index">{{dtForms.appliedVisit.noOfVisits}} Visits <span *ngIf="dtForms.appliedVisit.noOfVisits<10">&nbsp;&nbsp;</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              <mat-icon class="icon-color" (click)="editVisits(j)">{{c}}</mat-icon>&nbsp; &nbsp;&nbsp;
+              <mat-icon class="icon-color" [attr.id]='k' (click)="copyVisits(j, i);changeColor(k)">{{iconState[i]}}</mat-icon>
           </td>
       </ng-container>
 
@@ -81,7 +81,7 @@
 
   <div class="button-div">
       <button class="button-1" >Save and Add Another Data Trajectory</button>
-      <button class="button-1" style="margin-left:15px;">&nbsp;&nbsp;Save&nbsp;&nbsp;</button>
+      <button class="button-1" style="margin-left:15px;" (click)="onSave()">&nbsp;&nbsp;Save&nbsp;&nbsp;</button>
       <button mat-stroked-button style="margin-left:15px;" mat-dialog-close class="button-2">Cancel</button>
   </div>
  

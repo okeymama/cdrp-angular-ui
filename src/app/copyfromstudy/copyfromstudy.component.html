@@ -1,0 +1,68 @@
+<div>
+    <br>
+  Choose STUDY
+  <br>
+  <div class="selection">
+      <ng-multiselect-dropdown class="multi"
+    [placeholder]="'Select TA'"
+    [data]="Ta"
+    [(ngModel)]="selectedTa"
+    [settings]="dropdownSettings"
+    (onSelect)="onTaSelect($event)"
+    (onSelectAll)="onTaSelectAll($event)"
+    (onDeSelectAll)="onTaDeSelectAll($event)"
+    (onDeSelect)="onTaDeSelect($event)"
+  >
+  </ng-multiselect-dropdown> &nbsp;&nbsp;
+  <ng-multiselect-dropdown class="multi"
+  [placeholder]="'Select Compound'"
+  [data]="Compound"
+  [(ngModel)]="selectedComp"
+  [settings]="dropdownSettings"
+  (onSelect)="onCompoundSelect($event)"
+  (onSelectAll)="onCompoundSelectAll($event)"
+  (onDeSelectAll)="onCompoundDeSelectAll($event)"
+  (onDeSelect)="onCompoundDeSelect($event)"
+>
+</ng-multiselect-dropdown> &nbsp;&nbsp;
+<ng-multiselect-dropdown class="multi"
+[placeholder]="'Select Indication'"
+[data]="Indication"
+[(ngModel)]="selectedIndi"
+[settings]="dropdownSettings"
+(onSelect)="onIndicationSelect($event)"
+(onSelectAll)="onIndicationSelectAll($event)"
+(onDeSelectAll)="onIndicationDeSelectAll($event)"
+(onDeSelect)="onIndicationDeSelect($event)"
+>
+</ng-multiselect-dropdown>
+            <div class="search">
+                <form #frm="ngForm" (ngSubmit)="login(frm)">
+            <input type="text" class="textbox" placeholder="Search Study"> &nbsp;&nbsp;
+            <input type="submit" value="SEARCH"  class="button-3" >
+          </form>
+          </div>
+  </div>
+  <div>
+    <br><br>
+  </div>
+  <div>
+  
+      <table id="mainTable" >
+          <tr class="table-header-color">
+            <th >Template Name</th> 
+            <th>TA</th> 
+            <th>Compound</th> 
+            <th>Indication</th> 
+          </tr>
+          <tr *ngFor="let t of template ; let i = index">
+           <td class="title" id="col-1" (click)="showtemplate(template[i].studynumber)">{{template[i].studynumber}}</td>
+           <td id="col-1">{{template[i].TA}}</td>
+           <td id="col-1">{{template[i].Compound}}</td>
+           <td id="col-1">{{template[i].Indication}}</td>
+            </tr>
+        </table>
+  </div>
+  
+  </div>
+  

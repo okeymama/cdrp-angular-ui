@@ -1,0 +1,68 @@
+<div id='header'>
+    <p mat-dialog-title class="title">Visits <br></p> 
+    <button class="close-button" (click)="onClose()"><mat-icon>close </mat-icon></button>
+  </div>
+  <hr>
+
+<div class="align">
+  <div class="align" > 
+    <div clas="div1">
+      <ng-container *ngFor="let d of arr1;let i = index;">
+        <span *ngIf="i==0"><span class="select">Rave EDC</span><br><br></span>
+        <!--<mat-checkbox color="primary" *ngIf="i==0"
+                      (change)="$event ? masterToggle() : null"
+                      [checked]="selection.hasValue() && isAllSelected()"
+                      [indeterminate]="selection.hasValue() && !isAllSelected()">
+                      &nbsp;<span class="select">Select All</span>
+        </mat-checkbox>--><br *ngIf="i==0">
+        <mat-checkbox color="primary"
+                      (click)="addedVisitsEdc(d)"
+                      [checked]="defaultSelectEdc(d)">{{d}}
+        </mat-checkbox>
+      </ng-container>
+    </div>
+    <div class="div2">
+      <ng-container *ngFor="let d of arr2;let i = index;">
+        <br *ngIf="i==0">
+          <mat-checkbox color="primary"
+                      (click)="addedVisitsEdc(d)"
+                      [checked]="defaultSelectEdc(d)">{{d}}<br>
+          </mat-checkbox>
+      </ng-container>
+    </div>
+    <div class="div3">
+      <ng-container *ngFor="let d of arr3;let i = index;">
+        <br *ngIf="i==0">
+          <mat-checkbox color="primary"
+                      (click)="addedVisitsEdc(d)"
+                      [checked]="defaultSelectEdc(d)">{{d}}<br>
+          </mat-checkbox>
+      </ng-container>
+    </div>
+  </div> 
+
+  <mat-divider class="divider" [vertical]=true></mat-divider> 
+    <div clas="div4">
+      <ng-container *ngFor="let d of data.masterData[0].mdr;let i = index;">
+        <span *ngIf="i==0"><span class="select">MDR</span><br><br></span>
+        <!--<mat-checkbox color="primary" *ngIf="i==0"
+                      (change)="$event ? masterToggle1() : null"
+                      [checked]="selection1.hasValue() && isAllSelected1()"
+                      [indeterminate]="selection1.hasValue() && !isAllSelected1()">
+                      &nbsp;<span class="select">Select All</span>
+        </mat-checkbox>--><br *ngIf="i==0">
+        <mat-checkbox color="primary"
+                      (click)="addedVisitsMdr(d)"
+                      [checked]="defaultSelectMdr(d)">{{d}}
+        </mat-checkbox>
+      </ng-container>
+    </div>
+</div>
+
+<br>
+<hr>
+  <div class="button-div">
+    <button class="button-1" cdkFocusInitial (click)="onSave()"> &nbsp;&nbsp;Save &nbsp;&nbsp; </button>
+    <button  mat-stroked-button cdstyle="margin-left:15px;" (click)="onClose()" class="button-2">Cancel</button>
+  </div>
+        

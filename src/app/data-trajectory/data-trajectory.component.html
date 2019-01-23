@@ -18,16 +18,21 @@
       <th>ACTIONS</th>
     </tr>
 
-    <tr *ngIf="rowstate[j][i]" >
+    <tr *ngIf="rowstate[j][i]" [class.highlighted]="trajectory[j].content1[i].expectedData === selectedCat && j === selectedTraj">
         
         <td (click)="togglePanel(i,j)"> <mat-icon class="icon-1">{{arrowState[j][i]}}</mat-icon><span class="text-align">{{trajectory[j].content1[i].expectedData}}</span></td>
         <td>{{trajectory[j].content1[i].appliedVisit}}</td>
         <td>{{trajectory[j].content1[i].source}}</td>
         <td>{{trajectory[j].content1[i].dataTransfer}}</td>
         <td>{{trajectory[j].content1[i].criticalData}}</td>
-        <td id="act"><mat-icon (click)="edit(j,i)" class="action-icon">edit</mat-icon><mat-icon class="action-icon">settings</mat-icon>
-        <mat-icon (click)="delete(j,i)" class="action-icon">delete</mat-icon><mat-icon (click)="comment(trajectory[j].content1[i].expectedData)" class="action-icon">insert_comment</mat-icon></td>
- 
+        <td class="action-row" id="act"><div class="align"><mat-icon (click)="edit(j,i)" class="action-icon">edit</mat-icon><mat-icon (click)="settings(trajectory[j].content1[i].expectedData)" class="action-icon">settings</mat-icon> 
+        <mat-icon (click)="delete(j,i)" class="action-icon">delete</mat-icon>
+        <mat-icon (click)="comment(trajectory[j].content1[i].expectedData)" class="action-icon">insert_comment</mat-icon>
+        <div class="add-icon" (click)="addChecks(j,i,trajectory[j].content1[i].expectedData)">
+          <mat-icon class="action-icon">add_circle</mat-icon> 
+        </div>
+        </div>
+        </td>
         </tr> 
    <!-- <tr id="hide-div"><td colspan="6"><div>This is the div</div></td></tr>-->
    <ng-container *ngIf="panelState[j][i]">

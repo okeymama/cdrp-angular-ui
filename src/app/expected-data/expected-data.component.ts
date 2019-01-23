@@ -7,6 +7,7 @@ import { MapExpectedDataFormsComponent } from '../map-expected-data-forms/map-ex
 import { FormData} from '../Study';
 import { AssignSubjectComponent } from '../assign-subject/assign-subject.component';
 import { AddIdrpChecksComponent } from '../add-idrp-checks/add-idrp-checks.component';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-expected-data',
@@ -47,7 +48,8 @@ export class ExpectedDataComponent implements OnInit, OnDestroy {
   ]
 
   studyID: string;
-  constructor(private cdrpService: CdrpService,public dialog: MatDialog,public dialog1: MatDialog,public dialog2: MatDialog) { }
+  category:string;
+  constructor(private cdrpService: CdrpService,public dialog: MatDialog,public dialog1: MatDialog,public dialog2: MatDialog,public snackBar: MatSnackBar) { }
   assign(): void {
     console.log("Assign Subjects");
     const dialogConfig = new MatDialogConfig();
@@ -78,17 +80,26 @@ export class ExpectedDataComponent implements OnInit, OnDestroy {
 
   openAddIdrpChecksDialog():void
   {
-    const dialogRef1 = this.dialog.open(AddIdrpChecksComponent, {
-      width: '500px',
-      height:'500px',
-      data: "here"
-    });
+    this.category = this.cdrpService.getSelectedCategory();
+    if(this.category === 'null')
+    {
+      this.snackBar.open("Select Expected Data Category to add IDRP checks", "close", {
+        duration: 3000,
+      });
+    }
+    else
+    {
+      const dialogRef2 = this.dialog2.open(AddIdrpChecksComponent, {
+      width: '900px',
+      height:'580px',
+      data: this.category
+      });
 
-    dialogRef1.beforeClosed().subscribe(result => {
+      dialogRef2.beforeClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
-    });
+      });
+    }
   }
-
 
 }
