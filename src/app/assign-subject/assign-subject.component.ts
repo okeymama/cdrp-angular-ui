@@ -26,7 +26,7 @@ valueenable:boolean;
 selectedVisit = "0";
 selectedForm = "0";
 selectedField = "0";
-selectedValue = "0";
+selectedValue = ['0', '0', '0', '0']; 
   constructor(public service: CdrpService,public dialog: MatDialog,public dialogRef: MatDialogRef<AssignSubjectComponent>) { }
   onNoClick(): void {
     this.dialogRef.close();
@@ -49,7 +49,7 @@ selectedValue = "0";
   this.valueenable=true;
   this.selectedForm = "0";
   this.selectedField = "0";
-  this.selectedValue = "0";
+  this.selectedValue = ['0', '0', '0', '0']; 
   }
   
 
@@ -66,7 +66,7 @@ selectedValue = "0";
   this.fieldenable=false;
   this.valueenable=true;
   this.selectedField = "0";
-  this.selectedValue = "0";
+  this.selectedValue = ['0', '0', '0', '0']; 
     //this.fields=["Modified SWAT","Acne conglobata","Hirsutism","Orthopnea"];
   }
   onSelectField(selectedValue:any)
@@ -80,7 +80,7 @@ selectedValue = "0";
       }
   }
   this.valueenable=false;
-  this.selectedValue = "0";
+  this.selectedValue = ['0', '0', '0', '0']; 
     //this.values=["John","Smith","Joe","Tim"];
   }
   onSelectValue(selectedValue:any,datatrajectoryvalue:any,id:any)

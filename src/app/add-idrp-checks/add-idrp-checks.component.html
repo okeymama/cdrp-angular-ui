@@ -1,13 +1,13 @@
 <div id="wrapper">
   <div id='header'><p mat-dialog-title class="title">
-     ADD IDRP CHECK</p> 
+     Add IDRP Check to {{data}}</p> 
     <mat-icon  class="close-button" (click)="onNoClick()">close </mat-icon>
     </div>
       <mat-tab-group class="tab">
         <mat-tab label="IDRP CHECK TEMPLATES">
-          <app-idrpchecktemplate></app-idrpchecktemplate>
+          <app-idrpchecktemplate></app-idrpchecktemplate><!--<router-outlet></router-outlet>-->
         </mat-tab>
-        <mat-tab label="CO FROM OTHER STUDY">
+        <mat-tab label="COPY FROM OTHER STUDY">
            <app-copyfromstudy></app-copyfromstudy> 
         </mat-tab>
       </mat-tab-group>

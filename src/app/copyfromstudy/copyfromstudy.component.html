@@ -37,15 +37,29 @@
 >
 </ng-multiselect-dropdown>
             <div class="search">
-                <form #frm="ngForm" (ngSubmit)="login(frm)">
-            <input type="text" class="textbox" placeholder="Search Study"> &nbsp;&nbsp;
+                <form #frm="ngForm" (ngSubmit)="search(frm)">
+                    <input type="text" class="textbox" ngModel name="tempname" placeholder="Search Study"> &nbsp;&nbsp;
             <input type="submit" value="SEARCH"  class="button-3" >
           </form>
           </div>
-  </div>
-  <div>
-    <br><br>
-  </div>
+  </div><br>
+  <div  *ngIf="selectedTa.length !== 0 || selectedComp.length !== 0  || selectedIndi.length !== 0" > 
+      <span class="text-align">Active Filters:</span>
+        
+    <ul >
+        <li class="filter" *ngFor="let ta of selectedTa; let i=index">
+            <span class="text-align">{{selectedTa[i].item_text}}&nbsp;</span><mat-icon (click)="removeTafilter(selectedTa[i])" class="close">close</mat-icon>
+        </li>
+        <li class="filter" *ngFor="let ta of selectedComp; let i=index">
+            <span class="text-align">{{selectedComp[i].item_text}}&nbsp;</span><mat-icon (click)="removeCompfilter(selectedComp[i])" class="close">close</mat-icon>
+        </li>
+        <li class="filter" *ngFor="let ta of selectedIndi; let i=index">
+            <span class="text-align">{{selectedIndi[i].item_text}}&nbsp;</span><mat-icon (click)="removeIndifilter(selectedIndi[i])" class="close">close</mat-icon>
+        </li>
+        <li><span class="text-align">Clear All&nbsp;</span><mat-icon (click)="removefilters()" class="close">close</mat-icon></li>
+      </ul>
+ 
+    </div><br>
   <div>
   
       <table id="mainTable" >
@@ -62,7 +76,9 @@
            <td id="col-1">{{template[i].Indication}}</td>
             </tr>
         </table>
+  </div><br>
+  <div>
+      <button  mat-dialog-close class="cancel">Cancel</button>
   </div>
-  
   </div>
   

@@ -16,14 +16,13 @@
                       [indeterminate]="selection.hasValue() && !isAllSelected()">
                       &nbsp;<span class="select">Select All</span>
         </mat-checkbox><br *ngIf="i==0">
-      <section>
+        <section>
         <mat-checkbox color="primary"
                       (click)="$event.stopPropagation();EdrSelect(d)"
                       (change)="$event ? selection.toggle(d) : null"
                       [checked]="selection.isSelected(d)">{{d}}
         </mat-checkbox>
       </section>
-
     </ng-container>
   </div>
   <div class="div2">
@@ -50,10 +49,22 @@
       </section>
     </ng-container>
   </div>
+  <div class="div4">
+    <ng-container *ngFor="let d of arr4;let i = index;">
+      <br *ngIf="i==0">
+      <section>
+        <mat-checkbox color="primary"
+                      (click)="$event.stopPropagation();EdrSelect(d)"
+                      (change)="$event ? selection.toggle(d) : null"
+                      [checked]="selection.isSelected(d)">{{d}}<br>
+        </mat-checkbox>
+      </section>
+    </ng-container>
+  </div>
   
 </div> 
 <mat-divider class="divider" [vertical]=true></mat-divider> 
-<div clas="div4">
+<div clas="div5">
     <ng-container *ngFor="let d of data.listOfVisits.mdr;let i = index;">
         <span *ngIf="i==0"><span class="select">MDR</span><br><br></span>
         <mat-checkbox color="primary" *ngIf="i==0"

@@ -45,6 +45,7 @@ export class ModifyApplicableVisitsComponent implements OnInit {
   arr1 = [];
   arr2 = [];
   arr3 = [];
+  arr4 = [];
   selectSource = '';
   closeValue: any;
   count = 0;
@@ -79,10 +80,17 @@ export class ModifyApplicableVisitsComponent implements OnInit {
       this.arr3[c] = this.data.listOfVisits.raveEdc[p];
     }
   }
+  if (l > 30) {
+    for (let c = 0, p = 30; c <= 9 && p < l ; c++, p++) {
+      this.arr4[c] = this.data.listOfVisits.raveEdc[p];
+    }
+  }
   console.log('arr1' + this.arr1);
   console.log('arr2' + this.arr2);
   console.log('arr3' + this.arr3);
+  console.log('arr3' + this.arr4);
  }
+
 
   onNoClick(): void {
     this.data.listOfVisits.raveEdc = this.oldEdrList;

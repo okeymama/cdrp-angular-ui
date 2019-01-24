@@ -12,10 +12,11 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 
     constructor(public dialogRef: MatDialogRef<AddIdrpChecksComponent>, @Inject(MAT_DIALOG_DATA) public data: string) { }
   onNoClick(): void {
-    this.dialogRef.close();
+    this.dialogRef.close('closeAll');
   }
   ngOnInit() {
   }
 
+  
 }
   

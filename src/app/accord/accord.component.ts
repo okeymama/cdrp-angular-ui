@@ -149,11 +149,11 @@ color: 'grey'
     })
   }
 
-  navigate(){
+  navigate() {
     this.router.navigate(['main']);
   }
 
-  redirect(id){
+  redirect(id) {
     console.log(id);
     this.service.setid(id);
     this.router.navigate(['nav']);

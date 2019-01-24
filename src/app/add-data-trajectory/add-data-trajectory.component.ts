@@ -29,8 +29,7 @@ export class AddDataTrajectoryComponent implements OnInit {
     raveEdc:['Cycle 1 Day 1','Cycle 1 Day 2','Cycle 1 Day 3','Cycle 1 Day 4','Cycle 1 Day 5','Cycle 1 Day 6','Cycle 1 Day 7','Cycle 1 Day 8','Cycle 1 Day 9','Cycle 1 Day 10',
     'Cycle 2 Day 1','Cycle 2 Day 2','Cycle 2 Day 3','Cycle 2 Day 4','Cycle 2 Day 5','Cycle 2 Day 6','Cycle 2 Day 7','Cycle 2 Day 8','Cycle 2 Day 9','Cycle 2 Day 10',
     'Cycle 3 Day 1','Cycle 3 Day 2','Cycle 3 Day 3','Cycle 3 Day 4','Cycle 3 Day 5','Cycle 3 Day 6','Cycle 3 Day 7','Cycle 3 Day 8','Cycle 3 Day 9','Cycle 3 Day 10', 
-    'Cycle 4 Day 1','Cycle 4 Day 2','Cycle 4 Day 3','Cycle 4 Day 4','Cycle 4 Day 5','Cycle 4 Day 6','Cycle 4 Day 7','Cycle 4 Day 8','Cycle 4 Day 9','Cycle 4 Day 10',
-    'Cycle 5 Day 1', 'Cycle 5 Day 2','Cycle 5 Day 3','Cycle 5 Day 4','Cycle 5 Day 5','Cycle 5 Day 6','Cycle 5 Day 7','Cycle 5 Day 8','Cycle 5 Day 9','Cycle 5 Day 10'],
+    'Cycle 4 Day 1','Cycle 4 Day 2','Cycle 4 Day 3','Cycle 4 Day 4','Cycle 4 Day 5'],
     mdr:['Cycle 1 Day 1','Cycle 1 Day 2','Cycle 1 Day 3','Cycle 1 Day 4','Cycle 1 Day 5','Cycle 1 Day 6']
   }
 
@@ -57,7 +56,7 @@ export class AddDataTrajectoryComponent implements OnInit {
 
   appVisits:applicableVisit =
     {
-      noOfVisits:45,
+      noOfVisits:41,
       visits:this.v2
     }
 
@@ -84,7 +83,7 @@ export class AddDataTrajectoryComponent implements OnInit {
 
   appVisits5:applicableVisit =
     {
-      noOfVisits:45,
+      noOfVisits:41,
       visits:this.v2
     }
 
@@ -210,10 +209,12 @@ export class AddDataTrajectoryComponent implements OnInit {
   c ="edit";
   copySelect ="";
   copySelectIndexs =[];
+  showOptions = false;
 
   check = [];
   /*material sort and display of tables*/
   displayedColumns: string[] = ['select','expectedDataCategory','dataSource','appliedVisit','dataTransferFrequency','criticalData'];
+  displayedColumns1: string[] = [];
   selection = new SelectionModel<dataTrajectoryForms>(true, []);
   dataSource = new MatTableDataSource<dataTrajectoryForms>(this.dtForms);
   @ViewChild(MatSort) sort: MatSort;
@@ -309,7 +310,7 @@ export class AddDataTrajectoryComponent implements OnInit {
   {
     console.log("Selected row" + idx);
     console.log("copied " + this.copySelect);
-    
+
     if(this.copySelect == '')
     {
       this.copySelect = selectRow.expectedDataCategory;
@@ -335,7 +336,13 @@ export class AddDataTrajectoryComponent implements OnInit {
       for(var d =0 ; d < this.dtForms.length;d++)
       {
        this.iconState[d] = "file_copy";
+       this.check[d] = false;
       }
+      for(let c=0; c< this.copySelectIndexs.length; c++) {
+        this.changeColor(this.copySelectIndexs[c]);
+      }
+      this.copySelectIndexs = [];
+      
       //console.log(this.iconState);
     }
     else
@@ -357,19 +364,27 @@ export class AddDataTrajectoryComponent implements OnInit {
         this.copySelectIndexs.push(idx);
       }
     }
+    if(this.copySelectIndexs.length >= 2) {
+      this.showOptions = true;
+    }
+    else {
+      this.showOptions = false;
+    }
     console.log(this.copySelectIndexs);
   }
 
   changeColor(id) {
    // console.log(id);
    // console.log(document.getElementById(id).style.color);
-    if(this.check[id] == true)
+    console.log("change val in color "+this.copySelect);
+    if(this.check[id] === true)
     {
       document.getElementById(id).style.color = '#478300' ;
     }
     else {
       document.getElementById(id).style.color = 'rgb(17, 123, 209)' ;
     }
+   
     console.log(this.check);
   }
 
@@ -390,8 +405,26 @@ export class AddDataTrajectoryComponent implements OnInit {
       }
       this.copySelect = '';
       this.copySelectIndexs = [];
+      this.showOptions = false;
       console.log('copyindex '+this.copySelectIndexs);
 
+  }
+
+  cancelCopy()
+  {
+    this.showOptions = false;
+    for (let c = 0; c < this.copySelectIndexs.length; c++)
+    {
+      document.getElementById(this.copySelectIndexs[c]).style.color = 'rgb(17, 123, 209)';
+    }
+    for(let d =0 ; d < this.dtForms.length;d++)
+    {
+      this.iconState[d] = "file_copy";
+      this.check[d] = false;
+    }
+    this.copySelect = '';
+    this.copySelectIndexs = [];
+    console.log('copyindex '+this.copySelectIndexs);
   }
 
   isAllSelected() {

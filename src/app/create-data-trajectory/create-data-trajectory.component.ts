@@ -27,11 +27,13 @@ export class CreateDataTrajectoryComponent implements OnInit {
 
   createDataTrajectory(form)
   {
+    console.log('navigating' + form.value.trajectoryName);
     this.trajectoryName =  form.value.trajectoryName;
     this.trajectoryDescription = form.value.description;
-    this.onClose();
+    this.dialogRef2.close('closeAll');
     this.cdrpService.setTrajectoryName(this.trajectoryName);
     this.router.navigate(['/nav/trajectory']);
+   
   }
 
   ngOnInit() {

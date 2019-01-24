@@ -58,6 +58,7 @@
  .div1
  {
      height:260px;
+     width:105px !important;
  }
 
 .div2
@@ -78,13 +79,21 @@
 
 .div4
 {
+    margin-top:40px;
+    margin-left:30px;
+    width:105px;
+    height:260px;
+}
+
+.div5
+{
     margin-left:30px;
     height:260px;
 }
 
 .divider
 {
-    margin-left:200px;
+    margin-left:50px;
     margin-right:30px;
 }
 
