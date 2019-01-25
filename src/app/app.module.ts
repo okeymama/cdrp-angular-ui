@@ -44,11 +44,28 @@ import { AddIdrpChecksComponent } from './add-idrp-checks/add-idrp-checks.compon
 import { CreateDuplicateTrajectoryComponent } from './create-duplicate-trajectory/create-duplicate-trajectory.component'; 
 import { AssignSubjectComponent } from './assign-subject/assign-subject.component';
 import { ManualassignsubjectComponent } from './manualassignsubject/manualassignsubject.component'; 
-
-
+import { FilterPipe } from './filter.pipe';
+import { BuisnessruleComponent } from './buisnessrule/buisnessrule.component';
+import { RuleComponent } from './rule/rule.component';
+import { ManualComponent } from './manual/manual.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { ModifyApplicableVisitsComponent } from './modify-applicable-visits/modify-applicable-visits.component';
+import { AddNewVisitComponent } from './add-new-visit/add-new-visit.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown'; 
+import { IdrpchecktemplateComponent } from './idrpchecktemplate/idrpchecktemplate.component';
+import { CopyfromstudyComponent } from './copyfromstudy/copyfromstudy.component';
+import { ShowIdrpTemplateComponent } from './show-idrp-template/show-idrp-template.component';
 
 const appRoutes:Routes = [
   
+ /* {
+    path:'nav/next/idrptemplate',
+    component:IdrpchecktemplateComponent
+  },
+  {
+    path:'nav/next/idrptemplate/temp1',
+    component:CopyfromstudyComponent
+  },*/
   {
     path:'nav',
     component: SideNavbarComponent,
@@ -91,6 +108,7 @@ const appRoutes:Routes = [
     path:'study',
     component:StudyInfoComponent
   }
+  
 
 ]
 
@@ -117,7 +135,16 @@ const appRoutes:Routes = [
     CreateDuplicateTrajectoryComponent,
     AssignSubjectComponent,
     ManualassignsubjectComponent,
-    AddIdrpChecksComponent 
+    BuisnessruleComponent,
+    RuleComponent,
+    ManualComponent,
+    AddIdrpChecksComponent,
+    ModifyApplicableVisitsComponent,
+    AddNewVisitComponent,
+    FilterPipe ,
+    IdrpchecktemplateComponent,
+    ShowIdrpTemplateComponent,
+    CopyfromstudyComponent
    
   ],
   imports: [
@@ -142,10 +169,12 @@ const appRoutes:Routes = [
     MatInputModule,
     MatButtonModule,
     MatSortModule,
+    MatSnackBarModule,
     BrowserAnimationsModule,
     ChartsModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    NgMultiSelectDropDownModule.forRoot() 
   ],
   entryComponents:[
     AddExpectedDataComponent,
@@ -156,9 +185,14 @@ const appRoutes:Routes = [
     DeletetrajectoryComponent,
     AddFormsComponent,
     CreateDuplicateTrajectoryComponent,
+    AddIdrpChecksComponent,
+    ModifyApplicableVisitsComponent,
+    AddNewVisitComponent,
+    BuisnessruleComponent,
+    ManualassignsubjectComponent ,
     AssignSubjectComponent,
-    ManualassignsubjectComponent,
-    AddIdrpChecksComponent
+    ShowIdrpTemplateComponent
+
     
   ],
   providers: [CdrpService],

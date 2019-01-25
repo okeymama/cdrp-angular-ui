@@ -53,10 +53,22 @@ export interface dataTrajectory
 export interface dataTrajectoryForms
 {
       expectedDataCategory:string;
-      appliedVisit:String;
+      appliedVisit:applicableVisit;
       dataSource:string[];
       dataTransferFrequency:string[];
       criticalData:string[];
+}
+
+export interface applicableVisit
+{
+      noOfVisits:number;
+      visits:visitSource;
+}
+
+export interface visitSource
+{
+      raveEdc:string[];
+      mdr:string[];
 }
 
 export interface expectedData

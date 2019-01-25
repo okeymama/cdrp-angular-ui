@@ -11,7 +11,7 @@
     font-style: normal;
     font-family: "Arial Bold","Arial";
     border-radius:4px;
-    margin-left: 120px;
+    margin-left: 690px;
     
 }
 
@@ -29,7 +29,7 @@
     border:none;
     font-style: normal;
     border-radius:4px;
-    margin-left: 220px;
+    margin-left: 780px;
 
 }
 
@@ -68,20 +68,20 @@
     }
     
     .textarea{
-       width: 350px;
-       height: 50px;
+       width: 830px;
+       height: 70px;
         background-color: rgba(255,255,255,1);
-       
+       border-radius: 6px;
     }
     .linehead{
         font-size: 12px;
     }
     .searchbox{
-        width: 150px;
+        width: 390px;
     }
     .list{
-        width: 150px;
-        height: 250px;
+        width: 390px;
+        height: 150px;
         background-color: rgba(255,255,255,1);
         border: gray;
         border-style: solid;
@@ -93,24 +93,23 @@
      .highlight:hover{
         background:grey;
       }
+      hr{
+          width: 830px;
+      }
 
 
-     ul{
-         list-style-type: none;
-         padding-left: 0px;
-         padding-top: 0px;
-         padding-right: 0px;
-     }
+    
      
 
      .action{
-        width: 50px;
+        width: 100px;
 
      }
      .icons{
          padding-left: 10px;
          color: #24347D;
          height:32px;
+         padding-right: 10px;
      }
      .icons:hover{
          cursor: pointer;
@@ -122,3 +121,8 @@
      .selected {
         background:rgb(61, 143, 250);
       }
+      .content{
+          width:800px;
+
+      }
+     

@@ -1,11 +1,14 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
+
+
 @Component({
   selector: 'app-manualassignsubject',
   templateUrl: './manualassignsubject.component.html',
   styleUrls: ['./manualassignsubject.component.css']
 })
+
 export class ManualassignsubjectComponent implements OnInit {
   subjects=[];
   assignedsubjects=[];
@@ -42,10 +45,6 @@ export class ManualassignsubjectComponent implements OnInit {
     }
   }
   back(){
-   // this.assignedsubjects.splice(this.removeid,1);
-    //console.log(this.assignedsubjects);
-    //this.assignedsubject="";
-    //this.removeid=null;
     const index: number = this.assignedsubjects.indexOf(this.assignedsubject);
     if (index !== -1) {
         this.assignedsubjects.splice(index, 1);

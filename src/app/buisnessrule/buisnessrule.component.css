@@ -1,7 +1,6 @@
 
 .title{
     width:600px;
-    font-size: 16px;
 }
 .close-button
 {
@@ -33,13 +32,11 @@
     
 }
 
-
 :host{
     box-sizing: border-box;
     display: block;
     height: 100%;
   }
-
   #wrapper{
     padding: 0px; 
     min-height: 90%; 

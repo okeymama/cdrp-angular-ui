@@ -4,6 +4,8 @@ import { CommentComponent } from '../comment/comment.component';
 import { MatDialogConfig, MatDialog } from '@angular/material';
 import { DeletetrajectoryComponent } from '../deletetrajectory/deletetrajectory.component';
 import { EditdatacategoryComponent } from '../editdatacategory/editdatacategory.component';
+import { CdrpService } from '../cdrp.service';
+import { BuisnessruleComponent } from '../buisnessrule/buisnessrule.component';
 
 @Component({
   selector: 'app-data-trajectory',
@@ -97,20 +99,18 @@ idrpCheck:checks[]=[
 
   ]
   arrow:string[];
-  //state:boolean[][];
   x:number;
   y:number;
+  selectedCat:any;
+  selectedTraj:any;
   
 datacategory:dataTrajectory;
-  //panelState:boolean[][]=[[false,false,false,false],[false,false,false,false],[false,false,false,false]];
- /* arrowState:string[][]=[['keyboard_arrow_right','keyboard_arrow_right','keyboard_arrow_right','keyboard_arrow_right'],
-  ['keyboard_arrow_right','keyboard_arrow_right','keyboard_arrow_right','keyboard_arrow_right'],
-  ['keyboard_arrow_right','keyboard_arrow_right','keyboard_arrow_right','keyboard_arrow_right']
-  ]*/
+
   arrowState=[];
   panelState=[];
   rowstate=[];
-  constructor(public dialog: MatDialog,public dialog1: MatDialog,public dialog2: MatDialog) {
+  selectState=[];
+  constructor(public dialog3: MatDialog,public dialog: MatDialog,public dialog1: MatDialog,public dialog2: MatDialog,private cdrpService: CdrpService) {
     
   }
 comment(expectdata): void {
@@ -125,6 +125,17 @@ comment(expectdata): void {
  const dialogRef = this.dialog.open(CommentComponent,dialogConfig);
 
 }
+settings(expectdata): void {
+  console.log(expectdata);
+  this.cdrpService.selectdatacategory(expectdata);
+  const dialogConfig3 = new MatDialogConfig();
+  dialogConfig3.position = {
+  };
+  dialogConfig3.width='900px';
+  dialogConfig3.height='580px';
+  dialogConfig3.data=expectdata;
+  const dialogRef = this.dialog3.open(BuisnessruleComponent,dialogConfig3);
+  } 
 edit(val1,val2): void {
  
   const dialogConfig2 = new MatDialogConfig();
@@ -148,10 +159,29 @@ delete(expectdata1,expectdata2): void {
   if(result === 'deleted')
   {
   this.rowstate[expectdata1][expectdata2] = !this.rowstate[expectdata1][expectdata2];
-  //console.log(this.trajectory[expectdata1].content1[expectdata2]);
-  //this.trajectory[expectdata1].content1.splice(expectdata2,1);
   }
   }) 
+}
+
+addChecks(trajId,rowId,selectedCat)
+{
+  if(this.selectState[trajId][rowId] == false)
+  {
+    this.selectedCat = selectedCat;
+    this.selectState[trajId][rowId] = true;
+    this.selectedTraj = trajId; 
+  }
+  else
+  {
+    this.selectedCat = 'null';
+    this.selectState[trajId][rowId] = false;
+  }
+  this.cdrpService.setSelectedCategory(this.selectedCat);
+}
+
+selectIcon()
+{
+
 }
 
   ngOnInit() {
@@ -160,19 +190,19 @@ delete(expectdata1,expectdata2): void {
       var arr1 = []
       var arr2 =[]
       var arr3=[]
+      var arr4=[]
       for(var d=0;d<this.dt.length;d++)
       {
         arr1[d] = "keyboard_arrow_right";
         arr2[d] = false;
         arr3[d]=true;
+        arr4[d] = false;
       }
       this.arrowState[c] = arr1;
       this.panelState[c] = arr2;
       this.rowstate[c]=arr3;
+      this.selectState[c]= arr4;
     }
-    console.log(this.arrowState);
-    console.log(this.panelState);
-
   }
 
   togglePanel(indexToToggle,upperIndex)

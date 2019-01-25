@@ -1,0 +1,17 @@
+
+      <div id="wrapper">
+          <div id='header'><p mat-dialog-title class="title">
+              Buisness Rule on {{data}} </p> 
+            <mat-icon  class="close-button" (click)="onNoClick()">close </mat-icon>
+            </div>
+              <mat-tab-group class="tab">
+                <mat-tab label="RULE">
+                    <app-rule></app-rule>
+                </mat-tab>
+                <mat-tab label="MANUAL">
+                    <app-manual></app-manual>
+                </mat-tab>
+              </mat-tab-group>
+        </div>
+   
+    
