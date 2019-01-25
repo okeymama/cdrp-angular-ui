@@ -13,8 +13,8 @@ import { NgModel } from '@angular/forms';
 
 export class AddFormsComponent implements OnInit {
 
-  listOfForms:string[]=[
-    "Vital Sign 1", "Vital Sign 2", "Informed Consent","Physical Examination","Dosing Related to Pharmacokin","Imaging"
+  listOfForms: string[] = [
+    'Vital Sign 1', 'Vital Sign 2', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging'
   ];
 
   displayedColumns: string[] = ['select'];
@@ -25,9 +25,9 @@ export class AddFormsComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data) { }
 
   ngOnInit() {
-    this.dataSource.filterPredicate = function(data,filter):boolean{
+    this.dataSource.filterPredicate = function(data, filter): boolean {
       return data.toLowerCase().includes(filter);
-    }
+    };
   }
 
   applyFilter(filterValue: string) {
@@ -38,13 +38,11 @@ export class AddFormsComponent implements OnInit {
     this.dialogRef.close();
   }
 
-  submit()
-  {
-    console.log("in submit");
+  submit() {
+    console.log('in submit');
   }
 
-  searchForms(searchValue)
-  {
+  searchForms(searchValue) {
     console.log(searchValue);
   }
 
@@ -52,7 +50,7 @@ export class AddFormsComponent implements OnInit {
     const numSelected = this.selection.selected.length;
     const numRows = this.dataSource.data.length;
     return numSelected === numRows;
-    
+
   }
 
   masterToggle() {

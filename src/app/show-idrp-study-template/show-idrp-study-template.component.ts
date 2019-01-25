@@ -3,13 +3,13 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { checks} from '../tableData';
 import { MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
-
 @Component({
-  selector: 'app-show-idrp-template',
-  templateUrl: './show-idrp-template.component.html',
-  styleUrls: ['./show-idrp-template.component.css']
+  selector: 'app-show-idrp-study-template',
+  templateUrl: './show-idrp-study-template.component.html',
+  styleUrls: ['./show-idrp-study-template.component.css']
 })
-export class ShowIdrpTemplateComponent implements OnInit, OnDestroy {
+export class ShowIdrpStudyTemplateComponent implements OnInit, OnDestroy {
+
   datacategoriesoptions = [];
   purposeoptions = [];
   rolesoptions = [];
@@ -18,7 +18,7 @@ export class ShowIdrpTemplateComponent implements OnInit, OnDestroy {
   displayedColumns: string[] = ['select', 'expectedDataCategory', 'purpose', 'description', 'role', 'method', 'frequency'];
   selection = new SelectionModel<{}>(true, []);
   dataSource = new MatTableDataSource<checks>(this.data.fields);
-  constructor(public dialogRef2: MatDialogRef<ShowIdrpTemplateComponent>,
+  constructor(public dialogRef2: MatDialogRef<ShowIdrpStudyTemplateComponent>,
     @Inject(MAT_DIALOG_DATA) public data) { }
 
     ngOnInit() {

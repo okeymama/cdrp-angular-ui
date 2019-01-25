@@ -45,20 +45,23 @@ display: flex;
     align-self:flex-start;
     width: 100px
 }
+.actiondiv{
+    display: flex;
+}
+
 .button-1
 {
     background-color:  rgba(36, 52, 125,1);
     color:white;
     font-size: 12px;
     font-weight: 700;
-    position: absolute;
-    width: 53px;
+    width: 63px;
     height: 32px;
     border:none;
     font-style: normal;
     font-family: "Arial Bold","Arial";
     border-radius:4px;
-    margin-left: 120px;
+    margin-left: 100px;
     
 }
 
@@ -70,16 +73,14 @@ display: flex;
     font-size: 12px;
     font-weight: 400;
     margin-left: 30px;
-    position: absolute;
-    width: 49px;
+    width: 63px;
     height: 32px;
     border:none;
     font-style: normal;
     border-radius:4px;
-    margin-left: 190px;
+    margin-left: 20px;
 
 }
-
  .button-1:hover
     {
         background-color:rgba(33, 123, 192,1);

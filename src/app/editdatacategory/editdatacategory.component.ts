@@ -9,11 +9,11 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 })
 export class EditdatacategoryComponent implements OnInit {
   editField: string;
-  updateddt:dataTrajectory;
+  updateddt: dataTrajectory;
   constructor(public dialogRef1: MatDialogRef< EditdatacategoryComponent>, @Inject(MAT_DIALOG_DATA) public data: dataTrajectory) {
-    this.updateddt=this.data;
+    this.updateddt = this.data;
    }
-  
+
  updateList(property: string, event: any) {
     const editField = event.target.textContent;
    // this.updateddt[property] = editField;
@@ -21,9 +21,9 @@ export class EditdatacategoryComponent implements OnInit {
   }
   changeValue( property: string, event: any) {
     this.editField = event.target.textContent;
-    //console.log(event.target.textContent);
+    // console.log(event.target.textContent);
   }
-  save(){
+  save() {
    // console.log(this.updateddt);
     this.dialogRef1.close();
   }

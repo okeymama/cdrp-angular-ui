@@ -111,6 +111,7 @@ table {
      margin-left:20px;
      height:30px;
      font-size: 12px;
+     border-radius: 6px;
  }
 
  .button-1:hover

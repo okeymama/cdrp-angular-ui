@@ -7,8 +7,8 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
   styleUrls: ['./comment.component.css']
 })
 export class CommentComponent implements OnInit {
-  comment:string;
-  id:string;
+  comment: string;
+  id: string;
   constructor(public dialogRef: MatDialogRef<CommentComponent>, @Inject(MAT_DIALOG_DATA) public data: string) { }
   onNoClick(): void {
     this.dialogRef.close();

@@ -7,68 +7,67 @@ import { Router } from '../../../node_modules/@angular/router';
   styleUrls: ['./side-navbar.component.css']
 })
 export class SideNavbarComponent implements OnInit {
-  constructor(private router: Router) { }
-
-  arrow:string='arrow_forward_ios';
-  arrowClose:string='arrow_back_ios';
-  isExpanded:boolean=true;
-  check:boolean=true;
-
-  ngOnInit() {
-    console.log("in nav bar");
+  constructor(private router: Router) {
   }
 
-  changeIcon(){
+  arrow = 'arrow_forward_ios';
+  arrowClose = 'arrow_back_ios';
+  isExpanded = true;
+  check = true;
+
+  ngOnInit() {
+    console.log('in nav bar');
+    if (this.router.url === '/nav/study') {
+      console.log(this.router.url);
+      document.getElementById('side-content').style.backgroundColor = 'rgb(242,242,242)';
+    } else {
+      document.getElementById('side-content').style.backgroundColor = 'white';
+    }
+    console.log(this.router.url);
+  }
+
+  changeIcon() {
     this.isExpanded = !this.isExpanded;
     console.log(document.getElementById('side-content').style.marginLeft);
     document.getElementById('side-content').style.marginLeft = '190px';
     console.log(document.getElementById('side-content').style.width);
-    if(this.arrow == 'arrow_forward_ios')
-    {
-      this.arrow = '';  
-    }
-    else
-    {
+    if (this.arrow === 'arrow_forward_ios') {
+      this.arrow = '';
+    } else {
       this.arrow = 'arrow_forward_ios';
     }
 
   }
 
-  changeIcon1(){
+  changeIcon1() {
     this.isExpanded = !this.isExpanded;
     console.log(document.getElementById('side-content').style.marginLeft);
     document.getElementById('side-content').style.marginLeft = '57px';
     console.log(document.getElementById('side-content').style.width);
-    
-    if(this.arrow == 'arrow_forward_ios')
-    {
-      this.arrow = '';  
-    }
-    else
-    {
+
+    if (this.arrow === 'arrow_forward_ios') {
+      this.arrow = '';
+    } else {
       this.arrow = 'arrow_forward_ios';
     }
 
   }
 
-  changeBackgorund()
-  {
-    console.log("in change color");
+  changeBackground() {
+    console.log('in change color');
     console.log(document.getElementById('side-content').style.backgroundColor);
-    document.getElementById('side-content').style.backgroundColor = "white";
-    console.log(document.getElementById('side-content').style.backgroundColor);
-  }
-
-  changeBackgorund1()
-  {
-    console.log("in change color");
-    console.log(document.getElementById('side-content').style.backgroundColor);
-    document.getElementById('side-content').style.backgroundColor = "rgb(242,242,242)";
+    document.getElementById('side-content').style.backgroundColor = 'white';
     console.log(document.getElementById('side-content').style.backgroundColor);
   }
 
-  navigate()
-  {
+  changeBackground1() {
+    console.log('in change color');
+    console.log(document.getElementById('side-content').style.backgroundColor);
+    document.getElementById('side-content').style.backgroundColor = 'rgb(242,242,242)';
+    console.log(document.getElementById('side-content').style.backgroundColor);
+  }
+
+  navigate() {
     this.router.navigate(['study']);
   }
 }

@@ -1,4 +1,4 @@
-import { Tdata, dataTrajectory,checks } from './tableData';
+import { Tdata, dataTrajectory, checks } from './tableData';
 
 /*idrpCheck:checks[]=[
     {

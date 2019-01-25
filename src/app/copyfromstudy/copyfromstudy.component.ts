@@ -4,6 +4,7 @@ import {SelectionModel} from '@angular/cdk/collections';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { checks} from '../tableData';
 import { ShowIdrpTemplateComponent } from '../show-idrp-template/show-idrp-template.component';
+import { ShowIdrpStudyTemplateComponent } from '../show-idrp-study-template/show-idrp-study-template.component';
 
 @Component({
   selector: 'app-copyfromstudy',
@@ -27,35 +28,37 @@ export class CopyfromstudyComponent implements OnInit {
 
   idrpCheck: checks[] = [
     {
-      'category':'Vital sign',
-      'purpose':'Data Quality',
-      'description':'Review for duplicate visits (same date different visit name) in EDC',
-      'visit':'',
-      'role':'CDR',
-      'method':'Analytics',
-      'frequency':'Monthly',
-      'owner':'John Smith',
-      'checkName':'Lorem Ipsusm',
-      'queryText':'',
-      'source':'Template 001',
+      'category': 'Vital sign',
+      'purpose': 'Data Quality',
+      'description': 'Review for duplicate visits (same date different visit name) in EDC',
+      'visit': '',
+      'role': 'CDR',
+      'method': 'Analytics',
+      'frequency': 'Monthly',
+      'owner': 'John Smith',
+      'checkName': 'Lorem Ipsusm',
+      'queryText': '',
+      'source': 'Template 001',
     },
     {
-        'category':'Vital sign',
-        'purpose':'Data Quality',
-        'description':'Review dates against the protocol defined windows and for logic.',
-        'visit':'',
-        'role':'CDR',
-        'method':'LSH Edit Checks, Analytics',
-        'frequency':'Monthly',
-        'owner':'John Smith',
-        'checkName':'Lorem Ipsusm',
+        'category': 'Vital sign',
+        'purpose': 'Data Quality',
+        'description': 'Review dates against the protocol defined windows and for logic.',
+        'visit': '',
+        'role': 'CDR',
+        'method': 'LSH Edit Checks, Analytics',
+        'frequency': 'Monthly',
+        'owner': 'John Smith',
+        'checkName': 'Lorem Ipsusm',
         'queryText': '',
         'source': 'Study M3422',
     },
     {
         'category': 'Vital sign',
         'purpose': 'Data Quality',
-        'description': 'Review for appropriate protocol adherence, sequence of events and logic.  If an unscheduled visit occurs, check for any time-associated procedures (i.e. AEs, pregnancy, ECG, CXR) or entered in error query site to correct',
+        'description': 'Review for appropriate protocol adherence, sequence of events and logic.' +
+        'If an unscheduled visit occurs, check for any time-associated procedures' +
+        '(i.e. AEs, pregnancy, ECG, CXR) or entered in error query site to correct',
         'visit': '',
         'role': 'Remote Monitor',
         'method': 'Manual',
@@ -66,35 +69,37 @@ export class CopyfromstudyComponent implements OnInit {
         'source': 'Template 554 - Modified',
     },
     {
-      'category':'Date of Visit',
-      'purpose':'Data Quality',
-      'description':'Review for duplicate visits (same date different visit name) in EDC',
-      'visit':'',
-      'role':'CDR',
-      'method':'Analytics',
-      'frequency':'Monthly',
-      'owner':'John Smith',
-      'checkName':'Lorem Ipsusm',
-      'queryText':'',
-      'source':'Template 001',
+      'category': 'Date of Visit',
+      'purpose': 'Data Quality',
+      'description': 'Review for duplicate visits (same date different visit name) in EDC',
+      'visit': '',
+      'role': 'CDR',
+      'method': 'Analytics',
+      'frequency': 'Monthly',
+      'owner': 'John Smith',
+      'checkName': 'Lorem Ipsusm',
+      'queryText': '',
+      'source': 'Template 001',
     },
     {
-        'category':'Date of Visit',
-        'purpose':'Data Quality',
-        'description':'Review dates against the protocol defined windows and for logic.',
-        'visit':'',
-        'role':'CDR',
-        'method':'LSH Edit Checks, Analytics',
-        'frequency':'Monthly',
-        'owner':'John Smith',
-        'checkName':'Lorem Ipsusm',
+        'category': 'Date of Visit',
+        'purpose': 'Data Quality',
+        'description': 'Review dates against the protocol defined windows and for logic.',
+        'visit': '',
+        'role': 'CDR',
+        'method': 'LSH Edit Checks, Analytics',
+        'frequency': 'Monthly',
+        'owner': 'John Smith',
+        'checkName': 'Lorem Ipsusm',
         'queryText': '',
         'source': 'Study M3422',
     },
     {
         'category': 'Date of Visit',
         'purpose': 'Data Quality',
-        'description': 'Review for appropriate protocol adherence, sequence of events and logic.  If an unscheduled visit occurs, check for any time-associated procedures (i.e. AEs, pregnancy, ECG, CXR) or entered in error query site to correct',
+        'description': 'Review for appropriate protocol adherence, sequence of events and logic.' +
+        'If an unscheduled visit occurs, check for any time-associated procedures' +
+        '(i.e. AEs, pregnancy, ECG, CXR) or entered in error query site to correct',
         'visit': '',
         'role': 'Remote Monitor',
         'method': 'Manual',
@@ -114,11 +119,11 @@ public selectedComp = [];
 public selectedIndi = [];
 reselected = [];
 public dropdownSettings = {};
-  constructor(public dialog3: MatDialog,public snackBar:MatSnackBar) { }
- 
+  constructor(public dialog3: MatDialog, public snackBar: MatSnackBar) { }
+
   public showtemplate(template: any) {
   console.log(template);
-  const dialogRef2 = this.dialog3.open(ShowIdrpTemplateComponent, {
+  const dialogRef2 = this.dialog3.open(ShowIdrpStudyTemplateComponent, {
     width: '900px',
     height: '580px',
     data: {templateName: template, fields: this.idrpCheck}
@@ -127,13 +132,11 @@ public dropdownSettings = {};
   dialogRef2.beforeClosed().subscribe(result => {
     console.log('The dialog was closed');
     console.log(result);
-    if(result === 'closeAll') {
+    if (result === 'closeAll') {
       dialogRef2.close();
-    }
-    else if (result === 'closeDialogBox') {
+    } else if (result === 'closeDialogBox') {
       console.log('No checks Added');
-    }
-    else if (result === 'addedChecks') {
+    } else if (result === 'addedChecks') {
       console.log('Checks Added');
     }
   });
@@ -173,7 +176,7 @@ public dropdownSettings = {};
   }
   onTaSelectAll(items: any) {
    // this.selectedTa = [];
-    //this.selectedTa = items;
+    // this.selectedTa = items;
     console.log(this.selectedTa);
   }
   onTaDeSelectAll(items: any) {

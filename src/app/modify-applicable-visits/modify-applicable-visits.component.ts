@@ -17,16 +17,26 @@ export class ModifyApplicableVisitsComponent implements OnInit {
 
   masterData: visitSource[] = [
     {
-    raveEdc: ['Cycle 1 Day 1', 'Cycle 1 Day 2', 'Cycle 1 Day 3', 'Cycle 1 Day 4', 'Cycle 1 Day 5', 'Cycle 1 Day 6', 'Cycle 1 Day 7', 'Cycle 1 Day 8', 'Cycle 1 Day 9', 'Cycle 1 Day 10',
-    'Cycle 2 Day 1', 'Cycle 2 Day 2', 'Cycle 2 Day 3', 'Cycle 2 Day 4', 'Cycle 2 Day 5', 'Cycle 2 Day 6', 'Cycle 2 Day 7', 'Cycle 2 Day 8', 'Cycle 2 Day 9', 'Cycle 2 Day 10',
-    'Cycle 3 Day 1', 'Cycle 3 Day 2', 'Cycle 3 Day 3', 'Cycle 3 Day 4', 'Cycle 3 Day 5', 'Cycle 3 Day 6', 'Cycle 3 Day 7', 'Cycle 3 Day 8', 'Cycle 3 Day 9', 'Cycle 3 Day 10',
-    'Cycle 4 Day 1', 'Cycle 4 Day 2', 'Cycle 4 Day 3', 'Cycle 4 Day 4', 'Cycle 4 Day 5', 'Cycle 4 Day 6', 'Cycle 4 Day 7', 'Cycle 4 Day 8', 'Cycle 4 Day 9', 'Cycle 4 Day 10',
-    'Cycle 5 Day 1', 'Cycle 5 Day 2', 'Cycle 5 Day 3', 'Cycle 5 Day 4', 'Cycle 5 Day 5', 'Cycle 5 Day 6', 'Cycle 5 Day 7', 'Cycle 5 Day 8', 'Cycle 5 Day 9', 'Cycle 5 Day 10',
-    'Cycle 6 Day 1', 'Cycle 6 Day 2', 'Cycle 6 Day 3', 'Cycle 6 Day 4', 'Cycle 6 Day 5', 'Cycle 6 Day 6', 'Cycle 6 Day 7', 'Cycle 6 Day 8', 'Cycle 6 Day 9', 'Cycle 6 Day 10',
-    'Cycle 7 Day 1', 'Cycle 7 Day 2', 'Cycle 7 Day 3', 'Cycle 7 Day 4', 'Cycle 7 Day 5', 'Cycle 7 Day 6', 'Cycle 7 Day 7', 'Cycle 7 Day 8', 'Cycle 7 Day 9', 'Cycle 7 Day 10',
-    'Cycle 8 Day 1', 'Cycle 8 Day 2', 'Cycle 8 Day 3', 'Cycle 8 Day 4', 'Cycle 8 Day 5', 'Cycle 8 Day 6', 'Cycle 8 Day 7', 'Cycle 8 Day 8', 'Cycle 8 Day 9', 'Cycle 8 Day 10',
-    'Cycle 9 Day 1', 'Cycle 9 Day 2', 'Cycle 9 Day 3', 'Cycle 9 Day 4', 'Cycle 9 Day 5', 'Cycle 9 Day 6', 'Cycle 9 Day 7', 'Cycle 9 Day 8', 'Cycle 9 Day 9', 'Cycle 9 Day 10',
-    'Cycle 10 Day 1', 'Cycle 10 Day 2', 'Cycle 10 Day 3', 'Cycle 10 Day 4', 'Cycle 10 Day 5', 'Cycle 10 Day 6', 'Cycle 10 Day 7', 'Cycle 10 Day 8', 'Cycle 10 Day 9', 'Cycle 10 Day 10', ],
+    raveEdc: ['Cycle 1 Day 1', 'Cycle 1 Day 2', 'Cycle 1 Day 3', 'Cycle 1 Day 4', 'Cycle 1 Day 5',
+    'Cycle 1 Day 6', 'Cycle 1 Day 7', 'Cycle 1 Day 8', 'Cycle 1 Day 9', 'Cycle 1 Day 10',
+    'Cycle 2 Day 1', 'Cycle 2 Day 2', 'Cycle 2 Day 3', 'Cycle 2 Day 4', 'Cycle 2 Day 5',
+    'Cycle 2 Day 6', 'Cycle 2 Day 7', 'Cycle 2 Day 8', 'Cycle 2 Day 9', 'Cycle 2 Day 10',
+    'Cycle 3 Day 1', 'Cycle 3 Day 2', 'Cycle 3 Day 3', 'Cycle 3 Day 4', 'Cycle 3 Day 5',
+    'Cycle 3 Day 6', 'Cycle 3 Day 7', 'Cycle 3 Day 8', 'Cycle 3 Day 9', 'Cycle 3 Day 10',
+    'Cycle 4 Day 1', 'Cycle 4 Day 2', 'Cycle 4 Day 3', 'Cycle 4 Day 4', 'Cycle 4 Day 5',
+    'Cycle 4 Day 6', 'Cycle 4 Day 7', 'Cycle 4 Day 8', 'Cycle 4 Day 9', 'Cycle 4 Day 10',
+    'Cycle 5 Day 1', 'Cycle 5 Day 2', 'Cycle 5 Day 3', 'Cycle 5 Day 4', 'Cycle 5 Day 5',
+    'Cycle 5 Day 6', 'Cycle 5 Day 7', 'Cycle 5 Day 8', 'Cycle 5 Day 9', 'Cycle 5 Day 10',
+    'Cycle 6 Day 1', 'Cycle 6 Day 2', 'Cycle 6 Day 3', 'Cycle 6 Day 4', 'Cycle 6 Day 5',
+    'Cycle 6 Day 6', 'Cycle 6 Day 7', 'Cycle 6 Day 8', 'Cycle 6 Day 9', 'Cycle 6 Day 10',
+    'Cycle 7 Day 1', 'Cycle 7 Day 2', 'Cycle 7 Day 3', 'Cycle 7 Day 4', 'Cycle 7 Day 5',
+    'Cycle 7 Day 6', 'Cycle 7 Day 7', 'Cycle 7 Day 8', 'Cycle 7 Day 9', 'Cycle 7 Day 10',
+    'Cycle 8 Day 1', 'Cycle 8 Day 2', 'Cycle 8 Day 3', 'Cycle 8 Day 4', 'Cycle 8 Day 5',
+    'Cycle 8 Day 6', 'Cycle 8 Day 7', 'Cycle 8 Day 8', 'Cycle 8 Day 9', 'Cycle 8 Day 10',
+    'Cycle 9 Day 1', 'Cycle 9 Day 2', 'Cycle 9 Day 3', 'Cycle 9 Day 4', 'Cycle 9 Day 5',
+    'Cycle 9 Day 6', 'Cycle 9 Day 7', 'Cycle 9 Day 8', 'Cycle 9 Day 9', 'Cycle 9 Day 10',
+    'Cycle 10 Day 1', 'Cycle 10 Day 2', 'Cycle 10 Day 3', 'Cycle 10 Day 4', 'Cycle 10 Day 5',
+    'Cycle 10 Day 6', 'Cycle 10 Day 7', 'Cycle 10 Day 8', 'Cycle 10 Day 9', 'Cycle 10 Day 10', ],
      mdr: ['Cycle 1 Day 1', 'Cycle 1 Day 2', 'Cycle 1 Day 3', 'Cycle 1 Day 4', 'Cycle 1 Day 5', 'Cycle 1 Day 6',
      'Cycle 2 Day 1', 'Cycle 2 Day 2', 'Cycle 2 Day 3', 'Cycle 2 Day 4', 'Cycle 2 Day 5', 'Cycle 2 Day 6',
      'Cycle 3 Day 1', 'Cycle 3 Day 2', 'Cycle 3 Day 3', 'Cycle 3 Day 4', 'Cycle 3 Day 5', 'Cycle 3 Day 6']
@@ -54,7 +64,6 @@ export class ModifyApplicableVisitsComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data) { }
 
   ngOnInit() {
-    
     this.arrangeVisits();
     this.dataSource1.data.forEach(row => this.selection1.select(row));
     this.dataSource.data.forEach(row => this.selection.select(row));
@@ -99,17 +108,12 @@ export class ModifyApplicableVisitsComponent implements OnInit {
   }
 
   isAllSelected() {
-   //  console.log("is All Selected");
     const numSelected = this.selection.selected.length;
-   // console.log("from selection  "+numSelected);
     const numRows = this.dataSource.data.length;
-   // console.log("from rows  "+numRows);
-   // console.log(this.data.listOfVisits.raveEdc);
     return numSelected === numRows;
   }
 
   masterToggle() {
-    // console.log("Master Toggle");
     this.isAllSelected() ?
         this.selection.clear() :
         this.dataSource.data.forEach(row => this.selection.select(row));
@@ -137,14 +141,10 @@ export class ModifyApplicableVisitsComponent implements OnInit {
       });
 
       dialogRef2.beforeClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      console.log(result);
-      if(result !== 'closeAll')
-      {
+      if (result !== 'closeAll') {
       this.data.listOfVisits.raveEdc = result.raveEdc;
       this.data.listOfVisits.mdr = result.mdr;
-      // console.log(this.data.listOfVisits.raveEdc);
-      // console.log(this.data.listOfVisits.mdr);
+
       this.arrangeVisits();
       }
       });
@@ -152,7 +152,7 @@ export class ModifyApplicableVisitsComponent implements OnInit {
   }
 
   addVisits1(formValue) {
-    console.log (formValue);
+
     if (this.selectSource === '') {
       this.snackBar.open('Select the Source to add a new visit', 'close', {
         duration: 3000,
@@ -173,40 +173,34 @@ export class ModifyApplicableVisitsComponent implements OnInit {
         console.log(result);
         this.data.listOfVisits.raveEdc = result.raveEdc;
         this.data.listOfVisits.mdr = result.mdr;
-        // console.log(this.data.listOfVisits.raveEdc);
-        // console.log(this.data.listOfVisits.mdr);
         this.arrangeVisits();
         });
     }
   }
 
 
-  EdrSelectAll()
-  {
-    console.log("final select all");
+  EdrSelectAll() {
+    console.log('final select all');
     console.log(this.isAllSelected());
-    if (!this.isAllSelected())
-    {
+    if (!this.isAllSelected()) {
       this.finalEdr = Object.assign([], this.data.listOfVisits.raveEdc);
-    }
-    else {
+    } else {
       this.finalEdr = [];
     }
     console.log(this.finalEdr);
-    //console.log(this.data.listOfVisits.raveEdc);
+
   }
 
   EdrSelect(item) {
     console.log(item);
     console.log(this.selection.isSelected(item));
-    console.log(this.selection.hasValue() +"  "+ !this.isAllSelected() );
-    let i = this.finalEdr.indexOf(item);
-    if( i > -1 && this.selection.isSelected(item)) {
-      console.log("Present i = "+i+ "sel val = "+ this.selection.isSelected(item));
+    console.log(this.selection.hasValue() + '  ' + !this.isAllSelected() );
+    const i = this.finalEdr.indexOf(item);
+    if ( i > -1 && this.selection.isSelected(item)) {
+      console.log('Present i = ' + i + 'sel val = ' + this.selection.isSelected(item));
       this.finalEdr.splice(i , 1);
-    }
-    else if (i <= -1 && !this.selection.isSelected(item)) {
-      console.log("NOT Present i = "+i+ "sel val = "+ this.selection.isSelected(item));
+    } else if (i <= -1 && !this.selection.isSelected(item)) {
+      console.log('NOT Present i = ' + i + 'sel val = ' + this.selection.isSelected(item));
       this.finalEdr.push(item);
     }
     console.log(this.finalEdr);
@@ -215,46 +209,39 @@ export class ModifyApplicableVisitsComponent implements OnInit {
   MdrSelectAll() {
 
     console.log(!this.isAllSelected1());
-    if (!this.isAllSelected1())
-    {
+    if (!this.isAllSelected1()) {
       this.finalMdr = Object.assign([], this.data.listOfVisits.mdr);
-    }
-    else {
+    } else {
       this.finalMdr = [];
     }
-    console.log(this.finalMdr);
-    //console.log(this.data.listOfVisits.mdr);
   }
 
   MdrSelect(item) {
 
     console.log(item);
     console.log(this.selection1.isSelected(item));
-    console.log(this.selection1.hasValue() +"  "+ !this.isAllSelected1() );
-    let i = this.finalMdr.indexOf(item);
+    console.log(this.selection1.hasValue() + '  ' + !this.isAllSelected1() );
+    const i = this.finalMdr.indexOf(item);
     if ( i > -1 && this.selection1.isSelected(item)) {
-      console.log("Present i = "+i+ "sel val = "+ this.selection1.isSelected(item));
+      console.log('Present i = ' + i + 'sel val = ' + this.selection1.isSelected(item));
       this.finalMdr.splice(i , 1);
-    }
-    else if (i <= -1 && !this.selection1.isSelected(item)) {
-      console.log("NOT Present i = "+i+ "sel val = "+ this.selection1.isSelected(item));
+    } else if (i <= -1 && !this.selection1.isSelected(item)) {
+      console.log('NOT Present i = ' + i + 'sel val = ' + this.selection1.isSelected(item));
       this.finalMdr.push(item);
     }
     console.log(this.finalMdr);
   }
 
- 
+
   sourceSelected(s) {
     this.selectSource = s;
   }
 
   onSave() {
-    if (this.finalEdr.length <= 0 && this.finalMdr.length <= 0 )
-    {
+    if (this.finalEdr.length <= 0 && this.finalMdr.length <= 0 ) {
       this.dialogRef.close('noChanges');
-      
-    }
-    else {
+
+    } else {
     this.data.listOfVisits.raveEdc = this.finalEdr;
     this.data.listOfVisits.mdr = this.finalMdr;
     console.log(this.data.listOfVisits.raveEdc);
