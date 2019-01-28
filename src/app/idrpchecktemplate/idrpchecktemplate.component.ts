@@ -22,7 +22,9 @@ public template = [
     'Indication': 'Lorem ipsum'
   }, {
     'templatename': 'Template 2',
-    'description': 'Review for appropriate protocol adherence, sequence of events and logic.  If an unscheduled visit occurs, check for any time-associated procedures (i.e. AEs, pregnancy, ECG, CXR) or entered in error query site to correct.',
+    'description': 'Review for appropriate protocol adherence, sequence of events and logic.' +
+    'If an unscheduled visit occurs, check for any time-associated procedures' +
+    ' (i.e. AEs, pregnancy, ECG, CXR) or entered in error query site to correct.',
     'TA': 'Lorem ipsum dolor sit amet, consectetur',
     'Compound': 'Lorem ipsum',
     'Indication': 'Lorem ipsum'
@@ -31,35 +33,37 @@ public template = [
 
 idrpCheck: checks[] = [
   {
-    'category':'Vital sign',
-    'purpose':'Data Quality',
-    'description':'Review for duplicate visits (same date different visit name) in EDC',
-    'visit':'',
-    'role':'CDR',
-    'method':'Analytics',
-    'frequency':'Monthly',
-    'owner':'John Smith',
-    'checkName':'Lorem Ipsusm',
-    'queryText':'',
-    'source':'Template 001',
+    'category': 'Vital sign',
+    'purpose': 'Data Quality',
+    'description': 'Review for duplicate visits (same date different visit name) in EDC',
+    'visit': '',
+    'role': 'CDR',
+    'method': 'Analytics',
+    'frequency': 'Monthly',
+    'owner': 'John Smith',
+    'checkName': 'Lorem Ipsusm',
+    'queryText': '',
+    'source': 'Template 001',
   },
   {
-      'category':'Vital sign',
-      'purpose':'Data Quality',
-      'description':'Review dates against the protocol defined windows and for logic.',
-      'visit':'',
-      'role':'CDR',
-      'method':'LSH Edit Checks, Analytics',
-      'frequency':'Monthly',
-      'owner':'John Smith',
-      'checkName':'Lorem Ipsusm',
+      'category': 'Vital sign',
+      'purpose': 'Data Quality',
+      'description': 'Review dates against the protocol defined windows and for logic.',
+      'visit': '',
+      'role': 'CDR',
+      'method': 'LSH Edit Checks, Analytics',
+      'frequency': 'Monthly',
+      'owner': 'John Smith',
+      'checkName': 'Lorem Ipsusm',
       'queryText': '',
       'source': 'Study M3422',
   },
   {
       'category': 'Vital sign',
       'purpose': 'Data Quality',
-      'description': 'Review for appropriate protocol adherence, sequence of events and logic.  If an unscheduled visit occurs, check for any time-associated procedures (i.e. AEs, pregnancy, ECG, CXR) or entered in error query site to correct',
+      'description': 'Review for appropriate protocol adherence, sequence of events and logic.' +
+      'If an unscheduled visit occurs, check for any time-associated procedures' +
+      '(i.e. AEs, pregnancy, ECG, CXR) or entered in error query site to correct',
       'visit': '',
       'role': 'Remote Monitor',
       'method': 'Manual',
@@ -70,35 +74,37 @@ idrpCheck: checks[] = [
       'source': 'Template 554 - Modified',
   },
   {
-    'category':'Date of Visit',
-    'purpose':'Data Quality',
-    'description':'Review for duplicate visits (same date different visit name) in EDC',
-    'visit':'',
-    'role':'CDR',
-    'method':'Analytics',
-    'frequency':'Monthly',
-    'owner':'John Smith',
-    'checkName':'Lorem Ipsusm',
-    'queryText':'',
-    'source':'Template 001',
+    'category': 'Date of Visit',
+    'purpose': 'Data Quality',
+    'description': 'Review for duplicate visits (same date different visit name) in EDC',
+    'visit': '',
+    'role': 'CDR',
+    'method': 'Analytics',
+    'frequency': 'Monthly',
+    'owner': 'John Smith',
+    'checkName': 'Lorem Ipsusm',
+    'queryText': '',
+    'source': 'Template 001',
   },
   {
-      'category':'Date of Visit',
-      'purpose':'Data Quality',
-      'description':'Review dates against the protocol defined windows and for logic.',
-      'visit':'',
-      'role':'CDR',
-      'method':'LSH Edit Checks, Analytics',
-      'frequency':'Monthly',
-      'owner':'John Smith',
-      'checkName':'Lorem Ipsusm',
+      'category': 'Date of Visit',
+      'purpose': 'Data Quality',
+      'description': 'Review dates against the protocol defined windows and for logic.',
+      'visit': '',
+      'role': 'CDR',
+      'method': 'LSH Edit Checks, Analytics',
+      'frequency': 'Monthly',
+      'owner': 'John Smith',
+      'checkName': 'Lorem Ipsusm',
       'queryText': '',
       'source': 'Study M3422',
   },
   {
       'category': 'Date of Visit',
       'purpose': 'Data Quality',
-      'description': 'Review for appropriate protocol adherence, sequence of events and logic.  If an unscheduled visit occurs, check for any time-associated procedures (i.e. AEs, pregnancy, ECG, CXR) or entered in error query site to correct',
+      'description': 'Review for appropriate protocol adherence, sequence of events and logic.'
+      + 'If an unscheduled visit occurs, check for any time-associated procedures ' +
+      '(i.e. AEs, pregnancy, ECG, CXR) or entered in error query site to correct',
       'visit': '',
       'role': 'Remote Monitor',
       'method': 'Manual',
@@ -118,8 +124,8 @@ idrpCheck: checks[] = [
   selectedComp = [];
   selectedIndi = [];
   dropdownSettings = {};
-  constructor(public dialog2: MatDialog,public snackBar:MatSnackBar) { }
-  
+  constructor(public dialog2: MatDialog, public snackBar: MatSnackBar) { }
+
   public showtemplate(template: any) {
   console.log(template);
   const dialogRef2 = this.dialog2.open(ShowIdrpTemplateComponent, {
@@ -131,19 +137,17 @@ idrpCheck: checks[] = [
   dialogRef2.beforeClosed().subscribe(result => {
     console.log('The dialog was closed');
     console.log(result);
-    if(result === 'closeAll') {
+    if (result === 'closeAll') {
       dialogRef2.close();
-    }
-    else if (result === 'closeDialogBox') {
+    } else if (result === 'closeDialogBox') {
       console.log('No checks Added');
-    }
-    else if (result === 'addedChecks') {
+    } else if (result === 'addedChecks') {
       console.log('Checks Added');
     }
   });
 
   }
-  
+
   public search(form) {
 
     if  (this.selectedTa.length === 0 && this.selectedComp.length === 0  && this.selectedIndi.length === 0 && form.value.tempname === '') {

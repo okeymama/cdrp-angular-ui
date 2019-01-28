@@ -12,44 +12,41 @@ import { CdrpService } from '../cdrp.service';
 })
 export class StudyInfoComponent implements OnInit {
 
-  index:number=0;
-  currentPage:String='';
-  tdata :Tdata[]=[ 
-    { "event":"FSS",
-      "planned":"auto populated",
-      "actual":"auto populated"
+  index = 0;
+  currentPage: String = '';
+  tdata: Tdata[] = [
+    { 'event': 'FSS',
+      'planned': 'auto populated',
+      'actual': 'auto populated'
     },
-    { "event":"FSFV",
-      "planned":"auto populated",
-      "actual":"auto populated"
+    { 'event': 'FSFV',
+      'planned': 'auto populated',
+      'actual': 'auto populated'
     },
-    { "event":"LSLV",
-      "planned":"auto populated",
-      "actual":"auto populated"
+    { 'event': 'LSLV',
+      'planned': 'auto populated',
+      'actual': 'auto populated'
     },
-    { "event":"Database Lock",
-      "planned":"auto populated",
-      "actual":"auto populated"
+    { 'event': 'Database Lock',
+      'planned': 'auto populated',
+      'actual': 'auto populated'
     },
-    { "event":"CSR",
-      "planned":"auto populated",
-      "actual":"auto populated"
+    { 'event': 'CSR',
+      'planned': 'auto populated',
+      'actual': 'auto populated'
     }
 ];
 
   data: StudyInfo;
 
-  constructor(private http: Http,private cdrpService: CdrpService) { }
+  constructor(private http: Http, private cdrpService: CdrpService) { }
 
   ngOnInit() {
-    console.log("in here:");
-    this.cdrpService.getProducts().subscribe((res:Response) =>
-    {
-       this.data = res.json()
+    console.log('in here:');
+    this.cdrpService.getProducts().subscribe((res: Response) => {
+       this.data = res.json();
        console.log(res);
-    })
-    //console.log(res);
-
+    });
   }
 
 }

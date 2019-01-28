@@ -20,8 +20,8 @@
   <div class="div-align">
     <div class="div-align-1" (click)="previousDialog()"><mat-icon class="back-icon">arrow_back_ios</mat-icon>&nbsp;<span class="back-button">GO BACK</span></div>
       <div class="div-align-2">
-        <input type="submit" [disabled]="frm.invalid" mat-button value="Create" class="button-1">
-        <button mat-button mat-stroked-button (click)="onClose()" cdkFocusInitial class="button-2">Cancel</button>
+        <input type="submit" [disabled]="frm.invalid" cdkFocusInitial mat-button value="Create" class="button-1">
+        <input type="button" value="Cancel" mat-button mat-stroked-button (click)="onClose()"  class="button-2">
     </div>
   </div>
 </form>

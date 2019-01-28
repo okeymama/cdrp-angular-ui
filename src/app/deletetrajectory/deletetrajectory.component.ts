@@ -12,10 +12,10 @@ export class DeletetrajectoryComponent implements OnInit {
   onNoClick(): void {
     this.dialogRef.close();
   }
-  delete(){
+  delete() {
     console.log(this.data);
-    console.log("deleted");
-    this.dialogRef.close("deleted");
+    console.log('deleted');
+    this.dialogRef.close('deleted');
   }
   ngOnInit() {
   }

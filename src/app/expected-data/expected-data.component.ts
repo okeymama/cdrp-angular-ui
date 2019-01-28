@@ -19,50 +19,52 @@ export class ExpectedDataComponent implements OnInit, OnDestroy {
 
   formData: FormData[] = [
     {
-      "expectedDataForm": "Vital Sign 1",
-      "expectedDataCategory": ["option1", "option2", "option3", "option4", "option5"]
+      'expectedDataForm': 'Vital Sign 1',
+      'expectedDataCategory': ['Vital Sign', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging']
     },
     {
-      "expectedDataForm": "Vital Sign 2",
-      "expectedDataCategory": ["option1", "option2", "option3", "option4", "option5"]
+      'expectedDataForm': 'Vital Sign 2',
+      'expectedDataCategory': ['Vital Sign', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging']
     },
     {
-      "expectedDataForm": "Informed Consent",
-      "expectedDataCategory": ["option1", "option2", "option3", "option4", "option5"]
+      'expectedDataForm': 'Informed Consent',
+      'expectedDataCategory': ['Vital Sign', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging']
     },
     {
-      "expectedDataForm": "Physical Examination",
-      "expectedDataCategory": ["option1", "option2", "option3", "option4", "option5"]
+      'expectedDataForm': 'Physical Examination',
+      'expectedDataCategory': ['Vital Sign', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging']
     },
     {
-      "expectedDataForm": "Dosing Related to Pharmacokin",
-      "expectedDataCategory": ["option1", "option2", "option3", "option4", "option5"]
+      'expectedDataForm': 'Dosing Related to Pharmacokin',
+      'expectedDataCategory': ['Vital Sign', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging']
     },
     {
-      "expectedDataForm": "Dosing Related to Pharmacokin",
-      "expectedDataCategory": ["option1", "option2", "option3", "option4"]
+      'expectedDataForm': 'Dosing Related to Pharmacokin',
+      'expectedDataCategory': ['Vital Sign', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging']
     },
     {
-      "expectedDataForm": "Imaging",
-      "expectedDataCategory": ['option1', "option2", "option3", "option4"]
+      'expectedDataForm': 'Imaging',
+      'expectedDataCategory': ['Vital Sign', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging']
     }
-  ]
+  ];
 
   studyID: string;
   category: string;
   constructor(private router: Router, private cdrpService: CdrpService, public dialog: MatDialog,
     public dialog1: MatDialog, public dialog2: MatDialog, public snackBar: MatSnackBar) { }
 
-  assign(): void {
-    console.log("Assign Subjects");
-    const dialogConfig = new MatDialogConfig();
-    dialogConfig.width = '400px';
-    dialogConfig.height = '650px';
-    const dialogRef = this.dialog1.open( AssignSubjectComponent, dialogConfig);
+    assign(): void {
+      console.log('Assign Subjects');
+      const dialogConfig = new MatDialogConfig();
+      dialogConfig.width = '400px';
+      dialogConfig.height = '100%' ;
+      dialogConfig.maxHeight = '100%';
+      dialogConfig.minHeight = '100%';
+      const dialogRef = this.dialog1.open( AssignSubjectComponent, dialogConfig);
 
-   }
+     }
   ngOnInit() {
-   this.studyID = this.cdrpService.id;  
+   this.studyID = this.cdrpService.id;
   }
 
   ngOnDestroy() {}

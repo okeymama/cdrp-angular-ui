@@ -1,7 +1,7 @@
-import { Bardata } from "./Bardata";
+import { Bardata } from './Bardata';
 
-export class Bar{
+export class Bar {
 constructor(
-public chartData:Bardata[] 
-){}
-} 
+public chartData: Bardata[]
+) {}
+}

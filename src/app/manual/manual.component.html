@@ -24,7 +24,7 @@
     </div>
 <div>
   Assigned Subjects<br><br>
-  <select id="sbOne" multiple="multiple"class="list" (change)="onDeSelect($event.target.value,j)" >
+  <select id="sbOne" multiple="multiple"class="list" (change)="onDeSelect($event.target.value)" >
       <option class="highlight" *ngFor="let assignedsubject of assignedsubjects; let j = index" [value]="assignedsubjects[j]">{{assignedsubjects[j]}}</option>
   </select>
 </div>

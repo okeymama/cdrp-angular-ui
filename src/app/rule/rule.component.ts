@@ -109,9 +109,9 @@ selectedOrValue = '0';
   this.valueenable = false;
   this.selectedValue = '0';
   }
-  onSelectValue(selectedValue: any, datatrajectoryvalue: any, id: any) {
-    this.value = selectedValue;
-    this.subjects[id] = {'trajectory': datatrajectoryvalue, 'value': this.value};  
+  onSelectValue(selectedValue: any) {
+   // this.value = selectedValue;
+   // this.subjects[id] = {'trajectory': datatrajectoryvalue, 'value': this.value};
   }
   onSelectANDVisit(selectedValue: any) {
     console.log(this.visit);
@@ -128,7 +128,6 @@ selectedOrValue = '0';
   this.selectedAndValue = '0';
   }
   onSelectANDDataCategory(selectedValue: any) {
-  //  this.datacategory = selectedValue;
     console.log(this.datacategory);
     for (let i = 0; i < this.anddatacategories.length; i++) {
       if (this.anddatacategories[i].formname === selectedValue) {
@@ -152,9 +151,9 @@ selectedOrValue = '0';
   this.andvalueenable = false;
   this.selectedAndValue = '0';
   }
-  onSelectANDValue(selectedValue: any, datatrajectoryvalue: any, id: any) {
-    this.value = selectedValue;
-    this.subjects[id] = {'trajectory': datatrajectoryvalue, 'value': this.value};  
+  onSelectANDValue(selectedValue: any) {
+    // this.value = selectedValue;
+    // this.subjects[id] = {'trajectory': datatrajectoryvalue, 'value': this.value};
   }
   onSelectOrVisit(selectedValue: any) {
     console.log(this.visit);
@@ -195,9 +194,9 @@ selectedOrValue = '0';
   this.orvalueenable = false;
   this.selectedOrValue = '0';
   }
-  onSelectOrValue(selectedValue: any, datatrajectoryvalue: any, id: any) {
-    this.value = selectedValue;
-    this.subjects[id] = {'trajectory': datatrajectoryvalue, 'value': this.value};  
+  onSelectOrValue(selectedValue: any) {
+    // this.value = selectedValue;
+   // this.subjects[id] = {'trajectory': datatrajectoryvalue, 'value': this.value};
   }
   onSelectForm(selectedValue: any) {
     this.form = selectedValue;
@@ -221,14 +220,14 @@ selectedOrValue = '0';
     this.forms = ['Medication', 'Treatment', 'Analysis'];
     this.frequencies = ['Daily', 'Weekly', 'Monthly', 'Quarterly', 'Yearly'];
     this.andfieldenable = true;
-this.anddataenable = true;
-this.andvalueenable = true;
-this.orfieldenable = true;
-this.ordataenable = true;
-this.orvalueenable = true;
-this.fieldenable = true;
-this.dataenable = true;
-this.valueenable = true;
+    this.anddataenable = true;
+    this.andvalueenable = true;
+    this.orfieldenable = true;
+    this.ordataenable = true;
+    this.orvalueenable = true;
+    this.fieldenable = true;
+    this.dataenable = true;
+    this.valueenable = true;
   }
 
 }

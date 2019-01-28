@@ -1,6 +1,6 @@
-export class Bardata{
+export class Bardata {
     constructor(
-    public data =[] 
-){}
-} 
- 
+    public data = []
+) {}
+}
+

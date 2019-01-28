@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpModule }    from '@angular/http';
+import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {RouterModule, Routes} from '@angular/router';
@@ -8,7 +8,7 @@ import {MatSidenavModule} from '@angular/material';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material';
 import {MatIconModule} from '@angular/material';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations'; 
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { SideNavbarComponent } from './side-navbar/side-navbar.component';
 import { MatListModule } from '@angular/material';
 import { AppComponent } from './app.component';
@@ -26,24 +26,24 @@ import { IdrpCheckComponent } from './idrp-check/idrp-check.component';
 import { DataTrajectoryComponent } from './data-trajectory/data-trajectory.component';
 import { AppliedVisitsComponent } from './applied-visits/applied-visits.component';
 import { CriticalDataComponent } from './critical-data/critical-data.component';
-import { ChartsModule } from 'ng2-charts'; 
+import { ChartsModule } from 'ng2-charts';
 import {MatDialogModule, MAT_DIALOG_DATA} from '@angular/material';
-import {MatFormFieldModule,MatInputModule,MatButtonModule} from '@angular/material';
+import {MatFormFieldModule, MatInputModule, MatButtonModule} from '@angular/material';
 import { AddExpectedDataComponent } from './add-expected-data/add-expected-data.component';
 import { MapExpectedDataFormsComponent } from './map-expected-data-forms/map-expected-data-forms.component';
-import { CreateDataTrajectoryComponent } from './create-data-trajectory/create-data-trajectory.component'
+import { CreateDataTrajectoryComponent } from './create-data-trajectory/create-data-trajectory.component';
 import { AddDataTrajectoryComponent } from './add-data-trajectory/add-data-trajectory.component';
 import { CommentComponent } from './comment/comment.component';
 import { DeletetrajectoryComponent } from './deletetrajectory/deletetrajectory.component';
-import { AddFormsComponent } from './add-forms/add-forms.component'; 
+import { AddFormsComponent } from './add-forms/add-forms.component';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material';
 import {MatSortModule} from '@angular/material/sort';
 import { EditdatacategoryComponent } from './editdatacategory/editdatacategory.component';
 import { AddIdrpChecksComponent } from './add-idrp-checks/add-idrp-checks.component';
-import { CreateDuplicateTrajectoryComponent } from './create-duplicate-trajectory/create-duplicate-trajectory.component'; 
+import { CreateDuplicateTrajectoryComponent } from './create-duplicate-trajectory/create-duplicate-trajectory.component';
 import { AssignSubjectComponent } from './assign-subject/assign-subject.component';
-import { ManualassignsubjectComponent } from './manualassignsubject/manualassignsubject.component'; 
+import { ManualassignsubjectComponent } from './manualassignsubject/manualassignsubject.component';
 import { FilterPipe } from './filter.pipe';
 import { BuisnessruleComponent } from './buisnessrule/buisnessrule.component';
 import { RuleComponent } from './rule/rule.component';
@@ -51,13 +51,14 @@ import { ManualComponent } from './manual/manual.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { ModifyApplicableVisitsComponent } from './modify-applicable-visits/modify-applicable-visits.component';
 import { AddNewVisitComponent } from './add-new-visit/add-new-visit.component';
-import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown'; 
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { IdrpchecktemplateComponent } from './idrpchecktemplate/idrpchecktemplate.component';
 import { CopyfromstudyComponent } from './copyfromstudy/copyfromstudy.component';
 import { ShowIdrpTemplateComponent } from './show-idrp-template/show-idrp-template.component';
+import { ShowIdrpStudyTemplateComponent } from './show-idrp-study-template/show-idrp-study-template.component';
 
-const appRoutes:Routes = [
-  
+const appRoutes: Routes = [
+
  /* {
     path:'nav/next/idrptemplate',
     component:IdrpchecktemplateComponent
@@ -67,37 +68,37 @@ const appRoutes:Routes = [
     component:CopyfromstudyComponent
   },*/
   {
-    path:'nav',
+    path: 'nav',
     component: SideNavbarComponent,
-    children:[
+    children: [
       {
         path: '',
         pathMatch: 'full',
         redirectTo: 'study'
       },
       {
-        path:'study',
-        component:StudyInfoComponent
+        path: 'study',
+        component: StudyInfoComponent
       },
       {
-        path:'next',
+        path: 'next',
         component: ExpectedDataComponent
       },
       {
-        path:'trajectory',
-        component:AddDataTrajectoryComponent
+        path: 'trajectory',
+        component: AddDataTrajectoryComponent
       }
 
     ]
-   
+
   },
   {
-      path:'next',
+      path: 'next',
       component: ExpectedDataComponent
   },
   {
-    path:'',
-    component:AccordComponent
+    path: '',
+    component: AccordComponent
   },
   {
     path: '',
@@ -105,12 +106,12 @@ const appRoutes:Routes = [
     redirectTo: 'study'
   },
   {
-    path:'study',
-    component:StudyInfoComponent
+    path: 'study',
+    component: StudyInfoComponent
   }
-  
 
-]
+
+];
 
 @NgModule({
   declarations: [
@@ -144,8 +145,9 @@ const appRoutes:Routes = [
     FilterPipe ,
     IdrpchecktemplateComponent,
     ShowIdrpTemplateComponent,
+    ShowIdrpStudyTemplateComponent,
     CopyfromstudyComponent
-   
+
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
@@ -174,9 +176,9 @@ const appRoutes:Routes = [
     ChartsModule,
     HttpModule,
     HttpClientModule,
-    NgMultiSelectDropDownModule.forRoot() 
+    NgMultiSelectDropDownModule.forRoot()
   ],
-  entryComponents:[
+  entryComponents: [
     AddExpectedDataComponent,
     MapExpectedDataFormsComponent,
     EditdatacategoryComponent,
@@ -191,9 +193,9 @@ const appRoutes:Routes = [
     BuisnessruleComponent,
     ManualassignsubjectComponent ,
     AssignSubjectComponent,
-    ShowIdrpTemplateComponent
+    ShowIdrpTemplateComponent,
+    ShowIdrpStudyTemplateComponent
 
-    
   ],
   providers: [CdrpService],
   bootstrap: [AppComponent]
