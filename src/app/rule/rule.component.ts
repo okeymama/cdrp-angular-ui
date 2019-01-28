@@ -109,9 +109,9 @@ selectedOrValue = '0';
   this.valueenable = false;
   this.selectedValue = '0';
   }
-  onSelectValue(selectedValue: any, datatrajectoryvalue: any, id: any) {
-    this.value = selectedValue;
-    this.subjects[id] = {'trajectory': datatrajectoryvalue, 'value': this.value};
+  onSelectValue(selectedValue: any) {
+   // this.value = selectedValue;
+   // this.subjects[id] = {'trajectory': datatrajectoryvalue, 'value': this.value};
   }
   onSelectANDVisit(selectedValue: any) {
     console.log(this.visit);
@@ -151,9 +151,9 @@ selectedOrValue = '0';
   this.andvalueenable = false;
   this.selectedAndValue = '0';
   }
-  onSelectANDValue(selectedValue: any, datatrajectoryvalue: any, id: any) {
-    this.value = selectedValue;
-    this.subjects[id] = {'trajectory': datatrajectoryvalue, 'value': this.value};
+  onSelectANDValue(selectedValue: any) {
+    // this.value = selectedValue;
+    // this.subjects[id] = {'trajectory': datatrajectoryvalue, 'value': this.value};
   }
   onSelectOrVisit(selectedValue: any) {
     console.log(this.visit);
@@ -194,9 +194,9 @@ selectedOrValue = '0';
   this.orvalueenable = false;
   this.selectedOrValue = '0';
   }
-  onSelectOrValue(selectedValue: any, datatrajectoryvalue: any, id: any) {
-    this.value = selectedValue;
-    this.subjects[id] = {'trajectory': datatrajectoryvalue, 'value': this.value};
+  onSelectOrValue(selectedValue: any) {
+    // this.value = selectedValue;
+   // this.subjects[id] = {'trajectory': datatrajectoryvalue, 'value': this.value};
   }
   onSelectForm(selectedValue: any) {
     this.form = selectedValue;

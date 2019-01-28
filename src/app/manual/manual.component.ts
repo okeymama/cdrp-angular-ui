@@ -12,15 +12,16 @@ export class ManualComponent implements OnInit {
   assignedsubject: any;
   removeid: any;
   description: any;
+  searchText = '';
   constructor() { }
   onSelect(selectedValue: any) {
 
     this.subject = selectedValue;
     console.log(this.subject + 'onselection');
   }
-  onDeSelect(selectedValue: any, id: any) {
+  onDeSelect(selectedValue: any) {
     this.assignedsubject = selectedValue;
-    this.removeid = id;
+  //  this.removeid = id;
     console.log(this.assignedsubject + 'on deselection');
 
   }

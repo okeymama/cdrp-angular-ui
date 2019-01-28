@@ -15,6 +15,7 @@ export class ManualassignsubjectComponent implements OnInit, OnDestroy {
   subject: any;
   assignedsubject: any;
   removeid: any;
+  searchText ='';
   constructor(public dialogRef: MatDialogRef<ManualassignsubjectComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
   onNoClick(): void {
     this.dialogRef.close('CloseAll');
@@ -29,9 +30,9 @@ export class ManualassignsubjectComponent implements OnInit, OnDestroy {
     this.subject = selectedValue;
     console.log(this.subject + 'onselection');
   }
-  onDeSelect(selectedValue: any, id: any) {
+  onDeSelect(selectedValue: any) {
     this.assignedsubject = selectedValue;
-    this.removeid = id;
+    //this.removeid = id;
     console.log(this.assignedsubject + 'on deselection');
 
   }
