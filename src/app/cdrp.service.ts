@@ -15,6 +15,8 @@ export class CdrpService {
   TrajectoryName: string;
   selecteddatacategory: any;
   selectedCategory = 'null';
+  idrpPlanId = 121;
+  idrpData;
   value = [
     {
       'visitname': 'Medication',
@@ -86,6 +88,15 @@ export class CdrpService {
   private categoryUrl = 'https://cdrp-service.herokuapp.com/data';
   private categoryUrl1 = 'https://cdrp-service.herokuapp.com/getstudy';
   private categoryUrl2 = 'https://cdrp-service.herokuapp.com/getdetails';
+  private getIdrpPlanDetailByIdUrl = 'http://localhost:8080/ExpectedDataPageController/getIdrpPlanDetailByIds';
+
+  getIdrpPlanId(){
+    return this.idrpPlanId;
+  }
+
+  setIdrpPlanId(id){
+    this.idrpPlanId = id;
+  }
 
   selectdatacategory(category: any) {
     this.selecteddatacategory = category;
@@ -125,6 +136,18 @@ export class CdrpService {
 
     return this.http.request('https://cdrp-service.herokuapp.com/getdata?id=' + this.id);
 
+  }
+
+  getIdrpPlanDetailById(){
+    return this.httpClient.post(this.getIdrpPlanDetailByIdUrl,this.idrpPlanId);
+  }
+
+  setIdrpData(data){
+    this.idrpData = data;
+  }
+
+  getIdrpData(){
+    return this.idrpData;
   }
 
 }

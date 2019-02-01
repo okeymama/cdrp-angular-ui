@@ -4,7 +4,8 @@ import { CdrpService } from '../cdrp.service';
 import { AddExpectedDataComponent } from '../add-expected-data/add-expected-data.component';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig} from '@angular/material';
 import { MapExpectedDataFormsComponent } from '../map-expected-data-forms/map-expected-data-forms.component';
-import { FormData} from '../Study';
+import { FormData } from '../Study';
+import { idrpPlanDetail } from '../ViewInterfaces';
 import { AssignSubjectComponent } from '../assign-subject/assign-subject.component';
 import { AddIdrpChecksComponent } from '../add-idrp-checks/add-idrp-checks.component';
 import {MatSnackBar} from '@angular/material';
@@ -50,6 +51,7 @@ export class ExpectedDataComponent implements OnInit, OnDestroy {
 
   studyID: string;
   category: string;
+  idrpData:idrpPlanDetail;
   constructor(private router: Router, private cdrpService: CdrpService, public dialog: MatDialog,
     public dialog1: MatDialog, public dialog2: MatDialog, public snackBar: MatSnackBar) { }
 
@@ -65,6 +67,14 @@ export class ExpectedDataComponent implements OnInit, OnDestroy {
      }
   ngOnInit() {
    this.studyID = this.cdrpService.id;
+   console.log('In OnInit of Expected Data');
+   this.cdrpService.getIdrpPlanDetailById().subscribe((res:idrpPlanDetail[]) => {
+    this.idrpData = res[0];
+    this.cdrpService.setIdrpData(res[0]);
+    console.log(this.idrpData.studyId);
+    console.log(res);
+ });
+ console.log('expected called');
   }
 
   ngOnDestroy() {}

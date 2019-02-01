@@ -2,13 +2,12 @@
 <div class="filter-icon-div"><span class="filter-class">Filters</span><mat-icon>filter_list</mat-icon></div>
 <div class="header"> <mat-icon class="icon">keyboard_arrow_right</mat-icon>&nbsp;&nbsp;<span class="header-text">Study </span></div><br>
 
-<ng-container *ngFor="let t of trajectory; let j = index">
-  <div class="header"> <mat-icon class="icon">keyboard_arrow_down</mat-icon>&nbsp;&nbsp;<span class="header-text">Data Trajectory {{j+1}}</span></div>
-
+<ng-container *ngFor="let traj of data?.dataTrajectoryDTOList;let v of allAppliedVisitList; let j = index">
+  <div class="header"> <mat-icon class="icon">keyboard_arrow_down</mat-icon>&nbsp;&nbsp;<span class="header-text">{{traj?.dataTrajectoryName}}</span></div>
 
 
 <table id="mainTable">
-    <tbody class="mainDiv" *ngFor="let d of dt; let i = index">
+    <tbody class="mainDiv" *ngFor="let expectedData of traj?.expectedDataCategoryDTOList;let visit of allAppliedVisitList[j]; let i = index">
     <tr class="table-header-color" *ngIf='!i'>
       <th >EXPECTED DATA CATEGORY</th>
       <th>APPLIED VISIT</th> 
@@ -18,28 +17,28 @@
       <th>ACTIONS</th>
     </tr>
 
-    <tr *ngIf="rowstate[j][i]" [class.highlighted]="trajectory[j].content1[i].expectedData === selectedCat && j === selectedTraj">
+    <tr *ngIf="rowstate[j][i]" [class.highlighted]="expectedData?.expectedDataCategoryName === selectedCat && j === selectedTraj">
         
-        <td (click)="togglePanel(i,j)"> <mat-icon class="icon-1">{{arrowState[j][i]}}</mat-icon><span class="text-align">{{trajectory[j].content1[i].expectedData}}</span></td>
-        <td>{{trajectory[j].content1[i].appliedVisit}}</td>
-        <td>{{trajectory[j].content1[i].source}}</td>
-        <td>{{trajectory[j].content1[i].dataTransfer}}</td>
-        <td>{{trajectory[j].content1[i].criticalData}}</td>
-        <td class="action-row" id="act"><div class="align"><mat-icon (click)="edit(j,i)" class="action-icon">edit</mat-icon><mat-icon (click)="settings(trajectory[j].content1[i].expectedData)" class="action-icon">settings</mat-icon> 
+        <td (click)="togglePanel(i,j)"> <mat-icon class="icon-1">{{arrowState[j][i]}}</mat-icon><span class="text-align">{{expectedData?.expectedDataCategoryName}}</span></td>
+        <td>{{allAppliedVisitList[j][i]}}</td>
+        <td>{{expectedData?.source}}</td>
+        <td>{{expectedData?.dataTransferFrequency}}</td>
+        <td>{{expectedData?.criticalData}}</td>
+        <td class="action-row" id="act"><div class="align"><mat-icon (click)="edit(j,i)" class="action-icon">edit</mat-icon><mat-icon (click)="settings(expectedData.expectedDataCategoryName)" class="action-icon">settings</mat-icon> 
         <mat-icon (click)="delete(j,i)" class="action-icon">delete</mat-icon>
-        <mat-icon (click)="comment(trajectory[j].content1[i].expectedData)" class="action-icon">insert_comment</mat-icon>
-        <div class="add-icon" (click)="addChecks(j,i,trajectory[j].content1[i].expectedData)">
+        <mat-icon (click)="comment(expectedData.expectedDataCategoryName)" class="action-icon">insert_comment</mat-icon>
+        <div class="add-icon" (click)="addChecks(j,i,expectedData.expectedDataCategoryName)">
           <mat-icon class="action-icon">add_circle</mat-icon> 
         </div>
         </div>
         </td>
         </tr> 
    <!-- <tr id="hide-div"><td colspan="6"><div>This is the div</div></td></tr>-->
-   <ng-container *ngIf="panelState[j][i]">
+   <ng-container *ngIf="panelState[j][i] && expectedData?.idrpCheckDTOList !== null">
     <tr><td class="check-table" colspan="6">
-     <table class="idrp-check-table">
-       <tr><th id="header-row"colspan="10">{{trajectory[j].content2[0].category}} IDRP Checks</th></tr>
-        <tr class="second-row">
+     <table class="idrp-check-table" >
+       <tr><th id="header-row"colspan="10">{{expectedData?.expectedDataCategoryName}} IDRP Checks</th></tr>
+        <tr class="second-row" >
           <th>Purpose</th>
           <th>Description</th> 
           <th>Visit</th>
@@ -51,17 +50,17 @@
           <th>Query Text</th>
           <th>Source</th>
         </tr>
-        <tr class="second-table" *ngFor="let d of idrpCheck; let i = index">
-          <td>{{trajectory[j].content2[i].purpose}}</td>
-          <td id="description">{{trajectory[j].content2[i].description}}</td> 
-          <td>{{trajectory[j].content2[i].visit}}</td>
-          <td>{{trajectory[j].content2[i].role}}</td>
-          <td>{{trajectory[j].content2[i].method}}</td> 
-          <td>{{trajectory[j].content2[i].frequency}}</td>
-          <td>{{trajectory[j].content2[i].owner}}</td>
-          <td>{{trajectory[j].content2[i].checkName}}</td> 
-          <td>{{trajectory[j].content2[i].queryText}}</td>
-          <td>{{trajectory[j].content2[i].source}}</td>
+        <tr class="second-table" *ngFor="let idrpCheck of expectedData?.idrpCheckDTOList; let i = index">
+          <td>{{idrpCheck?.purpose}}</td>
+          <td id="description">{{idrpCheck?.description}}</td> 
+          <td>{{idrpCheck?.visit}}</td>
+          <td>{{idrpCheck?.role}}</td>
+          <td>{{idrpCheck?.method}}</td> 
+          <td>{{idrpCheck?.frequency}}</td>
+          <td>{{idrpCheck?.owner}}</td>
+          <td>{{idrpCheck?.checkName}}</td> 
+          <td>{{idrpCheck?.queryText}}</td>
+          <td>{{idrpCheck?.source}}</td>
 
         </tr>
       </table>

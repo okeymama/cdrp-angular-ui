@@ -6,6 +6,7 @@ import { DeletetrajectoryComponent } from '../deletetrajectory/deletetrajectory.
 import { EditdatacategoryComponent } from '../editdatacategory/editdatacategory.component';
 import { CdrpService } from '../cdrp.service';
 import { BuisnessruleComponent } from '../buisnessrule/buisnessrule.component';
+import { idrpPlanDetail } from '../ViewInterfaces';
 
 @Component({
   selector: 'app-data-trajectory',
@@ -105,6 +106,8 @@ idrpCheck: checks[] = [
   y: number;
   selectedCat: any;
   selectedTraj: any;
+  //dataTrajectoryData;
+  data;
 
 datacategory: dataTrajectory;
 
@@ -112,6 +115,9 @@ datacategory: dataTrajectory;
   panelState = [];
   rowstate = [];
   selectState = [];
+  appliedVisitList=['a'];
+  allAppliedVisitList = [];
+  concatVisits:string ;
   constructor(public dialog3: MatDialog, public dialog: MatDialog, public dialog1: MatDialog,
      public dialog2: MatDialog, private cdrpService: CdrpService) {
 
@@ -182,22 +188,61 @@ selectIcon() {
 }
 
   ngOnInit() {
-    for (let c = 0; c < this.trajectory.length; c++) {
+    /*this.dataTrajectoryData = this.cdrpService.getIdrpData();
+    console.log("In Data Traj oninit");
+    console.log(this.dataTrajectoryData);
+    console.log("Data trajectory length"+this.dataTrajectoryData.dataTrajectoryDTOList.length);*/
+    console.log('In OnInit of Data Trajectory');
+    this.cdrpService.getIdrpPlanDetailById().subscribe((res:idrpPlanDetail[]) => {
+    this.data = res[0];
+    //this.cdrpService.setIdrpData(res[0]);
+    console.log("Data trajectory length "+this.data.dataTrajectoryDTOList.length);
+    for (let c = 0; c < this.data.dataTrajectoryDTOList.length; c++) {
+      for (let d = 0; d < this.data.dataTrajectoryDTOList[c].expectedDataCategoryDTOList.length; d++) {
+        console.log("Expected length "+this.data.dataTrajectoryDTOList[c].expectedDataCategoryDTOList.length);
+      //  console.log(this.data.dataTrajectoryDTOList[c].expectedDataCategoryDTOList[d]);
+      }
+    }
+    for (let c = 0; c < this.data.dataTrajectoryDTOList.length; c++) {
       const arr1 = [];
       const arr2 = [];
       const arr3 = [];
       const arr4 = [];
-      for (let d = 0; d < this.dt.length; d++) {
+      this.appliedVisitList = [];
+      for (let d = 0; d < this.data.dataTrajectoryDTOList[c].expectedDataCategoryDTOList.length; d++) {
         arr1[d] = 'keyboard_arrow_right';
         arr2[d] = false;
         arr3[d] = true;
         arr4[d] = false;
+        console.log(this.appliedVisitList);
+        //this.appliedVisitList[d] ='abc';
+        this.concatVisits = '';
+        //console.log("length of visit "+this.data.dataTrajectoryDTOList[c].expectedDataCategoryDTOList[d].appliedVisitDTOList);
+       if(this.data.dataTrajectoryDTOList[c].expectedDataCategoryDTOList[d].appliedVisitDTOList !== null){
+         
+         console.log('text : '+this.data.dataTrajectoryDTOList[c].expectedDataCategoryDTOList[d].appliedVisitDTOList.length);
+        for (let e = 0; e < this.data.dataTrajectoryDTOList[c].expectedDataCategoryDTOList[d].appliedVisitDTOList.length; e++) {
+          let visitname = this.data.dataTrajectoryDTOList[c].expectedDataCategoryDTOList[d].appliedVisitDTOList[e].visitName;
+          this.concatVisits = e!==0?this.concatVisits+","+ visitname: visitname;
+          
+          console.log(this.concatVisits);
+        }
+        console.log("val d = "+ d + " "+this.concatVisits) ;
+        
+        }
+        this.appliedVisitList[d] = this.concatVisits;
+        
       }
       this.arrowState[c] = arr1;
       this.panelState[c] = arr2;
       this.rowstate[c] = arr3;
       this.selectState[c] = arr4;
+      this.allAppliedVisitList[c] = this.appliedVisitList;
     }
+    console.log(this.allAppliedVisitList);
+
+ });
+
   }
 
   togglePanel(indexToToggle, upperIndex) {
