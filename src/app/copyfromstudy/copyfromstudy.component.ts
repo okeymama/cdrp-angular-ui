@@ -121,12 +121,12 @@ reselected = [];
 public dropdownSettings = {};
   constructor(public dialog3: MatDialog, public snackBar: MatSnackBar) { }
 
-  public showtemplate(template: any) {
+  public showtemplate(template: any, idx) {
   console.log(template);
   const dialogRef2 = this.dialog3.open(ShowIdrpStudyTemplateComponent, {
     width: '900px',
     height: '580px',
-    data: {templateName: template, fields: this.idrpCheck}
+    data: {templateName: template, fields: this.idrpCheck,  template: this.template[idx]}
   });
 
   dialogRef2.beforeClosed().subscribe(result => {

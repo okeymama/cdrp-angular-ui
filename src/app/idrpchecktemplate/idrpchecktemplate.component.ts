@@ -126,12 +126,12 @@ idrpCheck: checks[] = [
   dropdownSettings = {};
   constructor(public dialog2: MatDialog, public snackBar: MatSnackBar) { }
 
-  public showtemplate(template: any) {
+  public showtemplate(template: any, idx) {
   console.log(template);
   const dialogRef2 = this.dialog2.open(ShowIdrpTemplateComponent, {
     width: '900px',
     height: '580px',
-    data: {templateName: template, fields: this.idrpCheck}
+    data: {templateName: template, fields: this.idrpCheck, template: this.template[idx]}
   });
 
   dialogRef2.beforeClosed().subscribe(result => {

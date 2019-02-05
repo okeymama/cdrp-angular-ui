@@ -6,7 +6,7 @@ import { DeletetrajectoryComponent } from '../deletetrajectory/deletetrajectory.
 import { EditdatacategoryComponent } from '../editdatacategory/editdatacategory.component';
 import { CdrpService } from '../cdrp.service';
 import { BuisnessruleComponent } from '../buisnessrule/buisnessrule.component';
-import { idrpPlanDetail } from '../ViewInterfaces';
+import { IdrpPlanDetail } from '../ViewInterfaces';
 
 @Component({
   selector: 'app-data-trajectory',
@@ -106,7 +106,7 @@ idrpCheck: checks[] = [
   y: number;
   selectedCat: any;
   selectedTraj: any;
-  //dataTrajectoryData;
+  // dataTrajectoryData;
   data;
 
 datacategory: dataTrajectory;
@@ -115,61 +115,70 @@ datacategory: dataTrajectory;
   panelState = [];
   rowstate = [];
   selectState = [];
-  appliedVisitList=['a'];
+  appliedVisitList = ['a'];
   allAppliedVisitList = [];
-  concatVisits:string ;
+  concatVisits: string ;
   constructor(public dialog3: MatDialog, public dialog: MatDialog, public dialog1: MatDialog,
      public dialog2: MatDialog, private cdrpService: CdrpService) {
 
   }
-comment(expectdata): void {
- console.log(expectdata);
- const dialogConfig = new MatDialogConfig();
- dialogConfig.position = {
-   'right': '30px',
- };
- dialogConfig.width = '350px';
- dialogConfig.height = '280px';
- dialogConfig.data = expectdata;
- const dialogRef = this.dialog.open(CommentComponent, dialogConfig);
-
-}
-settings(expectdata):  void {
-  console.log(expectdata);
-  this.cdrpService.selectdatacategory(expectdata);
-  const dialogConfig3 =  new MatDialogConfig();
-  dialogConfig3.position =  {
-  };
-  dialogConfig3.width = '900px';
-  dialogConfig3.height = '580px';
-  dialogConfig3.data = expectdata;
-  const dialogRef =  this.dialog3.open(BuisnessruleComponent, dialogConfig3);
+  comment(dataTrajectoryRowId: Number, expectedDataCategoryRowId: Number): void {
+   this.cdrpService.setselectedexpectedDataCtegory(dataTrajectoryRowId, expectedDataCategoryRowId, this.data);
+   const dialogConfig = new MatDialogConfig();
+   dialogConfig.position = {
+     'right': '30px',
+   };
+   dialogConfig.width = '350px';
+   dialogConfig.height = '280px';
+  dialogConfig.disableClose = true;
+   const dialogRef = this.dialog.open(CommentComponent, dialogConfig);
   }
-edit(val1, val2): void {
+  settings(dataTrajectoryRowId, expectedDataCategoryRowId):  void {
+    this.cdrpService.setselectedexpectedDataCtegory(dataTrajectoryRowId, expectedDataCategoryRowId, this.data);
+    // console.log(expectdata , id);
+   // this.cdrpService.selectdatacategory(expectdata);
+    const dialogConfig3 =  new MatDialogConfig();
+    dialogConfig3.position =  {
+    };
+    dialogConfig3.width = '900px';
+    dialogConfig3.height = '580px';
+  //  dialogConfig3.data = id;
+    dialogConfig3.disableClose = true;
+    const dialogRef =  this.dialog3.open(BuisnessruleComponent, dialogConfig3);
+    }
+    edit(val1, val2): void {
 
-  const dialogConfig2 = new MatDialogConfig();
-  dialogConfig2.width = '1000px';
-  dialogConfig2.height = '150px';
-  this.datacategory = this.trajectory[val1].content1[val2];
-  console.log(this.datacategory);
-  dialogConfig2.data = this.datacategory;
-  const dialogRef2 = this.dialog2.open(EditdatacategoryComponent, dialogConfig2);
-
- }
-delete(expectdata1, expectdata2): void {
- console.log(expectdata1);
- const dialogConfig1 = new MatDialogConfig();
- dialogConfig1.width = '350px';
- dialogConfig1.height = '145px';
- dialogConfig1.data = expectdata1;
- const dialogRef1 = this.dialog1.open(DeletetrajectoryComponent, dialogConfig1);
- dialogRef1.beforeClosed().subscribe(result => {
-  console.log('in parent' + result);
-  if (result === 'deleted') {
-  this.rowstate[expectdata1][expectdata2] =  !this.rowstate[expectdata1][expectdata2];
-  }
-  });
-}
+      this.cdrpService.setselectedexpectedDataCtegory(val1, val2, this.data);
+      const dialogConfig2 = new MatDialogConfig();
+      dialogConfig2.width = '1000px';
+      dialogConfig2.height = '150px';
+      dialogConfig2.disableClose = true;
+     const dialogRef2 = this.dialog2.open(EditdatacategoryComponent, dialogConfig2);
+     dialogRef2.beforeClosed().subscribe(result => {
+      console.log(result);
+      // console.log(result.expectedDataCategoryName);
+      this.data.dataTrajectoryDTOList[val1].expectedDataCategoryDTOList[val2].expectedDataCategoryName = result.expectedDataCategoryName;
+      this.data.dataTrajectoryDTOList[val1].expectedDataCategoryDTOList[val2].source = result.source;
+      this.data.dataTrajectoryDTOList[val1].expectedDataCategoryDTOList[val2].dataTransferFrequency = result.dataTransferFrequency;
+      this.data.dataTrajectoryDTOList[val1].expectedDataCategoryDTOList[val2].criticalData = result.criticalData;
+    });
+     }
+     delete(dataTrajectoryRow, expectedDataCategoryRow, expectedDataCategoryId): void {
+      // console.log(dataTrajectoryRow);
+      console.log(expectedDataCategoryId);
+      const dialogConfig1 = new MatDialogConfig();
+      dialogConfig1.width = '350px';
+      dialogConfig1.height = '145px';
+      dialogConfig1.data = expectedDataCategoryId;
+      dialogConfig1.disableClose = true;
+      const dialogRef1 = this.dialog1.open(DeletetrajectoryComponent, dialogConfig1);
+      dialogRef1.beforeClosed().subscribe(result => {
+       console.log('in parent' + result);
+       if (result === 'success') {
+       this.rowstate[dataTrajectoryRow][expectedDataCategoryRow] =  !this.rowstate[dataTrajectoryRow][expectedDataCategoryRow];
+       }
+       });
+     }
 
 addChecks(trajId, rowId, selectedCat) {
   if (this.selectState[trajId][rowId] === false) {
@@ -181,6 +190,10 @@ addChecks(trajId, rowId, selectedCat) {
     this.selectState[trajId][rowId] = false;
   }
   this.cdrpService.setSelectedCategory(this.selectedCat);
+  console.log('check id');
+  const id = this.data.dataTrajectoryDTOList[trajId].expectedDataCategoryDTOList[rowId].expectedDataCategoryId;
+  console.log(id);
+  this.cdrpService.setSelectedExpectedCategoryId(id);
 }
 
 selectIcon() {
@@ -188,21 +201,11 @@ selectIcon() {
 }
 
   ngOnInit() {
-    /*this.dataTrajectoryData = this.cdrpService.getIdrpData();
-    console.log("In Data Traj oninit");
-    console.log(this.dataTrajectoryData);
-    console.log("Data trajectory length"+this.dataTrajectoryData.dataTrajectoryDTOList.length);*/
     console.log('In OnInit of Data Trajectory');
-    this.cdrpService.getIdrpPlanDetailById().subscribe((res:idrpPlanDetail[]) => {
+    this.cdrpService.getIdrpPlanDetailById().subscribe((res: IdrpPlanDetail[]) => {
     this.data = res[0];
-    //this.cdrpService.setIdrpData(res[0]);
-    console.log("Data trajectory length "+this.data.dataTrajectoryDTOList.length);
-    for (let c = 0; c < this.data.dataTrajectoryDTOList.length; c++) {
-      for (let d = 0; d < this.data.dataTrajectoryDTOList[c].expectedDataCategoryDTOList.length; d++) {
-        console.log("Expected length "+this.data.dataTrajectoryDTOList[c].expectedDataCategoryDTOList.length);
-      //  console.log(this.data.dataTrajectoryDTOList[c].expectedDataCategoryDTOList[d]);
-      }
-    }
+    console.log(this.data.dataTrajectoryDTOList);
+    if (this.data.dataTrajectoryDTOList !== null) {
     for (let c = 0; c < this.data.dataTrajectoryDTOList.length; c++) {
       const arr1 = [];
       const arr2 = [];
@@ -214,24 +217,16 @@ selectIcon() {
         arr2[d] = false;
         arr3[d] = true;
         arr4[d] = false;
-        console.log(this.appliedVisitList);
-        //this.appliedVisitList[d] ='abc';
         this.concatVisits = '';
-        //console.log("length of visit "+this.data.dataTrajectoryDTOList[c].expectedDataCategoryDTOList[d].appliedVisitDTOList);
-       if(this.data.dataTrajectoryDTOList[c].expectedDataCategoryDTOList[d].appliedVisitDTOList !== null){
-         
-         console.log('text : '+this.data.dataTrajectoryDTOList[c].expectedDataCategoryDTOList[d].appliedVisitDTOList.length);
+       if (this.data.dataTrajectoryDTOList[c].expectedDataCategoryDTOList[d].appliedVisitDTOList !== null) {
         for (let e = 0; e < this.data.dataTrajectoryDTOList[c].expectedDataCategoryDTOList[d].appliedVisitDTOList.length; e++) {
-          let visitname = this.data.dataTrajectoryDTOList[c].expectedDataCategoryDTOList[d].appliedVisitDTOList[e].visitName;
-          this.concatVisits = e!==0?this.concatVisits+","+ visitname: visitname;
-          
-          console.log(this.concatVisits);
+          const visitname = this.data.dataTrajectoryDTOList[c].expectedDataCategoryDTOList[d].appliedVisitDTOList[e].visitName;
+          this.concatVisits = e !== 0 ? this.concatVisits + ',' + visitname : visitname;
+
         }
-        console.log("val d = "+ d + " "+this.concatVisits) ;
-        
         }
         this.appliedVisitList[d] = this.concatVisits;
-        
+
       }
       this.arrowState[c] = arr1;
       this.panelState[c] = arr2;
@@ -239,7 +234,7 @@ selectIcon() {
       this.selectState[c] = arr4;
       this.allAppliedVisitList[c] = this.appliedVisitList;
     }
-    console.log(this.allAppliedVisitList);
+  }
 
  });
 

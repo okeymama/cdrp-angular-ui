@@ -10,13 +10,31 @@ import { Router} from '@angular/router';
 
 @Injectable()
 export class CdrpService {
-
+  user = 'John Smith';
   id: string;
-  TrajectoryName: string;
+  newtrajectoryName: string;
+  newtrajectoryDescription: string;
   selecteddatacategory: any;
   selectedCategory = 'null';
-  idrpPlanId = 121;
+  idrpPlanId: any;
+  idrpPlanId1: any;
   idrpData;
+  newTrajectoryName;
+  newTrajectoryDescription;
+  selectedExpectedCategoryId;
+  refresh = false;
+  selectedExpectedDatacategory: any = {
+    "expectedDataCategoryId": null,
+    "expectedDataCategoryName": null,
+    "source": null,
+    "dataTransferFrequency": null,
+    "criticalData": null,
+    "createdBy": null,
+    "createdDate": null,
+    "lastUpdatedDate": null,
+    "comment": null,
+    "dataTrajectoryId": null,
+  };
   value = [
     {
       'visitname': 'Medication',
@@ -88,14 +106,23 @@ export class CdrpService {
   private categoryUrl = 'https://cdrp-service.herokuapp.com/data';
   private categoryUrl1 = 'https://cdrp-service.herokuapp.com/getstudy';
   private categoryUrl2 = 'https://cdrp-service.herokuapp.com/getdetails';
-  private getIdrpPlanDetailByIdUrl = 'http://localhost:8080/ExpectedDataPageController/getIdrpPlanDetailByIds';
+  private getIdrpPlanDetailByIdUrl = 'https://cdrp-service.herokuapp.com/ExpectedDataPageController/getIdrpPlanDetailByIds';
+  private saveNewTrajectoryUrl = 'https://cdrp-service.herokuapp.com/AddDataTrajectoryPageController/saveNewDataTrajectoryDTO';
+  private saveIdrpChecksUrl = 'https://cdrp-service.herokuapp.com/ExpectedDataPageController/saveIDRPCheckDTOList';
+  private updateExpectedDatacategoryUrl = 'https://cdrp-service.herokuapp.com/ExpectedDataPageController/updateExpectedDataCategory';
+  private saveRuleAssignedSubjectUrl = 'https://cdrp-service.herokuapp.com/RuleAssignedSubjectController/saveRuleAssignedSubjectDTOList';
+  private saveBusinessRuleUrl = 'https://cdrp-service.herokuapp.com/ExpectedDataPageController/saveBuisnessRule';
+  // tslint:disable-next-line:max-line-length
+  private saveDataTrajectorySubejctAssignment = 'https://cdrp-service.herokuapp.com/DataTrajectorySubjectAssignmentController/saveDataTrajectorySubjectAssignmentDTOList';
+  private saveIdrpPlan = 'https://cdrp-service.herokuapp.com/LandingPageController/addIdRPPlanDetail';
 
-  getIdrpPlanId(){
+  getIdrpPlanId() {
     return this.idrpPlanId;
   }
 
-  setIdrpPlanId(id){
+  setIdrpPlanId(id) {
     this.idrpPlanId = id;
+    this.idrpPlanId1 = id;
   }
 
   selectdatacategory(category: any) {
@@ -119,10 +146,6 @@ export class CdrpService {
     return this.selectedCategory;
   }
 
-  setTrajectoryName(name) {
-    this.TrajectoryName = name;
-  }
-
   getstudy() {
 
     return this.http.request(this.categoryUrl1);
@@ -134,20 +157,113 @@ export class CdrpService {
   }
   getProducts() {
 
-    return this.http.request('https://cdrp-service.herokuapp.com/getdata?id=' + this.id);
+    return this.http.request('https://cdrp-service.herokuapp.com/StudyInfoController/getStudyInfo?studyId=' + this.id);
 
   }
 
-  getIdrpPlanDetailById(){
-    return this.httpClient.post(this.getIdrpPlanDetailByIdUrl,this.idrpPlanId);
+  getIdrpPlanDetailById() {
+    console.log(this.getIdrpPlanId());
+    return this.httpClient.post(this.getIdrpPlanDetailByIdUrl, this.idrpPlanId1);
   }
 
-  setIdrpData(data){
+  setIdrpData(data) {
     this.idrpData = data;
   }
 
-  getIdrpData(){
+  getIdrpData() {
     return this.idrpData;
   }
 
+  setNewTrajectoryData(name, description) {
+    console.log('in service ' + name + ' ' + description);
+    this.newTrajectoryName = name;
+    this.newTrajectoryDescription = description;
+  }
+
+  getNewTrajectoryName() {
+    return this.newTrajectoryName;
+  }
+  getNewTrajectoryDescription() {
+    return this.newTrajectoryDescription;
+  }
+
+  saveNewTrajectory(trajectoryData) {
+    console.log('In service');
+    console.log(trajectoryData);
+    return this.http.post(this.saveNewTrajectoryUrl, trajectoryData);
+  }
+
+  setSelectedExpectedCategoryId(id) {
+    this.selectedExpectedCategoryId = id;
+  }
+
+  getSelectedExpectedCategoryId() {
+    return this.selectedExpectedCategoryId;
+  }
+
+  saveIdrpChecks(idrpChecks) {
+    console.log('In service checks');
+    console.log(idrpChecks);
+    return this.http.post(this.saveIdrpChecksUrl, idrpChecks);
+  }
+
+  refreshChecks() {
+    console.log('called refresh');
+    this.router.navigate(['/nav/next']);
+  }
+
+
+  getIdrpPlans() {
+    return this.http.request('https://cdrp-service.herokuapp.com/IDRPPlanDetailController/getAllIDRPPlanDetailDTO');
+  }
+  deleteExpectedDataCategory(expectedDataCategoryId) {
+    // tslint:disable-next-line:max-line-length
+    return this.http.request('https://cdrp-service.herokuapp.com/ExpectedDataPageController/deleteExpectedDataCategory?expectedDataCategoryId=' + expectedDataCategoryId);
+  }
+
+  addIdrpPlan(idrpplaindetail) {
+    return this.http.post(this.saveIdrpPlan, idrpplaindetail);
+  }
+  updateexpectedDataCategory(updateddata) {
+    console.log(updateddata);
+    return this.http.post(this.updateExpectedDatacategoryUrl, updateddata);
+  }
+
+  saveDataTrajectorySubjectAssignment(subjectassignment) {
+   console.log(subjectassignment);
+     return this.http.post(this.saveDataTrajectorySubejctAssignment, subjectassignment);
+  }
+  saveBuisnessRule(buisnessRule) {
+    return this.http.post(this.saveBusinessRuleUrl, buisnessRule);
+  }
+
+  addruleassignedsubject(ruleassignedsubjectList) {
+    console.log(ruleassignedsubjectList);
+    return this.http.post(this.saveRuleAssignedSubjectUrl, ruleassignedsubjectList);
+  }
+  setselectedexpectedDataCtegory(dataTrajectoryRowId, expectedDataCategoryRowId, idrpdata) {
+    this.idrpData = idrpdata;
+    console.log(this.idrpData);
+    // tslint:disable-next-line:max-line-length
+    this.selectedExpectedDatacategory.dataTrajectoryId = this.idrpData.dataTrajectoryDTOList[dataTrajectoryRowId].dataTrajectoryId;
+    // tslint:disable-next-line:max-line-length
+    this.selectedExpectedDatacategory.expectedDataCategoryId = this.idrpData.dataTrajectoryDTOList[dataTrajectoryRowId].expectedDataCategoryDTOList[expectedDataCategoryRowId].expectedDataCategoryId;
+    // tslint:disable-next-line:max-line-length
+    this.selectedExpectedDatacategory.expectedDataCategoryName = this.idrpData.dataTrajectoryDTOList[dataTrajectoryRowId].expectedDataCategoryDTOList[expectedDataCategoryRowId].expectedDataCategoryName;
+    // tslint:disable-next-line:max-line-length
+    this.selectedExpectedDatacategory.source = this.idrpData.dataTrajectoryDTOList[dataTrajectoryRowId].expectedDataCategoryDTOList[expectedDataCategoryRowId].source;
+    // tslint:disable-next-line:max-line-length
+    this.selectedExpectedDatacategory.criticalData = this.idrpData.dataTrajectoryDTOList[dataTrajectoryRowId].expectedDataCategoryDTOList[expectedDataCategoryRowId].criticalData;
+    // tslint:disable-next-line:max-line-length
+    this.selectedExpectedDatacategory.createdBy = this.idrpData.dataTrajectoryDTOList[dataTrajectoryRowId].expectedDataCategoryDTOList[expectedDataCategoryRowId].createdBy;
+    // tslint:disable-next-line:max-line-length
+    this.selectedExpectedDatacategory.lastUpdatedDate = this.idrpData.dataTrajectoryDTOList[dataTrajectoryRowId].expectedDataCategoryDTOList[expectedDataCategoryRowId].lastUpdatedDate;
+    // tslint:disable-next-line:max-line-length
+    this.selectedExpectedDatacategory.createdDate = this.idrpData.dataTrajectoryDTOList[dataTrajectoryRowId].expectedDataCategoryDTOList[expectedDataCategoryRowId].createdDate;
+    // tslint:disable-next-line:max-line-length
+    this.selectedExpectedDatacategory.dataTransferFrequency = this.idrpData.dataTrajectoryDTOList[dataTrajectoryRowId].expectedDataCategoryDTOList[expectedDataCategoryRowId].dataTransferFrequency;
+    // tslint:disable-next-line:max-line-length
+    this.selectedExpectedDatacategory.comment  = this.idrpData.dataTrajectoryDTOList[dataTrajectoryRowId].expectedDataCategoryDTOList[expectedDataCategoryRowId].comment;
+  console.log(this.selectedExpectedDatacategory);
+}
 }

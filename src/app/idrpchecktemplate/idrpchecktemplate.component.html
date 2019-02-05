@@ -60,27 +60,6 @@
         </ul>
    
       </div>
-    <!-- <div class="filters" *ngIf="selectedComp.length !== 0">
-          <span class="text-align">Compound:&nbsp;&nbsp;</span>
-        <ul >
-            <li class="filter" *ngFor="let ta of selectedComp; let i=index">
-                <span class="text-align">{{selectedComp[i].item_text}}&nbsp;</span><mat-icon (click)="removeCompfilter(selectedComp[i])" class="close">close</mat-icon>
-            </li>
-            <li class="filter" *ngFor="let ta of selectedIndi; let i=index">
-                <span class="text-align">{{selectedIndi[i].item_text}}&nbsp;</span><mat-icon (click)="removeIndifilter(selectedIndi[i])" class="close">close</mat-icon>
-            </li>
-          </ul>
-        </div>
-        <div class="filters" *ngIf="selectedIndi.length !== 0">
-            <span class="text-align">Indication:&nbsp;&nbsp;</span>
-          <ul >
-              <li class="filter" *ngFor="let ta of selectedIndi; let i=index">
-                  <span class="text-align">{{selectedIndi[i].item_text}}&nbsp;</span><mat-icon (click)="removeIndifilter(selectedIndi[i])" class="close">close</mat-icon>
-              </li>
-             
-            </ul>
-          </div>-->
-  
   <br>
   <div>
   
@@ -93,7 +72,7 @@
             <th>Indication</th> 
           </tr>
           <tr *ngFor="let t of template ; let i = index">
-           <td class="title" id="col-1" (click)="showtemplate(template[i].templatename)">{{template[i].templatename}}</td>
+           <td class="title" id="col-1" (click)="showtemplate(template[i].templatename, i)">{{template[i].templatename}}</td>
            <td class="desc" id="col-1">{{template[i].description}}</td>
            <td id="col-1">{{template[i].TA}}</td>
            <td id="col-1">{{template[i].Compound}}</td>

@@ -5,8 +5,7 @@
 <ng-container *ngFor="let traj of data?.dataTrajectoryDTOList;let v of allAppliedVisitList; let j = index">
   <div class="header"> <mat-icon class="icon">keyboard_arrow_down</mat-icon>&nbsp;&nbsp;<span class="header-text">{{traj?.dataTrajectoryName}}</span></div>
 
-
-<table id="mainTable">
+<table id="mainTable" *ngIf='traj?.expectedDataCategoryDTOList !== null'>
     <tbody class="mainDiv" *ngFor="let expectedData of traj?.expectedDataCategoryDTOList;let visit of allAppliedVisitList[j]; let i = index">
     <tr class="table-header-color" *ngIf='!i'>
       <th >EXPECTED DATA CATEGORY</th>
@@ -24,9 +23,9 @@
         <td>{{expectedData?.source}}</td>
         <td>{{expectedData?.dataTransferFrequency}}</td>
         <td>{{expectedData?.criticalData}}</td>
-        <td class="action-row" id="act"><div class="align"><mat-icon (click)="edit(j,i)" class="action-icon">edit</mat-icon><mat-icon (click)="settings(expectedData.expectedDataCategoryName)" class="action-icon">settings</mat-icon> 
-        <mat-icon (click)="delete(j,i)" class="action-icon">delete</mat-icon>
-        <mat-icon (click)="comment(expectedData.expectedDataCategoryName)" class="action-icon">insert_comment</mat-icon>
+        <td class="action-row" id="act"><div class="align"><mat-icon (click)="edit(j,i)" class="action-icon">edit</mat-icon><mat-icon (click)="settings(j,i)" class="action-icon">settings</mat-icon> 
+          <mat-icon (click)="delete(j,i,expectedData?. expectedDataCategoryId)" class="action-icon">delete</mat-icon>
+          <mat-icon (click)="comment(j,i)" class="action-icon">insert_comment</mat-icon>
         <div class="add-icon" (click)="addChecks(j,i,expectedData.expectedDataCategoryName)">
           <mat-icon class="action-icon">add_circle</mat-icon> 
         </div>
