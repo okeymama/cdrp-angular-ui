@@ -1,12 +1,54 @@
 import { Component, OnInit } from '@angular/core';
 import { CdrpService } from '../cdrp.service';
-
+import { buisnessrulecondition, buisnessrule } from '../ViewInterfaces';
+import { Http, Response } from '@angular/http';
 @Component({
   selector: 'app-rule',
   templateUrl: './rule.component.html',
   styleUrls: ['./rule.component.css']
 })
 export class RuleComponent implements OnInit {
+buisnessrule: buisnessrule = {
+  subjectDescription: null,
+  form: null,
+  expected: null,
+  frequency: null,
+  createdBy: null,
+  creationDate: null,
+  lastUpdatedDate: null,
+  expectedDataCategoryId: null,
+  businessRuleConditionDTOList: [],
+};
+ifRule: buisnessrulecondition = {
+    visit: null,
+    form: null,
+    field: null,
+    fieldValue: null,
+    type: null,
+    createdBy: null,
+    createdDate: null,
+    lastUpdatedDate: null
+};
+andRule: buisnessrulecondition = {
+  visit: null,
+  form: null,
+  field: null,
+  fieldValue: null,
+  type: null,
+  createdBy: null,
+  createdDate: null,
+  lastUpdatedDate: null
+};
+orRule: buisnessrulecondition = {
+  visit: null,
+  form: null,
+  field: null,
+  fieldValue: null,
+  type: null,
+  createdBy: null,
+  createdDate: null,
+  lastUpdatedDate: null
+};
 description: any;
 andvisible: boolean;
 orvisible: boolean;
@@ -14,10 +56,7 @@ visit: any;
 frequency: any;
 frequencies = [];
 datacategory: any;
-expectation: any;
-form: any;
 forms = [];
-field: any;
 visits = [];
 andvisits = [];
 orvisits = [];
@@ -31,7 +70,6 @@ andvalues = [];
 ordatacategories = [];
 orfields = [];
 orvalues = [];
-value: any;
 subjects = [];
 fieldenable: boolean;
 dataenable: boolean;
@@ -43,14 +81,14 @@ orfieldenable: boolean;
 ordataenable: boolean;
 orvalueenable: boolean;
 selectedVisit = '0';
-selectedDataCategory = '0';
+selectedDataCategory = '0' ;
 selectedField = '0';
 selectedValue = '0';
-selectedAndVisit = '0';
+selectedAndVisit  = '0';
 selectedAndDataCategory = '0';
 selectedAndField = '0';
 selectedAndValue = '0';
-selectedOrVisit = '0';
+selectedOrVisit  = '0';
 selectedOrDataCategory = '0';
 selectedOrField = '0';
 selectedOrValue = '0';
@@ -67,15 +105,12 @@ selectedOrValue = '0';
     this.orvisible = !this.orvisible;
   }
   onSelectVisit(selectedValue: any) {
-    this.visit = selectedValue;
-    console.log(this.visit);
+    this.ifRule.visit = selectedValue;
     for (let i = 0; i < this.visits.length; i++) {
       if (this.visits[i].visitname === selectedValue) {
           this.datacategories = this.visits[i].forms;
       }
   }
- // this.fields=[];
-  // this.values=[];
   this.dataenable = false;
   this.fieldenable = true;
   this.valueenable = true;
@@ -84,8 +119,7 @@ selectedOrValue = '0';
   this.selectedValue = '0';
   }
   onSelectDataCategory(selectedValue: any) {
-    this.datacategory = selectedValue;
-    console.log(this.datacategory);
+    this.ifRule.form = selectedValue;
     for (let i = 0; i < this.datacategories.length; i++) {
       if (this.datacategories[i].formname === selectedValue) {
           this.fields = this.datacategories[i].field;
@@ -98,9 +132,7 @@ selectedOrValue = '0';
   this.selectedValue = '0';
   }
   onSelectField(selectedValue: any) {
-    this.field = selectedValue;
-    console.log(this.field);
-    console.log('Done');
+    this.ifRule.field = selectedValue;
     for (let i = 0; i < this.fields.length; i++) {
       if (this.fields[i].fieldname === selectedValue) {
           this.values = this.fields[i].values;
@@ -110,11 +142,15 @@ selectedOrValue = '0';
   this.selectedValue = '0';
   }
   onSelectValue(selectedValue: any) {
-   // this.value = selectedValue;
-   // this.subjects[id] = {'trajectory': datatrajectoryvalue, 'value': this.value};
+    this.ifRule.fieldValue = selectedValue;
+    this.ifRule.createdBy = 'John';
+    this.ifRule.createdDate = '2019-02-03';
+    this.ifRule.lastUpdatedDate = '2019-02-03';
+    this.ifRule.type = 'if';
+    console.log(this.ifRule);
   }
   onSelectANDVisit(selectedValue: any) {
-    console.log(this.visit);
+    this.andRule.visit = selectedValue;
     for (let i = 0; i < this.andvisits.length; i++) {
       if (this.andvisits[i].visitname === selectedValue) {
           this.anddatacategories = this.andvisits[i].forms;
@@ -128,7 +164,7 @@ selectedOrValue = '0';
   this.selectedAndValue = '0';
   }
   onSelectANDDataCategory(selectedValue: any) {
-    console.log(this.datacategory);
+    this.andRule.form = selectedValue;
     for (let i = 0; i < this.anddatacategories.length; i++) {
       if (this.anddatacategories[i].formname === selectedValue) {
           this.andfields = this.anddatacategories[i].field;
@@ -141,8 +177,7 @@ selectedOrValue = '0';
   this.selectedAndValue = '0';
   }
   onSelectANDField(selectedValue: any) {
-    console.log(this.field);
-    console.log('Done');
+   this.andRule.field = selectedValue;
     for (let i = 0; i < this.andfields.length; i++) {
       if (this.andfields[i].fieldname === selectedValue) {
           this.andvalues = this.andfields[i].values;
@@ -152,11 +187,15 @@ selectedOrValue = '0';
   this.selectedAndValue = '0';
   }
   onSelectANDValue(selectedValue: any) {
-    // this.value = selectedValue;
-    // this.subjects[id] = {'trajectory': datatrajectoryvalue, 'value': this.value};
+    this.andRule.fieldValue = selectedValue;
+    this.andRule.createdBy = 'John';
+    this.andRule.createdDate = '2019-02-03';
+    this.andRule.lastUpdatedDate = '2019-02-03';
+    this.andRule.type = 'and';
+    console.log(this.andRule);
   }
   onSelectOrVisit(selectedValue: any) {
-    console.log(this.visit);
+    this.orRule.visit = selectedValue;
     for (let i = 0; i < this.orvisits.length; i++) {
       if (this.orvisits[i].visitname === selectedValue) {
           this.ordatacategories = this.orvisits[i].forms;
@@ -170,8 +209,7 @@ selectedOrValue = '0';
   this.selectedOrValue = '0';
   }
   onSelectOrDataCategory(selectedValue: any) {
-  //  this.datacategory = selectedValue;
-    console.log(this.datacategory);
+  this.orRule.form = selectedValue;
     for (let i = 0; i < this.ordatacategories.length; i++) {
       if (this.ordatacategories[i].formname === selectedValue) {
           this.orfields = this.ordatacategories[i].field;
@@ -184,7 +222,7 @@ selectedOrValue = '0';
   this.selectedOrValue = '0';
   }
   onSelectOrField(selectedValue: any) {
-    console.log(this.field);
+    this.orRule.field = selectedValue;
     console.log('Done');
     for (let i = 0; i < this.orfields.length; i++) {
       if (this.orfields[i].fieldname === selectedValue) {
@@ -195,21 +233,47 @@ selectedOrValue = '0';
   this.selectedOrValue = '0';
   }
   onSelectOrValue(selectedValue: any) {
-    // this.value = selectedValue;
-   // this.subjects[id] = {'trajectory': datatrajectoryvalue, 'value': this.value};
+    this.orRule.fieldValue = selectedValue;
+    this.orRule.createdBy = 'John';
+    this.orRule.createdDate = '2019-02-03';
+    this.orRule.lastUpdatedDate = '2019-02-03';
+    this.orRule.type = 'or';
+    console.log(this.orRule);
   }
-  onSelectForm(selectedValue: any) {
-    this.form = selectedValue;
-    console.log(this.form);
+ /* onSelectForm(selectedValue: any) {
+    // this.form = selectedValue;
+    // console.log(this.form);
     for (let i = 0; i < this.forms.length; i++) {
       if (this.forms[i].formname === selectedValue) {
           this.frequencies = this.forms[i].frequecy;
       }
   }
-  }
+  }*/
   save(form) {
-    console.log(form.value.selectform + form.value.selectfrequency + form.value.expectation +
-      this.description + this.service.selecteddatacategory);
+    this.buisnessrule.form = form.value.selectform;
+    this.buisnessrule.frequency = form.value.selectfrequency;
+    this.buisnessrule.expected = form.value.expectation;
+    this.buisnessrule.createdBy = 'John';
+    this.buisnessrule.creationDate = '2019-02-03';
+    this.buisnessrule.lastUpdatedDate = '2019-02-03';
+    this.buisnessrule.subjectDescription = this.description;
+    this.buisnessrule.expectedDataCategoryId = this.service.selectedExpectedDatacategory.expectedDataCategoryId;
+    if (this.ifRule !== null) {
+      this.buisnessrule.businessRuleConditionDTOList[0] = this.ifRule;
+    }
+    if (this.andRule !== null) {
+      this.buisnessrule.businessRuleConditionDTOList[1] = this.andRule;
+    }
+    if (this.orRule !== null) {
+      this.buisnessrule.businessRuleConditionDTOList[2] = this.orRule;
+    }
+    console.log(this.buisnessrule);
+  //  this.service.saveBuisnessRule(this.buisnessrule);
+    this.service.saveBuisnessRule(this.buisnessrule).subscribe((res: Response) => {
+      console.log(res.text());
+    });
+   // console.log(form.value.selectform + form.value.selectfrequency + form.value.expectation +
+     // this.description + this.service.selecteddatacategory);
   }
   ngOnInit() {
     this.andvisible = false;

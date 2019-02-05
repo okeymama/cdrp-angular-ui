@@ -37,14 +37,17 @@ export class StudyInfoComponent implements OnInit {
     }
 ];
 
-  data: StudyInfo;
+  data: any;
 
   constructor(private http: Http, private cdrpService: CdrpService) { }
 
   ngOnInit() {
+    this.data = null;
     console.log('in here:');
     this.cdrpService.getProducts().subscribe((res: Response) => {
        this.data = res.json();
+       this.cdrpService.setIdrpPlanId(this.data.idrp.idrpPlanDetailId);
+       console.log(this.cdrpService.idrpPlanId);
        console.log(res);
     });
   }

@@ -41,14 +41,14 @@
         <th>Manually Assign</th> 
       </tr>
       <tr *ngFor="let t of datatrajectory ; let i = index">
-       <td id="col-1">{{datatrajectory[i]}}</td>
+       <td id="col-1">{{datatrajectory[i].dataTrajectoryName}}</td>
        <td id="col-1">
         <select  id="category" class="selection" [(ngModel)]="selectedValue[i]" [disabled]="valueenable" (change)="onSelectValue($event.target.value,datatrajectory[i],i)">
           <option value="0" disabled selected hidden>Select an option</option>
           <option *ngFor="let item of values; let i = index" [value]="values[i]">{{values[i]}}</option>       
         </select>
        </td>
-      <td id="col-2"  ><mat-icon (click)="manualassign(datatrajectory[i],i)" class="lastcolumn">settings</mat-icon></td>
+      <td id="col-2"  ><mat-icon (click)="manualassign(i)" class="lastcolumn">settings</mat-icon></td>
      </tr>
     </table>
     <hr>

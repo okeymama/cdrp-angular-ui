@@ -1,142 +1,150 @@
 <div class="one" >
-    <br>
-     <div class="heading">CDRP LANDING</div>
-     
-    <hr>
-    <div class="abc" >
-    <mat-accordion *ngFor="let study of tdata; let i=index" >
-    
-      <mat-expansion-panel class="panel"  >
-        <mat-expansion-panel-header class="expansion">
-          <div class="align">
-          <p class="name" (click)="redirect(tdata[i].studyid)">
-            {{ tdata[i].studyid }}
-          </p>
-          <ng-container
-  *ngIf="tdata[i].due; then details; else blank">
-  </ng-container>
-  <ng-template #details>
-    <div class="val" >
-        <p class="circle">{{ tdata[i].due }}  
+  <br>
+   <div class="heading">CDRP LANDING</div>
+   
+  <hr>
+  <div class="abc" >
+  <mat-accordion *ngFor="let study of tdata; let i=index" >
+  
+    <mat-expansion-panel class="panel"  >
+      <mat-expansion-panel-header class="expansion">
+        <div class="align">
+        <p class="name" (click)="redirect(tdata[i].studyid)">
+          {{ tdata[i].studyid }}
         </p>
-        </div>
-        <p class="desc">
-         {{  tdata[i].description }}<br><hr>{{ tdata[i].date }}
+        <ng-container
+*ngIf="tdata[i].due; then details; else blank">
+</ng-container>
+<ng-template #details>
+  <div class="val" >
+      <p class="circle">{{ tdata[i].due }}  
+      </p>
+      </div>
+      <p class="desc">
+       {{  tdata[i].description }}<br><hr>{{ tdata[i].date }}
+      </p>
+      <p class="descr">
+          
+          <button class="button" ><b>{{ tdata[i].unreviewed }}</b><br/>Reviewed</button>
         </p>
         <p class="descr">
-            
-            <button class="button" ><b>{{ tdata[i].unreviewed }}</b><br/>Reviewed</button>
+            <button class="button" style="margin-left: -130px" (click)="navigate()"><b>{{ tdata[i].pending }}</b><br/>Pending Course</button>
           </p>
           <p class="descr">
-              <button class="button" style="margin-left: -130px" (click)="navigate()"><b>{{ tdata[i].pending }}</b><br/>Pending Course</button>
+            
+              <button class="idrpbutton1" style="margin-left: -240px"><mat-icon>check</mat-icon><label style="position:unset">{{ tdata[i].idrp }}</label></button>
             </p>
-            <p class="descr">
-              
-                <button class="idrpbutton1" style="margin-left: -240px"><mat-icon>check</mat-icon><label style="position:unset">{{ tdata[i].idrp }}</label></button>
+      
+    </ng-template>
+      <ng-template #blank>
+          <div class="val">
+              <p class="blankcircle">--  
               </p>
-        
-      </ng-template>
-        <ng-template #blank>
-            <div class="val">
-                <p class="blankcircle">--  
-                </p>
-                </div>
-                <p class="desc">
-                 No Milestone<br><hr>--
+              </div>
+              <p class="desc">
+               No Milestone<br><hr>--
+              </p>
+              <p class="descr">
+                  
+                  <button class="blankbutton" ><b>--</b><br/>No Data</button>
                 </p>
                 <p class="descr">
-                    
-                    <button class="blankbutton" ><b>--</b><br/>No Data</button>
+                    <button class="blankbutton" style="margin-left: -130px" (click)="navigate()"><b>--</b><br/>No Data</button>
                   </p>
-                  <p class="descr">
-                      <button class="blankbutton" style="margin-left: -130px" (click)="navigate()"><b>--</b><br/>No Data</button>
+                  <ng-container
+                *ngIf="check(tdata[i].studyid); then addplan; else approvedPlan">
+                  </ng-container> 
+                  <ng-template #addplan>
+                  <p class="descr"  >  
+                      <button class="button1" style="margin-left: -240px" (click)="navigate(tdata[i].studyid)"><mat-icon>add</mat-icon><label style="position:unset">ADD IDRP</label></button>
                     </p>
-                    <p class="descr">
-                      
-                        <button class="button1" style="margin-left: -240px"><mat-icon>add</mat-icon><label style="position:unset">ADD IDRP</label></button>
-                      </p>
-                
-      
-  </ng-template>
-      </div>   
-          
-        </mat-expansion-panel-header>
-        <ng-container
-        *ngIf="tdata[i].due; then full">
-        </ng-container>
-        <ng-template #full> 
-        <div class="main" >
+                  </ng-template>
+                  <ng-template #approvedPlan>
+                      <p class="descr"  > 
+                    <button class="idrpbutton1" style="margin-left: -240px"><mat-icon>check</mat-icon><label style="position:unset">Version 1:Draft</label></button>
+                  </p>
+                  </ng-template>
+    
+</ng-template>
+    </div>   
+        
+      </mat-expansion-panel-header>
+      <ng-container
+      *ngIf="tdata[i].due; then full">
+      </ng-container>
+      <ng-template #full> 
+      <div class="main" >
 
-            <div class="chart">
-                <div style="display: block">
-                <canvas *ngIf="barChartData[i]" baseChart
-                [data]="barChartData[i]"
-                [labels]="barChartLabels"
-                [legend]="barChartLegend"
-                [options]="options1[i]"
-                [chartType]="barChartType"
-                [colors]="pieChartColor">
-                </canvas>
-                </div>
-                </div> 
-                <div class="barchart">
-                    <canvas *ngIf="ba[i].chartData"
-                    baseChart
-                    [chartType]="'bar'"
-                    [datasets]="ba[i].chartData"
-                    [labels]="labels"
-                    [options]="chartOptions"
-                    [legend]="true"
-                    [colors]="colors">
-                    </canvas>
-                    </div> 
-            <div class="four">
-              Tasks
-              <br>
-              <br>
-              <div class="box">
-                <p class="two">{{ ddata[i].todo }}</p><p class="three">To Do</p><hr><p class="two">{{ ddata[i].follow }}</p><p class="three">Following</p>
+          <div class="chart">
+              <div style="display: block">
+              <canvas *ngIf="barChartData[i]" baseChart
+              [data]="barChartData[i]"
+              [labels]="barChartLabels"
+              [legend]="barChartLegend"
+              [options]="options1[i]"
+              [chartType]="barChartType"
+              [colors]="pieChartColor">
+              </canvas>
               </div>
-            </div> 
-            
+              </div> 
+              <div class="barchart">
+                  <canvas *ngIf="ba[i].chartData"
+                  baseChart
+                  [chartType]="'bar'"
+                  [datasets]="ba[i].chartData"
+                  [labels]="labels"
+                  [options]="chartOptions"
+                  [legend]="true"
+                  [colors]="colors">
+                  </canvas>
+                  </div> 
+          <div class="four">
+            Tasks
+            <br>
+            <br>
+            <div class="box">
+              <p class="two">{{ ddata[i].todo }}</p><p class="three">To Do</p><hr><p class="two">{{ ddata[i].follow }}</p><p class="three">Following</p>
+            </div>
+          </div> 
+          
+<div class="four">
+    Queries
+    <br>
+    <br>
+    <div class="box">
+      <p class="two"> {{ ddata[i].answered }}</p><p class="three">Answered</p><hr><p class="two">{{ ddata[i].open1 }}</p><p class="three">Open</p>
+    </div>
+  </div> 
   <div class="four">
-      Queries
+      Observations
       <br>
       <br>
       <div class="box">
-        <p class="two"> {{ ddata[i].answered }}</p><p class="three">Answered</p><hr><p class="two">{{ ddata[i].open1 }}</p><p class="three">Open</p>
+        <p class="two">{{ ddata[i].open2 }}</p><p class="three">Open</p><hr><p class="two">{{ ddata[i].action }}</p><p class="three">Action Items</p>
       </div>
     </div> 
+
     <div class="four">
-        Observations
+        HOS
         <br>
         <br>
         <div class="box">
-          <p class="two">{{ ddata[i].open2 }}</p><p class="three">Open</p><hr><p class="two">{{ ddata[i].action }}</p><p class="three">Action Items</p>
+          <p class="three">GO To</p><p class="three">HOS</p>
         </div>
       </div> 
+
+      </div>
+      </ng-template>
+          
+    </mat-expansion-panel>
+    <br><br>
   
-      <div class="four">
-          HOS
-          <br>
-          <br>
-          <div class="box">
-            <p class="three">GO To</p><p class="three">HOS</p>
-          </div>
-        </div> 
   
-        </div>
-        </ng-template>
-            
-      </mat-expansion-panel>
-      <br><br>
-    
-    
-    </mat-accordion>
-   
-    
-    
+  </mat-accordion>
+ 
   
-               
-    </div>
-    </div>
+  
+
+             
+  </div>
+  </div>
