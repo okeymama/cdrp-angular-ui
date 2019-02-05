@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
+import { CdrpService } from '../cdrp.service';
 
 @Component({
   selector: 'app-buisnessrule',
@@ -7,12 +8,13 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material';
   styleUrls: ['./buisnessrule.component.css']
 })
 export class BuisnessruleComponent implements OnInit {
-
-  constructor(public dialogRef: MatDialogRef<BuisnessruleComponent>, @Inject(MAT_DIALOG_DATA) public data: string) { }
+  expectedDataCategory: any;
+  constructor(public dialogRef: MatDialogRef<BuisnessruleComponent>, public cdrpservice: CdrpService) { }
   onNoClick(): void {
     this.dialogRef.close();
   }
   ngOnInit() {
+    this.expectedDataCategory = this.cdrpservice.selectedExpectedDatacategory.expectedDataCategoryName;
   }
 
 }

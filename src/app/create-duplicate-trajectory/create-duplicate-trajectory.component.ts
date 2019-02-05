@@ -17,7 +17,7 @@ export class CreateDuplicateTrajectoryComponent implements OnInit, OnDestroy {
     @Inject(MAT_DIALOG_DATA) public data: string) { }
 
     previousDialog(): void {
-      this.dialogRef3.close();
+      this.dialogRef3.close('goBack');
     }
     onClose() {
       console.log('close called');
@@ -39,7 +39,7 @@ export class CreateDuplicateTrajectoryComponent implements OnInit, OnDestroy {
       this.trajectoryName =  form.value.trajectoryName;
       this.trajectoryDescription = form.value.description;
       this.onClose();
-      this.cdrpService.setTrajectoryName(this.trajectoryName);
+      this.cdrpService.setNewTrajectoryData(this.trajectoryName, this.trajectoryDescription);
       this.router.navigate(['/nav/trajectory']);
     }
 

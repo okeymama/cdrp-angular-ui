@@ -8,17 +8,17 @@
           <th>CRITICAL DATA</th>
       </tr>
       <tr>
-          <td contenteditable="true" (keyup)="changeValue('expectedData', $event)" (blur)="updateList('expectedData', $event)">{{ updateddt.expectedData}}</td>
-          <td contenteditable="true" (keyup)="changeValue('appliedVisit', $event)" (blur)="updateList('appliedVisit', $event)">{{ updateddt.appliedVisit}}</td>
-          <td contenteditable="true" (keyup)="changeValue('source', $event)" (blur)="updateList('source', $event)">{{updateddt.source}}</td>
-          <td contenteditable="true" (keyup)="changeValue('dataTransfer', $event)" (blur)="updateList('dataTransfer', $event)">{{ updateddt.dataTransfer}}</td>
-          <td contenteditable="true" (keyup)="changeValue('criticalData', $event)" (blur)="updateList('criticalData', $event)">{{ updateddt.criticalData}}</td>
+          <td contenteditable="true" (keyup)="changeValue('expectedDataCategoryName', $event)" (blur)="updateList('expectedDataCategoryName', $event)">{{ updatedData.expectedDataCategoryName}}</td>
+          <td contenteditable="true" (keyup)="changeValue('appliedVisit', $event)" (blur)="updateList('appliedVisit', $event)">{{updatedData.comment}}</td>
+          <td contenteditable="true" (keyup)="changeValue('source', $event)" (blur)="updateList('source', $event)">{{updatedData.source}}</td>
+          <td contenteditable="true" (keyup)="changeValue('dataTransferFrequency', $event)" (blur)="updateList('dataTransferFrequency', $event)">{{ updatedData.dataTransferFrequency}}</td>
+          <td contenteditable="true" (keyup)="changeValue('criticalData', $event)" (blur)="updateList('criticalData', $event)">{{ updatedData.criticalData}}</td>
           </tr> 
   </table><br>
 <div class="actionitems">
      
      <button mat-button (click)="save()" class="button-1">Save</button>
-     <button  mat-dialog-close class="button-2">Cancel</button>
+     <button  mat-button (click)="close()" class="button-2">Cancel</button>
     </div> 
   
 

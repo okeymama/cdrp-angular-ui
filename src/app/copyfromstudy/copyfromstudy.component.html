@@ -70,7 +70,7 @@
             <th>Indication</th> 
           </tr>
           <tr *ngFor="let t of template ; let i = index">
-           <td class="title" id="col-1" (click)="showtemplate(template[i].studynumber)">{{template[i].studynumber}}</td>
+           <td class="title" id="col-1" (click)="showtemplate(template[i].studynumber, i)">{{template[i].studynumber}}</td>
            <td id="col-1">{{template[i].TA}}</td>
            <td id="col-1">{{template[i].Compound}}</td>
            <td id="col-1">{{template[i].Indication}}</td>

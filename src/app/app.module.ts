@@ -150,7 +150,7 @@ const appRoutes: Routes = [
 
   ],
   imports: [
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, { onSameUrlNavigation: 'reload' } ),
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,

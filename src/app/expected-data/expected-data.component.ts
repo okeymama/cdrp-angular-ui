@@ -5,7 +5,7 @@ import { AddExpectedDataComponent } from '../add-expected-data/add-expected-data
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatDialogConfig} from '@angular/material';
 import { MapExpectedDataFormsComponent } from '../map-expected-data-forms/map-expected-data-forms.component';
 import { FormData } from '../Study';
-import { idrpPlanDetail } from '../ViewInterfaces';
+import { IdrpPlanDetail } from '../ViewInterfaces';
 import { AssignSubjectComponent } from '../assign-subject/assign-subject.component';
 import { AddIdrpChecksComponent } from '../add-idrp-checks/add-idrp-checks.component';
 import {MatSnackBar} from '@angular/material';
@@ -51,9 +51,9 @@ export class ExpectedDataComponent implements OnInit, OnDestroy {
 
   studyID: string;
   category: string;
-  idrpData:idrpPlanDetail;
+  idrpData: IdrpPlanDetail;
   constructor(private router: Router, private cdrpService: CdrpService, public dialog: MatDialog,
-    public dialog1: MatDialog, public dialog2: MatDialog, public snackBar: MatSnackBar) { }
+    public dialog1: MatDialog, public dialog2: MatDialog, public snackBar: MatSnackBar) { console.log('constructor called'); }
 
     assign(): void {
       console.log('Assign Subjects');
@@ -68,7 +68,8 @@ export class ExpectedDataComponent implements OnInit, OnDestroy {
   ngOnInit() {
    this.studyID = this.cdrpService.id;
    console.log('In OnInit of Expected Data');
-   this.cdrpService.getIdrpPlanDetailById().subscribe((res:idrpPlanDetail[]) => {
+   console.log(this.cdrpService.idrpPlanId);
+   this.cdrpService.getIdrpPlanDetailById().subscribe((res: IdrpPlanDetail[]) => {
     this.idrpData = res[0];
     this.cdrpService.setIdrpData(res[0]);
     console.log(this.idrpData.studyId);
@@ -110,6 +111,9 @@ export class ExpectedDataComponent implements OnInit, OnDestroy {
      //   this.router.navigate(['/nav/next']);
       console.log('The dialog was closed');
       console.log(result);
+      if (result === 'addedChecks') {
+        this.cdrpService.refresh = true;
+      }
       });
     }
   }

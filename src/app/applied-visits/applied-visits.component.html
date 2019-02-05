@@ -1,10 +1,11 @@
 <br><br>
 <div class="filter-icon-div"><span class="filter-class">Filters</span><mat-icon>filter_list</mat-icon></div>
-<div class="header"> <mat-icon class="icon">keyboard_arrow_down</mat-icon>&nbsp;&nbsp;<span class="header-text">Screening </span></div>
+<ng-container *ngFor="let appliedList of data; let j = index">
+<div class="header"> <mat-icon class="icon">keyboard_arrow_down</mat-icon>&nbsp;&nbsp;<span class="header-text">{{ appliedList.appliedVisitName }}</span></div>
 
 
 <table id="mainTable">
-    <tbody class="mainDiv" *ngFor="let d of ed; let i = index">
+    <tbody class="mainDiv" *ngFor="let ed of appliedList.appliedVisitList; let i = index">
     <tr class="table-header-color" *ngIf='!i'>
       <th>DATA TRAJECTORYs</th>
       <th>EXPECTED DATA CATEGORY</th> 
@@ -13,19 +14,19 @@
       <th>CRITICAL DATA</th>
     </tr>
 
-    <tr >
+    <tr *ngIf="rowstate[j][i]">
         
-        <td (click)="togglePanel(i)"> <mat-icon class="icon-1">{{arrow[i]}}</mat-icon><span class="text-align">{{ed[i].appliedDataTrajectory}}</span></td>
-        <td>{{ed[i].expectedDataCategory}}</td>
-        <td>{{ed[i].source}}</td>
-        <td>{{ed[i].dataTransfer}}</td>
-        <td>{{ed[i].criticalData}}</td>
+        <td (click)="togglePanel(i,j)"> <mat-icon class="icon-1">{{arrowState[j][i]}}</mat-icon><span class="text-align">{{ed.appliedDataTrajectory}}</span></td>
+        <td>{{ed.expectedDataCategory}}</td>
+        <td>{{ed.source}}</td>
+        <td>{{ed.dataTransferFrequency}}</td>
+        <td>{{ed.criticalData}}</td>
     </tr> 
    <!-- <tr id="hide-div"><td colspan="6"><div>This is the div</div></td></tr>-->
-   <ng-container *ngIf="panelState[i]">
+   <ng-container *ngIf="panelState[j][i] && ed?.idrpCheckList !== null">
     <tr><td class="check-table" colspan="6">
      <table>
-       <tr><th id="header-row"colspan="10">{{idrpCheck[0].category}} IDRP Checks</th></tr>
+       <tr><th id="header-row"colspan="10">{{ed.expectedDataCategory}} IDRP Checks</th></tr>
         <tr class="second-row">
           <th>Purpose</th>
           <th>Description</th> 
@@ -38,21 +39,21 @@
           <th>Query Text</th>
           <th>Source</th>
         </tr>
-        <tr class="second-table" *ngFor="let d of idrpCheck; let i = index">
-          <td>{{idrpCheck[i].purpose}}</td>
-          <td id="description">{{idrpCheck[i].description}}</td> 
-          <td>{{idrpCheck[i].visit}}</td>
-          <td>{{idrpCheck[i].role}}</td>
-          <td>{{idrpCheck[i].method}}</td> 
-          <td>{{idrpCheck[i].frequency}}</td>
-          <td>{{idrpCheck[i].owner}}</td>
-          <td>{{idrpCheck[i].checkName}}</td> 
-          <td>{{idrpCheck[i].queryText}}</td>
-          <td>{{idrpCheck[i].source}}</td>
+        <tr class="second-table" *ngFor="let d of ed?.idrpCheckList; let i = index">
+          <td>{{d.purpose}}</td>
+          <td id="description">{{d.description}}</td> 
+          <td>{{d.visit}}</td>
+          <td>{{d.role}}</td>
+          <td>{{d.method}}</td> 
+          <td>{{d.frequency}}</td>
+          <td>{{d.owner}}</td>
+          <td>{{d.checkName}}</td> 
+          <td>{{d.queryText}}</td>
+          <td>{{d.source}}</td>
 
         </tr>
       </table>
     </td></tr></ng-container>
   </tbody>
-</table>
-
+</table><br>
+</ng-container>

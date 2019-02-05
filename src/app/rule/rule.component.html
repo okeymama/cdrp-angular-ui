@@ -118,11 +118,11 @@
           </div>
           <div style="display:flex;">
               <p class="labels">EXPECTED/NOT EXPECTED:</p>&nbsp;
-              <p class="radio"><input type="radio" name="expectation" ngModel value='Expect'>Expect&nbsp;<input type="radio" name="expectation" ngModel value='Not Expect'>Not Expect</p>
+              <p class="radio"><input type="radio" name="expectation" ngModel value='True'>Expect&nbsp;<input type="radio" name="expectation" ngModel value='false'>Not Expect</p>
             </div>
             <div style="display:flex;">
                 <p class="labels">FREQUENCY:</p>&nbsp;
-                  <select  id="category" class="dropdown" name="selectfrequency" ngMode >
+                  <select  id="category" class="dropdown" name="selectfrequency" ngModel >
                     <option value="" disabled selected hidden>Select an option</option>
                     <option *ngFor="let item of frequencies; let i = index" [value]="frequencies[i]">{{frequencies[i]}}</option>       
                   </select>

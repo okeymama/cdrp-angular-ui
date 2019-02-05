@@ -15,7 +15,7 @@ export class ManualassignsubjectComponent implements OnInit, OnDestroy {
   subject: any;
   assignedsubject: any;
   removeid: any;
-  searchText ='';
+  searchText = '';
   constructor(public dialogRef: MatDialogRef<ManualassignsubjectComponent>, @Inject(MAT_DIALOG_DATA) public data: any) { }
   onNoClick(): void {
     this.dialogRef.close('CloseAll');
@@ -23,7 +23,7 @@ export class ManualassignsubjectComponent implements OnInit, OnDestroy {
   }
   previousDialog(): void {
 
-    this.dialogRef.close();
+    this.dialogRef.close(this.assignedsubjects);
   }
   onSelect(selectedValue: any) {
 
@@ -32,13 +32,14 @@ export class ManualassignsubjectComponent implements OnInit, OnDestroy {
   }
   onDeSelect(selectedValue: any) {
     this.assignedsubject = selectedValue;
-    //this.removeid = id;
+    // this.removeid = id;
     console.log(this.assignedsubject + 'on deselection');
 
   }
   move() {
     if (this.subject !== '') {
     this.assignedsubjects.push(this.subject);
+    this.subjects.splice(this.subjects.indexOf(this.subject), 1);
     console.log(this.subject + 'on moving');
     this.subject = '';
     }
@@ -48,6 +49,7 @@ export class ManualassignsubjectComponent implements OnInit, OnDestroy {
     if (index !== -1) {
         this.assignedsubjects.splice(index, 1);
     }
+    this.subjects.push(this.assignedsubject);
   }
   ngOnInit() {
     Array.from(document.querySelectorAll('.cdk-overlay-container .cdk-global-overlay-wrapper'))

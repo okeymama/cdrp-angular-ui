@@ -3,6 +3,7 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { FormData, AddData} from '../Study';
 import { CreateDataTrajectoryComponent } from '../create-data-trajectory/create-data-trajectory.component';
 import { CreateDuplicateTrajectoryComponent } from '../create-duplicate-trajectory/create-duplicate-trajectory.component';
+import { CdrpService } from '../cdrp.service';
 
 @Component({
   selector: 'app-add-expected-data',
@@ -11,8 +12,9 @@ import { CreateDuplicateTrajectoryComponent } from '../create-duplicate-trajecto
 })
 export class AddExpectedDataComponent implements OnInit, OnDestroy {
 
+  trajectoriesList;
   constructor(public dialog2: MatDialog, public dialog3: MatDialog,
-    public dialogRef1: MatDialogRef<AddExpectedDataComponent>,
+    public dialogRef1: MatDialogRef<AddExpectedDataComponent>,private cdrpService: CdrpService,
     @Inject(MAT_DIALOG_DATA) public data: AddData) {
     }
 
@@ -26,6 +28,8 @@ export class AddExpectedDataComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     console.log('in add expected data ');
+    this.trajectoriesList = this.cdrpService.getIdrpData();
+    console.log(this.trajectoriesList);
     Array.from(document.querySelectorAll('.cdk-overlay-container .cdk-global-overlay-wrapper'))
     .forEach((node, index, array) => (index !== array.length - 1) ? (<HTMLElement> node).style.display = 'none' : true);
   }

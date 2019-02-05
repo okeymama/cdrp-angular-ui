@@ -25,11 +25,12 @@ export class CreateDataTrajectoryComponent implements OnInit, OnDestroy {
   }
 
   createDataTrajectory(form) {
-    console.log('navigating' + form.value.trajectoryName);
+    // console.log('navigating' + form.value.trajectoryName + " "+ form.value.description);
+    this.cdrpService.setNewTrajectoryData(form.value.trajectoryName, form.value.description);
     this.trajectoryName =  form.value.trajectoryName;
     this.trajectoryDescription = form.value.description;
     this.dialogRef2.close('closeAll');
-    this.cdrpService.setTrajectoryName(this.trajectoryName);
+   // this.cdrpService.setTrajectoryName(this.trajectoryName);
     this.router.navigate(['/nav/trajectory']);
 
   }

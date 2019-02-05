@@ -7,12 +7,15 @@ import { Details } from '../Details';
 import '../../../node_modules/chartjs-plugin-doughnutlabel';
 import { Bardata } from '../Bardata';
 import { Bar } from '../Bar';
+import { IdrpPlanDetail } from '../ViewInterfaces';
 @Component({
   selector: 'app-accord',
   templateUrl: './accord.component.html',
   styleUrls: ['./accord.component.css']
 })
 export class AccordComponent implements OnInit {
+idrpPlanDetail: any;
+idrpData: any;
 panelOpenState = false;
 count: Number;
 expand: boolean[];
@@ -24,6 +27,7 @@ d:  Bardata[];
 da:  Bardata[];
 b:  Bar[];
 ba = [];
+studyIdrpPaln = [];
 public barChartOptions = {
   scalShowVerticalLines: false,
   responsive: true,
@@ -76,6 +80,15 @@ colors =  [ // CHART COLOR.
   toggle(expanded, i) {
     this.expand[i] = !expanded;
   }
+
+  check(studyid) {
+    for (let k = 0; k < this.studyIdrpPaln.length ; k++) {
+      if (this.studyIdrpPaln[k] === studyid) {
+        return false;
+      }
+    }
+    return true;
+  }
   ngOnInit() {
     this.service.getstudy().subscribe((res: Response) => {
        this.tdata = res.json();
@@ -85,6 +98,17 @@ colors =  [ // CHART COLOR.
            this.expand.push(false);
        }*/
     });
+    this.service.getIdrpPlans().subscribe((res: Response) => {
+      this.idrpData = res.json();
+      console.log(this.idrpData);
+      console.log('helo');
+      for ( let i = 0 ; i < this.idrpData.length ; i++) {
+          this.studyIdrpPaln.push(this.idrpData[i].studyId);
+      }
+      console.log(this.studyIdrpPaln);
+      // console.log(this.idrpData.studyId);
+     // console.log(res);
+   });
 
     this.service.getdetails().subscribe((res: Response) => {
        this.ddata = res.json();
@@ -138,8 +162,21 @@ color:  'grey'
     });
   }
 
-  navigate() {
-    this.router.navigate(['main']);
+  navigate(studyid) {
+    console.log(studyid);
+    this.service.setid(studyid);
+    this.idrpPlanDetail = {
+      'studyId': studyid,
+      'planOwner':  this.service.user,
+      'planVersion': 'Version 1:Draft'
+    };
+    console.log(this.idrpPlanDetail);
+   this.service.addIdrpPlan(this.idrpPlanDetail).subscribe((res: Response) => {
+      console.log(res.text());
+      this.router.navigate(['nav']);
+    });
+    // this.service.addIdrpPlan(this.idrpPlanDetail);
+   // this.router.navigate(['nav']);
   }
 
   redirect(id) {
