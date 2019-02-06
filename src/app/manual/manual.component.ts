@@ -72,8 +72,8 @@ export class ManualComponent implements OnInit {
     }
   }
   ngOnInit() {
-   // this.subjects = ['555-885', '669-653', '55-556', '88866-5'];
-    for ( let i = 0 ; i < this.cdrpservice.idrpData.dataTrajectoryDTOList.length ; i ++) {
+    this.subjects = ['555-885', '669-653', '55-556', '88866-5'];
+    /*for ( let i = 0 ; i < this.cdrpservice.idrpData.dataTrajectoryDTOList.length ; i ++) {
       // tslint:disable-next-line:max-line-length
       if (this.cdrpservice.idrpData.dataTrajectoryDTOList[i].dataTrajectoryId === this.cdrpservice.selectedExpectedDatacategory.dataTrajectoryId) {
         // tslint:disable-next-line:max-line-length
@@ -89,7 +89,7 @@ export class ManualComponent implements OnInit {
         }
       }
 
-    }
+    }*/
     console.log(this.subjects);
   }
 

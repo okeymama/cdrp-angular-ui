@@ -46,7 +46,8 @@ export class StudyInfoComponent implements OnInit {
     console.log('in here:');
     this.cdrpService.getProducts().subscribe((res: Response) => {
        this.data = res.json();
-       this.cdrpService.setIdrpPlanId(this.data.idrp.idrpPlanDetailId);
+       console.log(this.data);
+       this.cdrpService.setIdrpPlanId(this.data.idrpPlanDetailDTO.idrpPlanDetailId);
        console.log(this.cdrpService.idrpPlanId);
        console.log(res);
     });

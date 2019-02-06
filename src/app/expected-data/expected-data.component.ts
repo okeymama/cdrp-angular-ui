@@ -112,7 +112,7 @@ export class ExpectedDataComponent implements OnInit, OnDestroy {
       console.log('The dialog was closed');
       console.log(result);
       if (result === 'addedChecks') {
-        this.cdrpService.refresh = true;
+       // this.cdrpService.refresh = true;
       }
       });
     }

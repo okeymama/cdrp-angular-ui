@@ -71,12 +71,12 @@
             <th>Compound</th> 
             <th>Indication</th> 
           </tr>
-          <tr *ngFor="let t of template ; let i = index">
-           <td class="title" id="col-1" (click)="showtemplate(template[i].templatename, i)">{{template[i].templatename}}</td>
-           <td class="desc" id="col-1">{{template[i].description}}</td>
-           <td id="col-1">{{template[i].TA}}</td>
-           <td id="col-1">{{template[i].Compound}}</td>
-           <td id="col-1">{{template[i].Indication}}</td>
+          <tr *ngFor="let t of templates ; let i = index">
+           <td class="title" id="col-1" (click)="showtemplate(templates[i].name, i)">{{templates[i].name}}</td>
+           <td class="desc" id="col-1">{{templates[i].descriptionC}}</td>
+           <td id="col-1">{{templates[i].applicableTaC}}</td>
+           <td id="col-1">{{templates[i].applicableCompoundC}}</td>
+           <td id="col-1">{{templates[i].applicableIndicationC}}</td>
             </tr>
         </table>
   </div><br>

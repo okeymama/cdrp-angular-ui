@@ -71,7 +71,7 @@ export class ShowIdrpStudyTemplateComponent implements OnInit, OnDestroy {
         owner: row.owner,
         checkName: row.checkName,
         queryText: '',
-        source: this.data.template.templatename,
+        source: this.data.template.studynumber,
         createdBy: row.owner,
         createdDate: '',
         lastUpdatedDate: '',
