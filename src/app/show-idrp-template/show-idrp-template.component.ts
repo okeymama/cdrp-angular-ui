@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
-import { checks} from '../tableData';
+import { checks, Idrpchecks} from '../tableData';
 import { MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 import { CdrpService } from '../cdrp.service';
@@ -16,9 +16,10 @@ export class ShowIdrpTemplateComponent implements OnInit, OnDestroy {
   rolesoptions = [];
   methodoptions = [];
   frequencyoptions = [] ;
+  checks: any;
   displayedColumns: string[] = ['select', 'expectedDataCategory', 'purpose', 'description', 'role', 'method', 'frequency'];
   selection = new SelectionModel<{}>(true, []);
-  dataSource = new MatTableDataSource<checks>(this.data.fields);
+  dataSource: any;
   idrpCheckList = [];
   selectedIdrpCheck;
   checkList = [];
@@ -26,10 +27,9 @@ export class ShowIdrpTemplateComponent implements OnInit, OnDestroy {
     @Inject(MAT_DIALOG_DATA) public data) { }
 
     ngOnInit() {
-      console.log(this.data);
-      console.log(this.data.fields);
-      console.log(this.data.fields[0].category);
-      console.log(this.data.template);
+      console.log(this.cdrpService.idrpTemplate);
+     this.checks = this.cdrpService.idrpTemplate[this.data.selecttemplate].idrpCheckCDTOs;
+     this.dataSource = new MatTableDataSource<Idrpchecks>(this.checks);
       console.log('selected category id ' + this.cdrpService.getSelectedExpectedCategoryId());
       this.datacategoriesoptions = ['Vital Sign', 'Date of Visit'];
       this.purposeoptions = ['Data Quality', 'Data Check'];
@@ -63,17 +63,17 @@ export class ShowIdrpTemplateComponent implements OnInit, OnDestroy {
     if (!this.selection.isSelected(row)) {
       console.log(row);
       this.selectedIdrpCheck = {
-        purpose: row.purpose,
-        description: row.description,
+        purpose: row.purposeC,
+        description: row.descriptionC,
         visit: '',
-        role: row.role,
-        method: row.method,
-        frequency: row.frequency,
-        owner: row.owner,
-        checkName: row.checkName,
+        role: row.roleC,
+        method: row.methodC,
+        frequency: row.frequencyC,
+        owner: row.ownerid,
+        checkName: row.name,
         queryText: '',
-        source: this.data.template.templatename,
-        createdBy: row.owner,
+        source: this.cdrpService.idrpTemplate[this.data.selecttemplate].name,
+        createdBy: row.ownerid,
         createdDate: '',
         lastUpdatedDate: '',
         expectedDataCategoryId: this.cdrpService.getSelectedExpectedCategoryId()
@@ -104,17 +104,17 @@ export class ShowIdrpTemplateComponent implements OnInit, OnDestroy {
       if (i <= -1 ) {
       console.log('select All ');
       this.selectedIdrpCheck = {
-        purpose: row.purpose,
-        description: row.description,
+        purpose: row.purposeC,
+        description: row.descriptionC,
         visit: '',
-        role: row.role,
-        method: row.method,
-        frequency: row.frequency,
-        owner: row.owner,
-        checkName: row.checkName,
+        role: row.roleC,
+        method: row.methodC,
+        frequency: row.frequencyC,
+        owner: row.ownerid,
+        checkName: row.name,
         queryText: '',
-        source: this.data.template.templatename,
-        createdBy: row.owner,
+        source: this.cdrpService.idrpTemplate[this.data.selecttemplate].name,
+        createdBy: row.ownerid,
         createdDate: '',
         lastUpdatedDate: '',
         expectedDataCategoryId: this.cdrpService.getSelectedExpectedCategoryId()
@@ -145,7 +145,6 @@ export class ShowIdrpTemplateComponent implements OnInit, OnDestroy {
     console.log('in add checks');
     this.cdrpService.saveIdrpChecks(this.idrpCheckList).subscribe((res) => {
       console.log(res.text());
-      this.cdrpService.refreshChecks();
       } );
     this.dialogRef2.close('addedChecks');
   }

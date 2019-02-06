@@ -6,14 +6,16 @@ import { MatTableDataSource} from '@angular/material';
 import {SelectionModel} from '@angular/cdk/collections';
 import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { checks} from '../tableData';
-
+import { CdrpService } from '../cdrp.service';
+import { Http, Response } from '@angular/http';
 @Component({
   selector: 'app-idrpchecktemplate',
   templateUrl: './idrpchecktemplate.component.html',
   styleUrls: ['./idrpchecktemplate.component.css']
 })
 export class IdrpchecktemplateComponent implements OnInit {
-public template = [
+  templates: any;
+/* public template = [
   {
     'templatename': 'Template 1',
     'description': 'Review for duplicate visits (same date different visit name) in EDC',
@@ -31,7 +33,7 @@ public template = [
   }
 ];
 
-idrpCheck: checks[] = [
+  idrpCheck: checks[] = [
   {
     'category': 'Vital sign',
     'purpose': 'Data Quality',
@@ -114,7 +116,7 @@ idrpCheck: checks[] = [
       'queryText': '',
       'source': 'Template 554 - Modified',
   }
-];
+]; */
 
   Ta = [];
   reselected = [];
@@ -124,14 +126,14 @@ idrpCheck: checks[] = [
   selectedComp = [];
   selectedIndi = [];
   dropdownSettings = {};
-  constructor(public dialog2: MatDialog, public snackBar: MatSnackBar) { }
+  constructor(public dialog2: MatDialog, public snackBar: MatSnackBar, public service: CdrpService) { }
 
   public showtemplate(template: any, idx) {
   console.log(template);
   const dialogRef2 = this.dialog2.open(ShowIdrpTemplateComponent, {
     width: '900px',
     height: '580px',
-    data: {templateName: template, fields: this.idrpCheck, template: this.template[idx]}
+    data: {templateName: template,  selecttemplate: idx}
   });
 
   dialogRef2.beforeClosed().subscribe(result => {
@@ -160,7 +162,7 @@ idrpCheck: checks[] = [
     this.selectedTa = [];
     this.selectedIndi = [];
     this.selectedComp = [];
-    this.template = [
+  /*  this.template = [
       {
         'templatename': 'Template 3',
         'description': 'Review dates against the protocol defined windows and for logic',
@@ -168,10 +170,10 @@ idrpCheck: checks[] = [
         'Compound': 'Lorem ipsum',
         'Indication': 'Lorem ipsum'
       }
-    ];
+    ];*/
     }
   }
-    console.log(form.value.tempname);
+  //  console.log(form.value.tempname);
 }
 onTaSelect(item: any) {
   // this.selectedItems.push(item);
@@ -275,6 +277,12 @@ if (index !== -1) {
  }
 }
  ngOnInit() {
+
+  this.service.getIdrpTemplate().subscribe((res: Response) => {
+    console.log(res);
+   this.templates = res.json();
+   this.service.idrpTemplate = this.templates;
+  });
     this.Ta = [
       { item_id: 1, item_text: 'TA1' },
       { item_id: 2, item_text: 'TA2' },

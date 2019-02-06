@@ -16,24 +16,28 @@ export class CdrpService {
   newtrajectoryDescription: string;
   selecteddatacategory: any;
   selectedCategory = 'null';
+  selectedTrajectory;
   idrpPlanId: any;
   idrpPlanId1: any;
   idrpData;
   newTrajectoryName;
   newTrajectoryDescription;
   selectedExpectedCategoryId;
-  refresh = false;
+  edId;
+  idrpChecksObject;
+  idrpTemplate:  any;
+  mainObject;
   selectedExpectedDatacategory: any = {
-    "expectedDataCategoryId": null,
-    "expectedDataCategoryName": null,
-    "source": null,
-    "dataTransferFrequency": null,
-    "criticalData": null,
-    "createdBy": null,
-    "createdDate": null,
-    "lastUpdatedDate": null,
-    "comment": null,
-    "dataTrajectoryId": null,
+    'expectedDataCategoryId': null,
+    'expectedDataCategoryName': null,
+    'source': null,
+    'dataTransferFrequency': null,
+    'criticalData': null,
+    'createdBy': null,
+    'createdDate': null,
+    'lastUpdatedDate': null,
+    'comment': null,
+    'dataTrajectoryId': null,
   };
   value = [
     {
@@ -115,6 +119,8 @@ export class CdrpService {
   // tslint:disable-next-line:max-line-length
   private saveDataTrajectorySubejctAssignment = 'https://cdrp-service.herokuapp.com/DataTrajectorySubjectAssignmentController/saveDataTrajectorySubjectAssignmentDTOList';
   private saveIdrpPlan = 'https://cdrp-service.herokuapp.com/LandingPageController/addIdRPPlanDetail';
+  private deleteTrajectoryUrl = 'https://cdrp-service.herokuapp.com/DataTrajectoryController/deleteDataTrajectoryDTO';
+  private getIdrptemplate = 'https://salesforce-db-service.herokuapp.com/IDRPCheckTemplateController/getAllIDRPCheckTemplates';
 
   getIdrpPlanId() {
     return this.idrpPlanId;
@@ -173,6 +179,9 @@ export class CdrpService {
   getIdrpData() {
     return this.idrpData;
   }
+  getIdrpTemplate() {
+    return this.http.request(this.getIdrptemplate);
+  }
 
   setNewTrajectoryData(name, description) {
     console.log('in service ' + name + ' ' + description);
@@ -197,21 +206,55 @@ export class CdrpService {
     this.selectedExpectedCategoryId = id;
   }
 
+  setDtId(id) {
+    this.selectedTrajectory = id;
+  }
+
+  getDtId() {
+    return this.selectedTrajectory;
+  }
+  setEdId(id) {
+    this.edId = id;
+  }
+
+  getEdId() {
+    return this.edId;
+  }
+
   getSelectedExpectedCategoryId() {
     return this.selectedExpectedCategoryId;
   }
 
   saveIdrpChecks(idrpChecks) {
     console.log('In service checks');
-    console.log(idrpChecks);
+   // console.log(idrpChecks);
+    this.idrpChecksObject = idrpChecks;
+    const traj = this.getDtId();
+    const ed = this.getEdId();
+   // console.log('traj= ' + traj + ' ed= ' + ed);
+    for (let x = 0; x < idrpChecks.length; x++) {
+    //  console.log(idrpChecks[x]);
+    //  console.log(this.idrpChecksObject);
+    //  console.log(this.mainObject.dataTrajectoryDTOList[traj].expectedDataCategoryDTOList[ed].idrpCheckDTOList);
+      if (this.mainObject.dataTrajectoryDTOList[traj].expectedDataCategoryDTOList[ed].idrpCheckDTOList === null ) {
+     //   console.log("in if ");
+        this.mainObject.dataTrajectoryDTOList[traj].expectedDataCategoryDTOList[ed].idrpCheckDTOList = [];
+    //    console.log(this.mainObject.dataTrajectoryDTOList[traj].expectedDataCategoryDTOList[ed].idrpCheckDTOList);
+        this.mainObject.dataTrajectoryDTOList[traj].expectedDataCategoryDTOList[ed].idrpCheckDTOList.push(this.idrpChecksObject[x]);
+      } else {
+     //   console.log("in else ");
+      this.mainObject.dataTrajectoryDTOList[traj].expectedDataCategoryDTOList[ed].idrpCheckDTOList.push(this.idrpChecksObject[x]);
+      // this.mainObject.dataTrajectoryDTOList[traj].expectedDataCategoryDTOList[ed].idrpCheckDTOList[]
+      }
+    }
+    console.log(this.mainObject.dataTrajectoryDTOList[traj].expectedDataCategoryDTOList[ed]);
+   // this.mainObject.dataTrajectoryDTOList.expectedDataCategoryDTOList[i].idrpChecks
     return this.http.post(this.saveIdrpChecksUrl, idrpChecks);
   }
 
-  refreshChecks() {
-    console.log('called refresh');
-    this.router.navigate(['/nav/next']);
+  setCopyOfData (data) {
+    this.mainObject = data;
   }
-
 
   getIdrpPlans() {
     return this.http.request('https://cdrp-service.herokuapp.com/IDRPPlanDetailController/getAllIDRPPlanDetailDTO');
@@ -229,6 +272,9 @@ export class CdrpService {
     return this.http.post(this.updateExpectedDatacategoryUrl, updateddata);
   }
 
+  deleteDataTrajectory(TrajectoryList) {
+    return this.http.post(this.deleteTrajectoryUrl, TrajectoryList);
+  }
   saveDataTrajectorySubjectAssignment(subjectassignment) {
    console.log(subjectassignment);
      return this.http.post(this.saveDataTrajectorySubejctAssignment, subjectassignment);

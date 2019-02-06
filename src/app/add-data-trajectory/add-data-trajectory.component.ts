@@ -607,7 +607,7 @@ export class AddDataTrajectoryComponent implements OnInit {
       dataTrajectorySubjectAssignmentDTOList : null
     };
     console.log(this.newTrajectory);
-
+    // if(this.expectedCategoriesList === )
     this.cdrpService.saveNewTrajectory(this.newTrajectory).subscribe((res) => {
       console.log(res.text());
       this.router.navigate(['/nav/next']);

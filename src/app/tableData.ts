@@ -96,6 +96,36 @@ export interface checks {
       source: string;
 }
 
+export interface Idrpchecks {
+      id: any;
+      hcErr: any;
+      hcLastop: any;
+      applicableCompoundC: any;
+      applicableDataCategoryC: any;
+      applicableIndicationC: any;
+      applicablePhaseC: any;
+      applicableTaC: any;
+      descriptionC: any;
+      frequencyC: any;
+      lastactivitydate: any;
+      lastreferenceddate: any;
+      lastvieweddate: any;
+      methodC: any;
+      ownerid: any;
+      purposeC: any;
+      recordtypeid: any;
+      roleC: any;
+      statusC: any;
+      therapeuticAreaC: any;
+      isdeleted: any;
+      lastmodifiedbyid: any;
+      lastmodifieddate: any;
+      createdbyid: any;
+      createddate: any;
+      name: any;
+      sfid: any;
+      systemmodstamp: any;
+}
 export interface Trajectory {
       content1: dataTrajectory[];
       content2: checks[];

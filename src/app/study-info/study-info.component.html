@@ -14,29 +14,29 @@
           <div class="align1"> 
               <div class="div1" >
                   <p><span style="font-weight: bold">Therapeutic Area</span> <br>
-                    {{data?.reference.theraputicArea}}</p>
+                    {{data?.referenceDTO.therapeuticArea}}</p>
               </div>
               <div class="div2" >
                   <p><span style="font-weight: bold">Compound</span> <br>
-                    {{data?.reference.compound}}</p>
+                    {{data?.referenceDTO.compound}}</p>
               </div>
               <div class="div3" >
                   <p><span style="font-weight: bold">Indication</span> <br>
-                    {{data?.reference.indication}}</p>
+                    {{data?.referenceDTO.indication}}</p>
               </div>  
             </div>
             <div class="align1"> 
                   <div class="div5">
                       <p><span style="font-weight: bold" >Study Status</span> <br>
-                        {{data?.reference.studyStatus}}</p>
+                        {{data?.referenceDTO.studyStatus}}</p>
                   </div>
                   <div class="div6">
                       <p><span style="font-weight: bold">Study Phase</span> <br>
-                        {{data?.reference.studyPhase}}</p>
+                        {{data?.referenceDTO.studyPhase}}</p>
                   </div>
                   <div class="div7">
                       <p><span style="font-weight: bold">Study Type</span> <br>
-                        {{data?.reference.studyType}}</p>
+                        {{data?.referenceDTO.studyType}}</p>
                   </div>
                </div> 
                
@@ -44,7 +44,7 @@
               <div class="div4">
                   <p><span style="font-weight: bold">Full Protocal Title</span> <br><br>
 
-                    {{data?.reference.fullProtocaltitle}}
+                    {{data?.referenceDTO.fullProtocalTitle}}
                    </p>
               </div> 
             </div>
@@ -65,10 +65,10 @@
                 <th>ACTUAL DATE</th>
               </tr>
 
-              <tr *ngFor="let d of data?.key; let i = index">
-                  <td>{{data?.key[i].event}}</td>
-                  <td>{{data?.key[i].planned}}</td>
-                  <td>{{data?.key[i].actual}}</td>
+              <tr *ngFor="let d of data?.keyEventsDTO; let i = index">
+                  <td>{{d.eventName}}</td>
+                  <td>{{d.plannedDate}}</td>
+                  <td>{{d.actualDate}}</td>
                 </tr>
             </table>
       </mat-card>
@@ -77,15 +77,18 @@
         <mat-icon class="icon-color">arrow_drop_down_circle</mat-icon>
       <h4>PERSONAL ASSIGNMENTS</h4>
     </div>
-      <div class="vertical3">
+      <div class="vertical3" >
           <br>
       <mat-card class="sub-content">
           <div class="align3"> 
-              <div class="div8" >
-                  <p><span style="font-weight: bold">Clinical Data Reviewer</span> <br>
-                    {{data?.personalAssign.clinicalDataReviewer}}</p>
+              <div class="div8" *ngFor="let r of data?.personalAssignmentMap | keyvalue" >
+                  <section class="assignment"><span style="font-weight: bold">{{r.key}} </span>
+                  <section *ngFor="let i of r.value"><span class="circle">{{i}}</span>
+                  <!-- <section *ngIf="i === R"> <span class="circle">{{i}} R</span></section>
+                   <section *ngIf="i === A"> <span class="blue-circle">{{i}}A</span></section>-->
+                  </section></section>
               </div>
-              <div class="div8" >
+              <!--<div class="div8" >
                   <p><span style="font-weight: bold">Clinical Safety Analyst</span> <br>
                     {{data?.personalAssign.clinicalSafetyAnalyst}}</p>
               </div>
@@ -96,9 +99,9 @@
               <div class="div8" >
                   <p><span style="font-weight: bold">Stats</span> <br>
                     {{data?.personalAssign.stats}}</p>
-              </div> 
+              </div> -->
             </div>
-          <div class="align3"> 
+        <!--  <div class="align3"> 
               <div class="div8" >
                   <p><span style="font-weight: bold">Study Project Manager</span> <br>
                     {{data?.personalAssign.studyProjectManager}}&nbsp; <span class="circle">R</span> </p>
@@ -115,7 +118,7 @@
                   <p><span style="font-weight: bold">Data Sciences Project Lead</span> <br>
                     {{data?.personalAssign.dataSciencesProjectLead}}</p>
               </div> 
-            </div> 
+            </div> -->
       </mat-card>
       </div>
       <div class="sub-header">
@@ -128,28 +131,28 @@
           <div class="align4"> 
               <div class="div8" >
                   <p><span style="font-weight: bold">Plan Owner</span> <br>
-                    {{data?.idrp.planOwner}}</p>
+                    {{data?.idrpPlanDetailDTO.planOwner}}</p>
               </div>
               <div class="div8" >
                   <p><span style="font-weight: bold">Plan Version</span> <br>
-                    {{data?.idrp.planVersion}} <mat-icon>restore</mat-icon></p>
+                    {{data?.idrpPlanDetailDTO.planVersion}} <mat-icon>restore</mat-icon></p>
                     
               </div>
               <div class="div8" >
                   <p><span style="font-weight: bold">Created Date</span> <br>
-                    {{data?.idrp.createdDate}}</p>
+                    {{data?.idrpPlanDetailDTO.createdDate}}</p>
               </div>  
             </div>
           <div class="align4"> 
               <div class="div8" >
                   <p><span style="font-weight: bold">Last Modified By</span> <br>
-                    {{data?.idrp.lastModifiedBy}}</p>
+                    {{data?.idrpPlanDetailDTO.lastModifiedBy}}</p>
               </div>
               <div class="div8" >
               </div>
               <div class="div8" >
                   <p><span style="font-weight: bold">Approval Date</span> <br>
-                    {{data?.idrp.approvalDate}}</p>
+                    {{data?.idrpPlanDetailDTO.approvalDate}}</p>
               </div>  
             </div>
       </mat-card>

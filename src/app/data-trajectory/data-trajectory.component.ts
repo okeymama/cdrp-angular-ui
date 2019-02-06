@@ -14,7 +14,7 @@ import { IdrpPlanDetail } from '../ViewInterfaces';
   styleUrls: ['./data-trajectory.component.css']
 })
 export class DataTrajectoryComponent implements OnInit {
-
+  expectedDataList: any;
   dt: dataTrajectory[] = [
     { 'expectedData': 'Vital Sign ',
       'appliedVisit': 'All',
@@ -165,20 +165,29 @@ datacategory: dataTrajectory;
      }
      delete(dataTrajectoryRow, expectedDataCategoryRow, expectedDataCategoryId): void {
       // console.log(dataTrajectoryRow);
+      this.expectedDataList = this.data.dataTrajectoryDTOList[dataTrajectoryRow].expectedDataCategoryDTOList.length;
+      this.cdrpService.setselectedexpectedDataCtegory(dataTrajectoryRow, expectedDataCategoryRow, this.data);
       console.log(expectedDataCategoryId);
       const dialogConfig1 = new MatDialogConfig();
       dialogConfig1.width = '350px';
       dialogConfig1.height = '145px';
-      dialogConfig1.data = expectedDataCategoryId;
+       dialogConfig1.data = this.expectedDataList;
       dialogConfig1.disableClose = true;
       const dialogRef1 = this.dialog1.open(DeletetrajectoryComponent, dialogConfig1);
       dialogRef1.beforeClosed().subscribe(result => {
        console.log('in parent' + result);
        if (result === 'success') {
-       this.rowstate[dataTrajectoryRow][expectedDataCategoryRow] =  !this.rowstate[dataTrajectoryRow][expectedDataCategoryRow];
+         if (this.expectedDataList === 1) {
+            this.data.dataTrajectoryDTOList.splice(dataTrajectoryRow, 1);
+         } else {
+          this.data.dataTrajectoryDTOList[dataTrajectoryRow].expectedDataCategoryDTOList.splice(expectedDataCategoryRow, 1);
+         }
+      // this.ngOnInit();
+       //  this.rowstate[dataTrajectoryRow][expectedDataCategoryRow] =  !this.rowstate[dataTrajectoryRow][expectedDataCategoryRow];
        }
        });
      }
+
 
 addChecks(trajId, rowId, selectedCat) {
   if (this.selectState[trajId][rowId] === false) {
@@ -194,6 +203,8 @@ addChecks(trajId, rowId, selectedCat) {
   const id = this.data.dataTrajectoryDTOList[trajId].expectedDataCategoryDTOList[rowId].expectedDataCategoryId;
   console.log(id);
   this.cdrpService.setSelectedExpectedCategoryId(id);
+  this.cdrpService.setDtId(trajId);
+  this.cdrpService.setEdId(rowId);
 }
 
 selectIcon() {
@@ -204,6 +215,7 @@ selectIcon() {
     console.log('In OnInit of Data Trajectory');
     this.cdrpService.getIdrpPlanDetailById().subscribe((res: IdrpPlanDetail[]) => {
     this.data = res[0];
+    this.cdrpService.setCopyOfData(this.data);
     console.log(this.data.dataTrajectoryDTOList);
     if (this.data.dataTrajectoryDTOList !== null) {
     for (let c = 0; c < this.data.dataTrajectoryDTOList.length; c++) {
