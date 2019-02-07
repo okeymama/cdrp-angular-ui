@@ -14,8 +14,10 @@ import { NgModel } from '@angular/forms';
 export class AddFormsComponent implements OnInit {
 
   listOfForms: string[] = [
-    'Vital Sign 1', 'Vital Sign 2', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging'
+    'Vital Sign', 'Viral Levels', 'Blood Sugar', 'System testing', 'Informed Consent',
+    'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging', 'Immunity testing'
   ];
+  selectedForms = [];
 
   displayedColumns: string[] = ['select'];
   selection = new SelectionModel<string>(true, []);
@@ -58,5 +60,36 @@ export class AddFormsComponent implements OnInit {
         this.selection.clear() :
         this.dataSource.data.forEach(row => this.selection.select(row));
   }
+
+  addForms() {
+    for (let x = 0; x < this.dataSource.data.length; x++) {
+      const row = this.dataSource.data[x];
+      console.log(row);
+      this.selectedRowsCheck(row, x);
+    }
+    console.log(this.selectedForms);
+    this.dialogRef.close(this.selectedForms);
+  }
+
+  selectedRowsCheck(row, idx) {
+    console.log(this.selectedForms);
+    console.log('selected Rows ' + idx);
+    console.log(row);
+    const i = this.selectedForms.indexOf(row);
+    console.log('isSelected = ' + i);
+    console.log(this.selection.isSelected(row) );
+    if (this.selection.isSelected(row) && i <= -1) {
+      this.selectedForms.push(row);
+    } else if (!this.selection.isSelected(row)) {
+      console.log('deselect');
+     // const j = this.selectedForms.findIndex( record => record === row);
+     // console.log(j);
+      if (i >= 0) {
+        console.log('deleting');
+        this.selectedForms.splice(i, 1);
+        console.log(this.selectedForms);
+       }
+    }
+}
 
 }

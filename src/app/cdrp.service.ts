@@ -18,7 +18,6 @@ export class CdrpService {
   selectedCategory = 'null';
   selectedTrajectory;
   idrpPlanId: any;
-  idrpPlanId1: any;
   idrpData;
   newTrajectoryName;
   newTrajectoryDescription;
@@ -27,6 +26,7 @@ export class CdrpService {
   idrpChecksObject;
   idrpTemplate:  any;
   mainObject;
+  mappingList;
   selectedExpectedDatacategory: any = {
     'expectedDataCategoryId': null,
     'expectedDataCategoryName': null,
@@ -128,7 +128,6 @@ export class CdrpService {
 
   setIdrpPlanId(id) {
     this.idrpPlanId = id;
-    this.idrpPlanId1 = id;
   }
 
   selectdatacategory(category: any) {
@@ -169,7 +168,7 @@ export class CdrpService {
 
   getIdrpPlanDetailById() {
     console.log(this.getIdrpPlanId());
-    return this.httpClient.post(this.getIdrpPlanDetailByIdUrl, this.idrpPlanId1);
+    return this.httpClient.post(this.getIdrpPlanDetailByIdUrl, this.idrpPlanId);
   }
 
   setIdrpData(data) {
@@ -181,6 +180,14 @@ export class CdrpService {
   }
   getIdrpTemplate() {
     return this.http.request(this.getIdrptemplate);
+  }
+
+  setSelectedMapping(list) {
+    this.mappingList = list;
+  }
+
+  getSelectedMapping() {
+    return this.mappingList;
   }
 
   setNewTrajectoryData(name, description) {

@@ -9,6 +9,7 @@ import { AddFormsComponent } from '../add-forms/add-forms.component';
 import {  ModifyApplicableVisitsComponent  } from '../modify-applicable-visits/modify-applicable-visits.component';
 import { ExpectedDataCategoryList, DataTrajectoryList, AppliedVisitList } from '../ViewInterfaces';
 import { Router } from '../../../node_modules/@angular/router';
+import {MatSnackBar} from '@angular/material';
 
 @Component({
   selector: 'app-add-data-trajectory',
@@ -18,6 +19,8 @@ import { Router } from '../../../node_modules/@angular/router';
 
 export class AddDataTrajectoryComponent implements OnInit {
 
+  dtFormsObj;
+  dtForms = [];
  /* v1: visitSource =
   {
     raveEdc: ['Cycle 1 Day 1', 'Cycle 1 Day 2', 'Cycle 1 Day 3', 'Cycle 1 Day 4', 'Cycle 1 Day 5',
@@ -96,17 +99,46 @@ export class AddDataTrajectoryComponent implements OnInit {
     mdr: []
   };
 
+  v6: visitSource =
+  {
+    raveEdc: [],
+    mdr: []
+  };
+
+  v7: visitSource =
+  {
+    raveEdc: [],
+    mdr: []
+  };
+
+  v8: visitSource =
+  {
+    raveEdc: [],
+    mdr: []
+  };
+
+  v9: visitSource =
+  {
+    raveEdc: [],
+    mdr: []
+  };
+
+  v10: visitSource =
+  {
+    raveEdc: [],
+    mdr: []
+  };
 
   appVisits: applicableVisit =
     {
       noOfVisits: 0,
-      visits: this.v2
+      visits: this.v1
     };
 
   appVisits1: applicableVisit =
     {
       noOfVisits: 0,
-      visits: this.v4
+      visits: this.v2
     };
   appVisits2: applicableVisit =
     {
@@ -116,7 +148,7 @@ export class AddDataTrajectoryComponent implements OnInit {
   appVisits3: applicableVisit =
     {
       noOfVisits: 0,
-      visits: this.v1
+      visits: this.v4
     };
   appVisits4: applicableVisit =
     {
@@ -127,31 +159,34 @@ export class AddDataTrajectoryComponent implements OnInit {
   appVisits5: applicableVisit =
     {
       noOfVisits: 0,
-      visits: this.v2
+      visits: this.v6
     };
 
   appVisits6: applicableVisit =
     {
       noOfVisits: 0,
-      visits: this.v5
+      visits: this.v7
     };
   appVisits7: applicableVisit =
     {
       noOfVisits: 0,
-      visits: this.v4
+      visits: this.v8
     };
 
   appVisits8: applicableVisit =
     {
       noOfVisits: 0,
-      visits: this.v3
+      visits: this.v9
     };
   appVisits9: applicableVisit =
     {
       noOfVisits: 0,
-      visits: this.v4
+      visits: this.v10
     };
-  dtForms: dataTrajectoryForms[] = [
+
+   appVisitsList = [this.appVisits, this.appVisits1, this.appVisits2, this.appVisits3 , this.appVisits4,
+    this.appVisits5, this.appVisits6, this.appVisits7, this.appVisits8, this.appVisits9];
+  /*dtForms: dataTrajectoryForms[] = [
     {
       'expectedDataCategory': 'Vital Sign',
       'appliedVisit': this.appVisits,
@@ -222,7 +257,7 @@ export class AddDataTrajectoryComponent implements OnInit {
       'dataTransferFrequency': ['Monthly', 'Weekly', 'Daily', 'Hourly'],
       'criticalData': ['No', 'Yes - Primary End Point', 'Yes - Second End Point', 'Yes - Efficacy', 'Yes - Safety']
     }
-  ];
+  ];*/
 
   masterData: visitSource[] = [
     {
@@ -270,38 +305,55 @@ export class AddDataTrajectoryComponent implements OnInit {
   newTrajectoryDescription;
   newTrajectory ;
   expectedCategoriesList = [];
+  list = [];
   addSelectedCategory ;
   addVisits ;
   addVisitsList = [];
   check = [];
+  expectedDataList;
   /*material sort and display of tables*/
   displayedColumns: string[] = ['select', 'expectedDataCategory', 'dataSource', 'appliedVisit', 'dataTransferFrequency', 'criticalData'];
   displayedColumns1: string[] = [];
   selection = new SelectionModel<dataTrajectoryForms>(true, []);
   selection1 = new SelectionModel<ExpectedDataCategoryList>(true, []);
-  dataSource = new MatTableDataSource<dataTrajectoryForms>(this.dtForms);
+  dataSource = new MatTableDataSource<any>(this.dtForms);
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
 
   constructor(private cdrpService: CdrpService, private activateRouter: ActivatedRoute, private router: Router,
-     public dialog: MatDialog, public dialog1: MatDialog) {
-    for (let c = 0; c < this.dtForms.length; c++) {
-        this.sourceVariable[c] = this.dtForms[c].dataSource[0];
-        this.frequencyVariable[c] = this.dtForms[c].dataTransferFrequency[0];
-        this.criticalVariable[c] = this.dtForms[c].criticalData[0];
-      }
+     public dialog: MatDialog, public dialog1: MatDialog, public snackBar: MatSnackBar) {
   }
 
 
   ngOnInit() {
     console.log('In add Trajectory ');
 
+    this.expectedDataList = this.cdrpService.getSelectedMapping();
+    console.log(this.expectedDataList);
+    for (let i = 0 ; i < this.expectedDataList.length ; i++ ) {
+      this.dtFormsObj =  {
+          expectedDataCategory: this.expectedDataList[i],
+          appliedVisit : this.appVisitsList[i],
+          dataSource: ['EDC,Covance,Other', 'IRT', 'ePro', 'Covance', 'Central Lab', 'Parexel'],
+          dataTransferFrequency: ['Monthly', 'Weekly', 'Daily', 'Hourly'],
+          criticalData: ['No', 'Yes - Primary End Point', 'Yes - Second End Point', 'Yes - Efficacy', 'Yes - Safety']
+      };
+      this.dtForms.push(this.dtFormsObj);
+      this.dtFormsObj = null;
+    }
+    console.log(this.dtForms);
     this.dataSource.sort = this.sort;
     this.studyID = this.cdrpService.id;
     this.newTrajectoryName = this.cdrpService.getNewTrajectoryName();
     this.newTrajectoryDescription = this.cdrpService.getNewTrajectoryDescription();
     this.dataSource.paginator = this.paginator;
+
+    for (let c = 0; c < this.dtForms.length; c++) {
+      this.sourceVariable[c] = this.dtForms[c].dataSource[0];
+      this.frequencyVariable[c] = this.dtForms[c].dataTransferFrequency[0];
+      this.criticalVariable[c] = this.dtForms[c].criticalData[0];
+    }
 
     for (let d = 0; d < this.dtForms.length; d++) {
       this.iconState[d] = 'file_copy';
@@ -338,7 +390,37 @@ export class AddDataTrajectoryComponent implements OnInit {
     dialogRef.beforeClosed().subscribe(result => {
       console.log('The dialog was closed');
       console.log(result);
+      if (result !== null ) {
+        for (let x = 0; x < result.length; x++) {
+          const q = this.expectedDataList.indexOf(result[x]);
+          if (q <= -1) {
+            this.expectedDataList.push(result[x]);
+            const r = this.expectedDataList.indexOf(result[x]);
+            this.dtFormsObj =  {
+              expectedDataCategory: this.expectedDataList[r],
+              appliedVisit : this.appVisitsList[r],
+              dataSource: ['EDC,Covance,Other', 'IRT', 'ePro', 'Covance', 'Central Lab', 'Parexel'],
+              dataTransferFrequency: ['Monthly', 'Weekly', 'Daily', 'Hourly'],
+              criticalData: ['No', 'Yes - Primary End Point', 'Yes - Second End Point', 'Yes - Efficacy', 'Yes - Safety']
+          };
+          this.dtForms.push(this.dtFormsObj);
+          this.dtFormsObj = null;
+          }
+        }
+        console.log(this.dtForms);
+      }
+      this.dataSource = new MatTableDataSource<any>(this.dtForms);
+      for (let c = 0; c < this.dtForms.length; c++) {
+        this.sourceVariable[c] = this.dtForms[c].dataSource[0];
+        this.frequencyVariable[c] = this.dtForms[c].dataTransferFrequency[0];
+        this.criticalVariable[c] = this.dtForms[c].criticalData[0];
+      }
+      for (let d = 0; d < this.dtForms.length; d++) {
+        this.iconState[d] = 'file_copy';
+        this.check[d] = false;
+      }
     });
+    console.log('doneeee');
   }
 
   editVisits(selectRow): void {
@@ -484,15 +566,56 @@ export class AddDataTrajectoryComponent implements OnInit {
 
   }
 
-  selectedRows(row, idx) {
+  AddNewTrajectory() {
+    console.log('add traj');
+    console.log(this.list);
+    for (let x = 0; x < this.dataSource.data.length; x++) {
+      const row = this.dataSource.data[x];
+      console.log(row);
+      this.selectedRowsCheck(row, x);
+    }
+
+    if (this.list.length === 0) {
+      this.snackBar.open('Select Expected Data Categories to add to the Data Trajectory', 'close', {
+        duration: 3000,
+      });
+    } else {
+    console.log( this.cdrpService.getIdrpPlanId());
+    this.newTrajectory = {
+      idrpPlanDetailId : this.cdrpService.getIdrpPlanId(),
+      dataTrajectoryName : this.newTrajectoryName,
+      description : this.newTrajectoryDescription,
+      createdBy : this.cdrpService.user,
+      createdDate : null,
+      lastUpdatedDate : null,
+      expectedDataCategoryDTOList : this.list === [] ? [{}] : this.list,
+      dataTrajectorySubjectAssignmentDTOList : null
+    };
+    console.log(this.newTrajectory);
+    // if(this.expectedCategoriesList === )
+    this.cdrpService.saveNewTrajectory(this.newTrajectory).subscribe((res) => {
+      console.log(res.text());
+      this.router.navigate(['/nav/next']);
+    } );
+    console.log(this.list);
+    }
+    console.log('called');
+
+  }
+
+  selectedRowsCheck(row, idx) {
+    console.log(this.list);
     console.log('selected Rows ' + idx);
+    console.log(row);
     let count = 0;
     this.addSelectedCategory  = null;
     this.addVisitsList = [];
-    console.log(this.selection.isSelected(row));
-    if (!this.selection.isSelected(row)) {
-      const i = this.expectedCategoriesList.indexOf(row);
-      console.log(row);
+    const i = this.list.indexOf(row);
+    console.log('isSelected = ' + i);
+    console.log(this.selection.isSelected(row) );
+    if (this.selection.isSelected(row) && i <= -1) {
+      console.log('createeeeee');
+      console.log('list = ' + this.list);
       this.addVisits = null;
       const x = row.appliedVisit.visits.raveEdc.length;
       const y = row.appliedVisit.visits.mdr.length;
@@ -511,7 +634,7 @@ export class AddDataTrajectoryComponent implements OnInit {
         };
         this.addVisitsList.push(this.addVisits);
       }
-      console.log(this.addVisitsList);
+     // console.log(this.addVisitsList);
       this.addSelectedCategory = {
         expectedDataCategoryName : row.expectedDataCategory,
         source: this.sourceVariable[idx],
@@ -524,95 +647,18 @@ export class AddDataTrajectoryComponent implements OnInit {
         idrpCheckDTOList: null
       };
 
-      this.expectedCategoriesList.push(this.addSelectedCategory);
+      this.list.push(this.addSelectedCategory);
 
     } else {
       console.log('deselect');
-      const i = this.expectedCategoriesList.findIndex( record => record.expectedDataCategoryName === row.expectedDataCategory);
-      console.log(i);
-      if (i >= 0) {
-        this.expectedCategoriesList.splice(i, 1);
+      const j = this.list.findIndex( record => record.expectedDataCategoryName === row.expectedDataCategory);
+      console.log(j);
+      if (j >= 0) {
+        this.list.splice(j, 1);
        }
     }
 
-    console.log(this.expectedCategoriesList);
+    console.log(this.list);
   }
 
-  selectedAllRows() {
-    console.log();
-    if (!this.isAllSelected()) {
-    for (let q = 0; q < this.dataSource.data.length ; q++) {
-      const row = this.dataSource.data[q];
-      // console.log(row.expectedDataCategory);
-      const i = this.expectedCategoriesList.findIndex( record => record.expectedDataCategoryName === row.expectedDataCategory);
-      console.log(i);
-      // console.log(this.expectedCategoriesList);
-      if (i <= -1 ) {
-      console.log('select All ');
-      let count = 0;
-      this.addSelectedCategory  = null;
-      this.addVisitsList = [];
-      this.addVisits = null;
-      const x = row.appliedVisit.visits.raveEdc.length;
-      const y = row.appliedVisit.visits.mdr.length;
-      for (let c = 0; c < x; c++) {
-        this.addVisits = {
-          visitId : count++,
-          visitName : row.appliedVisit.visits.raveEdc[c]
-        };
-        this.addVisitsList.push(this.addVisits);
-      }
-
-      for (let c = 0; c < y; c++) {
-        this.addVisits = {
-          visitId : count++,
-          visitName : row.appliedVisit.visits.mdr[c]
-        };
-        this.addVisitsList.push(this.addVisits);
-      }
-      console.log(this.addVisitsList);
-      this.addSelectedCategory = {
-        expectedDataCategoryName : row.expectedDataCategory,
-        source: this.sourceVariable[q],
-        dataTransferFrequency: this.frequencyVariable[q],
-        criticalData: this.criticalVariable[q],
-        appliedVisitDTOList: this.addVisitsList,
-        createdBy: null,
-        createdDate: null,
-        lastUpdatedDate: null,
-        idrpCheckDTOList: null
-      };
-
-      this.expectedCategoriesList.push(this.addSelectedCategory);
-    }
-    }
-   } else {
-        console.log('deselect of all');
-        this.expectedCategoriesList = [];
-      }
-
-      console.log(this.expectedCategoriesList);
-
-    }
-
-  AddNewTrajectory() {
-    this.newTrajectory = {
-      idrpPlanDetailId : this.cdrpService.getIdrpPlanId(),
-      dataTrajectoryName : this.newTrajectoryName,
-      description : this.newTrajectoryDescription,
-      createdBy : this.cdrpService.user,
-      createdDate : null,
-      lastUpdatedDate : null,
-      expectedDataCategoryDTOList : this.expectedCategoriesList === [] ? [{}] : this.expectedCategoriesList,
-      dataTrajectorySubjectAssignmentDTOList : null
-    };
-    console.log(this.newTrajectory);
-    // if(this.expectedCategoriesList === )
-    this.cdrpService.saveNewTrajectory(this.newTrajectory).subscribe((res) => {
-      console.log(res.text());
-      this.router.navigate(['/nav/next']);
-    } );
-    console.log('called');
-
-  }
 }

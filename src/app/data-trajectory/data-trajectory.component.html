@@ -16,7 +16,7 @@
       <th>ACTIONS</th>
     </tr>
 
-    <tr *ngIf="rowstate[j][i]" [class.highlighted]="expectedData?.expectedDataCategoryName === selectedCat && j === selectedTraj">
+    <tr  [class.highlighted]="expectedData?.expectedDataCategoryName === selectedCat && j === selectedTraj">
         
         <td (click)="togglePanel(i,j)"> <mat-icon class="icon-1">{{arrowState[j][i]}}</mat-icon><span class="text-align">{{expectedData?.expectedDataCategoryName}}</span></td>
         <td>{{allAppliedVisitList[j][i]}}</td>

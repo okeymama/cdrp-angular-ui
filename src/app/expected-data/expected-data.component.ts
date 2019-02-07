@@ -21,31 +21,58 @@ export class ExpectedDataComponent implements OnInit, OnDestroy {
   formData: FormData[] = [
     {
       'expectedDataForm': 'Vital Sign 1',
-      'expectedDataCategory': ['Vital Sign', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging']
+      'expectedDataCategory': ['Vital Sign', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging',
+      'Blood Sugar', 'Viral Levels', 'System testing', 'Immunity testing']
     },
     {
       'expectedDataForm': 'Vital Sign 2',
-      'expectedDataCategory': ['Vital Sign', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging']
+      'expectedDataCategory': ['Vital Sign', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging',
+      'Blood Sugar', 'Viral Levels', 'System testing', 'Immunity testing']
     },
     {
       'expectedDataForm': 'Informed Consent',
-      'expectedDataCategory': ['Vital Sign', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging']
+      'expectedDataCategory': ['Vital Sign', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging',
+      'Blood Sugar', 'Viral Levels', 'System testing', 'Immunity testing']
     },
     {
       'expectedDataForm': 'Physical Examination',
-      'expectedDataCategory': ['Vital Sign', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging']
+      'expectedDataCategory': ['Vital Sign', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging',
+      'Blood Sugar', 'Viral Levels', 'System testing', 'Immunity testing']
     },
     {
       'expectedDataForm': 'Dosing Related to Pharmacokin',
-      'expectedDataCategory': ['Vital Sign', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging']
+      'expectedDataCategory': ['Vital Sign', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging',
+      'Blood Sugar', 'Viral Levels', 'System testing', 'Immunity testing']
     },
     {
       'expectedDataForm': 'Dosing Related to Pharmacokin',
-      'expectedDataCategory': ['Vital Sign', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging']
+      'expectedDataCategory': ['Vital Sign', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging',
+      'Blood Sugar', 'Viral Levels', 'System testing', 'Immunity testing']
     },
     {
       'expectedDataForm': 'Imaging',
-      'expectedDataCategory': ['Vital Sign', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging']
+      'expectedDataCategory': ['Vital Sign', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging',
+      'Blood Sugar', 'Viral Levels', 'System testing', 'Immunity testing']
+    },
+    {
+      'expectedDataForm': 'Blood Sugar',
+      'expectedDataCategory': ['Vital Sign', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging',
+      'Blood Sugar', 'Viral Levels', 'System testing', 'Immunity testing']
+    },
+    {
+      'expectedDataForm': 'System testing',
+      'expectedDataCategory': ['Vital Sign', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging',
+      'Blood Sugar', 'Viral Levels', 'System testing', 'Immunity testing']
+    },
+    {
+      'expectedDataForm': 'Immunity testing',
+      'expectedDataCategory': ['Vital Sign', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging',
+      'Blood Sugar', 'Viral Levels', 'System testing', 'Immunity testing']
+    },
+    {
+      'expectedDataForm': 'Physical Examination',
+      'expectedDataCategory': ['Vital Sign', 'Informed Consent', 'Physical Examination', 'Dosing Related to Pharmacokin', 'Imaging',
+      'Blood Sugar', 'Viral Levels', 'System testing', 'Immunity testing']
     }
   ];
 
